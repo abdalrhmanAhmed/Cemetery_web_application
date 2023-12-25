@@ -1,0 +1,114 @@
+<?php
+
+namespace App\Http\Controllers\settings;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Country;
+use App\Models\City;
+
+class CityController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $countries = Country::all();
+        $cities = City::all();
+        return view('settings.cities.index', compact('countries','cities'));
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        try 
+        {
+            $cities = new City();
+            $cities->name = $request->name;
+            $cities->country_id	 = $request->country_id;
+            $cities->save();
+
+            return redirect()->route('city.index');
+        } 
+        catch (\Exception $e)
+        {
+            return redirect()->route('city.index');
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return 1;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        try 
+        {
+            $cities = City::findOrFail($id);
+            $cities->name = $request->name;
+            $cities->country_id	 = $request->country_id;
+            $cities->save();
+
+            return redirect()->route('city.index');
+        } 
+        catch (\Exception $e) 
+        {
+            return redirect()->route('city.index');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try 
+        {
+            $cities = City::findOrFail($id);
+            $cities->delete();
+
+            return redirect()->route('city.index');
+        } 
+        catch (\Exception $e) 
+        {
+            return redirect()->route('city.index');
+        }
+    }
+}
