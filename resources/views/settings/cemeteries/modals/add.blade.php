@@ -34,24 +34,16 @@
                     <div class="row map-input-fields">
                         <div class="col-md">
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label" for="short_name_input">
-                                <span class="arabic ar_f">خط العرض</span>
-                                <br>
-                                <span class="english en_f">Latitude</span>
-                                </label>
-                                <div class="col-sm-7 map-input-with-no-padding">
-                                    <input class="form-control"   name="latitude" type="text"><br>
+                                <div class="col-md map-input-with-no-padding">
+                                    <label for=""> خط العرض</label>
+                                    <input class="form-control"  name="latitude" type="text"><br>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group row">
-                                <label class="col-sm-5 col-form-label" for="short_name_input">
-                                <span class="arabic ar_f">خط الطول</span>
-                                <br>
-                                <span class="english en_f">Longitude</span>
-                                </label>
-                                <div class="col-sm-7 map-input-with-no-padding">
+                                <div class="col-md map-input-with-no-padding">
+                                    <label for="">خط الطول</label>
                                     <input class="form-control"   name="longitude" type="text"><br>
                                 </div>
                             </div>
