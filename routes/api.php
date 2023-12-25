@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('posts')->group(function(){
+    Route::get('quote', [App\Http\Controllers\api\QuoteController::class, 'quotes']);
+    Route::get('teaching', [App\Http\Controllers\api\QuoteController::class, 'teachings']);
+    Route::get('procedure', [App\Http\Controllers\api\QuoteController::class, 'procedures']);
+    Route::get('historical_grave', [App\Http\Controllers\api\QuoteController::class, 'historical_graves']);
+    Route::get('contact', [App\Http\Controllers\api\QuoteController::class, 'contacts']);
 });
