@@ -11,6 +11,12 @@ use App\Http\Controllers\settings\GenealogyController;
 use App\Http\Controllers\settings\ReligionController;
 use App\Http\Controllers\settings\NationalityController;
 use App\Http\Controllers\settings\CemeteryController;
+use App\Http\Controllers\posts\QuoteController;
+use App\Http\Controllers\posts\TeachingController;
+use App\Http\Controllers\posts\HistoricalGraveController;
+use App\Http\Controllers\posts\ProcedureController;
+use App\Http\Controllers\posts\ContactController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +61,12 @@ Route::middleware([
         //ajax route
         Route::get('getCity/{id}', [CemeteryController::class, 'getCity'])->name('getCity');
 
+        ############################posts routes###############################
+        // 
+        Route::resource('quote', QuoteController::class);
+        Route::resource('teaching', TeachingController::class);
+        Route::resource('historical_grave', HistoricalGraveController::class);
+        Route::resource('procedure', ProcedureController::class);
+        Route::resource('contact', ContactController::class);
     }
 );

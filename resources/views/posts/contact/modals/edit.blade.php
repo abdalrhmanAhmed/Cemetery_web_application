@@ -1,38 +1,38 @@
 <!-- Large Modal -->
-<div class="modal" id="edit{{$cemeterie->id}}">
+<div class="modal" id="edit{{$contact->id}}">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">تعديل مقبرة</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h6 class="modal-title">تعديل وسيلة التواصل</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('cemetery.update', $cemeterie->id)}}" method="POST">
+                <form action="{{route('contact.update', $contact->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="row">
                         <div class="col-md">
-                            <label for="">إسم المقبرة</label>
-                            <input type="text" name="name" value="{{$cemeterie->name}}" placeholder="إسم المقبرة" class="form-control" required>
+                            <label for="">إسم وسيلة التواصل</label>
+                            <input type="text" name="name" value="{{$contact->name}}" placeholder="إسم المقبرة" class="form-control" required>
                         </div>
-                        <div class="col-md">
+                        {{-- <div class="col-md">
                             <label for="">الدولة</label>
                             <select name="country_id" class="form-control" required>
-                                @foreach ($countries as $country)
-                                    <option value="{{$country->id}}" {{$country->id == $cemeterie->cities->country_id ? 'selected' : ''}}>{{$country->name}}</option>
+                                @foreach ($contacts as $country)
+                                    <option value="{{$country->id}}" {{$contacts->id == $contact->id ? 'selected' : ''}}>{{$country->name}}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="row">
                         @php
-                            $cities = App\Models\City::where('country_id', $cemeterie->cities->country_id)->first();
+                            $contacts = App\Models\Contact::where('id', $contact->id)->first();
                         @endphp
-                        <div class="col-md">
-                            <label for="">المدينة</label>
+                        {{-- <div class="col-md">
+                            <label for="">وسيلة التواصل</label>
                             <select name="city_id" class="form-control" required>
-                                <option value="{{$cities->id}}">{{$cities->name}}</option>
+                                <option value="{{$contacts->id}}">{{$contacts->name}}</option>
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                     <div class="map-container" style="margin: 2px;">
@@ -40,16 +40,16 @@
                         <div class="col-md">
                             <div class="form-group row">
                                 <div class="col-md map-input-with-no-padding">
-                                    <label>خط عرض</label>
-                                    <input class="form-control" value="{{$cemeterie->latitude}}" readonly  name="latitude" type="text"><br>
+                                    <label>الرابط </label>
+                                    <input class="form-control" value="{{$contacts->url}}"   name="url" type="text"><br>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group row">
                                 <div class="col-md map-input-with-no-padding">
-                                    <label>خط طول</label>
-                                    <input class="form-control" value="{{$cemeterie->Longitude}}" readonly  name="longitude" type="text"><br>
+                                    <label>الايقونة </label>
+                                    <input class="form-control" value="{{$contacts->icon}}"   name="icon" type="file"><br>
                                 </div>
                             </div>
                         </div>
