@@ -18,7 +18,7 @@ class Cemetery extends Model
 
     public function cities()
     {
-        return $this->belongsTo('City', 'citiy_id');
+        return $this->belongsTo(City::class, 'citiy_id');
     }
 
 }

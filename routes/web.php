@@ -52,6 +52,8 @@ Route::middleware([
         Route::resource('cemetery', CemeteryController::class);
         // Route::resource('gander', GanderController::class);
         // Route::resource('gander', GanderController::class);
+        //ajax route
+        Route::get('getCity/{id}', [CemeteryController::class, 'getCity'])->name('getCity');
 
     }
 );
