@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\blocks\BlockController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 // controllers
@@ -16,7 +17,7 @@ use App\Http\Controllers\posts\TeachingController;
 use App\Http\Controllers\posts\HistoricalGraveController;
 use App\Http\Controllers\posts\ProcedureController;
 use App\Http\Controllers\posts\ContactController;
-
+use App\Http\Controllers\settings\GraveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,5 +69,22 @@ Route::middleware([
         Route::resource('historical_grave', HistoricalGraveController::class);
         Route::resource('procedure', ProcedureController::class);
         Route::resource('contact', ContactController::class);
+
+        ############################ blocks routes #############################
+        Route::controller(BlockController::class)->prefix('blocks')->group(function(){
+            Route::get('/', 'index')->name('blocks.index');
+            Route::post('/store', 'store')->name('blocks.store');
+            Route::post('/update/{id}', 'update')->name('blocks.update');
+            Route::post('/destroy/{id}', 'destroy')->name('blocks.destroy');
+        });
+
+        ############################ graves routes #############################
+        Route::controller(GraveController::class)->prefix('graves')->group(function(){
+            Route::get('/', 'index')->name('graves.index');
+            Route::post('/store', 'store')->name('graves.store');
+            Route::post('/update/{id}', 'update')->name('graves.update');
+            Route::post('/destroy/{id}', 'destroy')->name('graves.destroy');
+        });
     }
 );
+

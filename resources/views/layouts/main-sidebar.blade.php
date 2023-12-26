@@ -68,8 +68,8 @@
 							<li><a class="slide-item" href="{{route('country.index')}}">الدول</a></li>
 							<li><a class="slide-item" href="{{route('city.index')}}">المدن</a></li>
 							<li><a class="slide-item" href="{{route('cemetery.index')}}">المقابر</a></li>
-							<li><a class="slide-item" href="#">مجمعات القبور</a></li>
-							<li><a class="slide-item" href="#">القبور</a></li>
+							<li><a class="slide-item" href="{{ route('blocks.index') }}">مجمعات القبور</a></li>
+							<li><a class="slide-item" href="{{route('graves.index')}}">القبور</a></li>
 							<li><a class="slide-item" href="{{route('nationality.index')}}">الجنسيات</a></li>
 							<li><a class="slide-item" href="{{route('religion.index')}}">الديانات</a></li>
 							<li><a class="slide-item" href="{{route('gnealogy.index')}}">الأنساب</a></li>

@@ -11,7 +11,7 @@ class CreateGravesTable extends Migration {
 		Schema::create('graves', function(Blueprint $table) {
 			$table->id();
 			$table->string('name', 255);
-			$table->bigInteger('row_id');
+			$table->bigInteger('block_id');
 			$table->softDeletes();
 			$table->timestamps();
 		});
