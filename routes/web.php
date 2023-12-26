@@ -85,6 +85,9 @@ Route::middleware([
             Route::post('/update/{id}', 'update')->name('graves.update');
             Route::post('/destroy/{id}', 'destroy')->name('graves.destroy');
         });
+
+        ############################# graving livewire route #############################
+        Route::view('graving', 'livewire.graving.index');
     }
 );
 

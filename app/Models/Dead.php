@@ -4,13 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Translatable\HasTranslations;
 
 class Dead extends Model 
 {
+    use HasTranslations;
 
     protected $table = 'deceased';
     public $timestamps = true;
     protected $guarded = [];
+
+    public $translatable = [
+        'name',
+        'father',
+        'grand_father',
+        'great_grand_father'
+    ];
 
     use SoftDeletes;
 
