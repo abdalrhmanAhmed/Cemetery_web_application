@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\blocks\BlockController;
+use App\Http\Controllers\burials\BurialController;
 use App\Http\Controllers\localizationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -91,6 +92,12 @@ Route::middleware([
 
         ############################# graving livewire route #############################
         Route::view('graving', 'livewire.graving.index');
+        Route::get('burials', [BurialController::class, 'index'])->name('burials.index');
+        Route::post('burials/destroy/{id}', [BurialController::class, 'destroy'])->name('burials.destroy');
+        Route::get('burials/getCityes/{id}',[BurialController::class, 'getCityes']);
+        Route::get('burials/getCemetery/{id}',[BurialController::class, 'getCemetery']);
+        Route::get('burials/getBlocks/{id}',[BurialController::class, 'getBlocks']);
+        Route::get('burials/filter', [BurialController::class, 'filter'])->name('burials.filter');
     }
 );
 

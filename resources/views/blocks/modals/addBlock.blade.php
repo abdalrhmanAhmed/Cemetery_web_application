@@ -9,11 +9,11 @@
                 <div class="modal-body">
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="">إسم المقبرة بالعربية</label>
+                            <label for="">إسم المجمع بالعربية</label>
                             <input type="text" class="form-control" name="name_ar" id="name_ar" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="">إسم المقبرة بالإنجليزية</label>
+                            <label for="">إسم المجمع بالإنجليزية</label>
                             <input type="text" class="form-control" name="name_en" id="name_en" required>
                         </div>
                     </div>

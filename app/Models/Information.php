@@ -18,22 +18,22 @@ class Information extends Model
 
     public function deceased()
     {
-        return $this->belongsTo('Dead', 'deceased_id');
+        return $this->belongsTo(Dead::class, 'deceased_id');
     }
 
     public function guardians()
     {
-        return $this->belongsTo('Guardian', 'guardian_id');
+        return $this->belongsTo(Guardian::class, 'guardian_id');
     }
 
     public function hospitals()
     {
-        return $this->belongsTo('Hospital', 'hospital_id');
+        return $this->belongsTo(Hospital::class, 'hospital_id');
     }
 
     public function graves()
     {
-        return $this->belongsTo('Grave', 'grave_id');
+        return $this->belongsTo(Grave::class, 'grave_id');
     }
 
 }

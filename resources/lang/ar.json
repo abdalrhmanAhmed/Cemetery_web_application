@@ -6,5 +6,23 @@
     "New Burial" : "دفن جديد",
     "Deceased Data" : "بيانات المتوفي",
     "Guardian Info" : "بيانات الدافن",
-    "Burial Location" : "بيانات مكان المدفن"
+    "Burial Location" : "بيانات مكان المدفن",
+    "Burials List" : "قائمة المدافن",
+    "Cemetery" : "المقبرة",
+    "Block" : "المجمع",
+    "Grave" : "القبر",
+    "Buried" : "المدفون",
+    "Actions" : "العمليات",
+    "Delete Burial" : "حذف القبر",
+    "Delete" : "حذف",
+    "Close" : "إلغاء",
+    "Are You Sure About Deleting" : "هل أنت متأكد من عملية الحذف",
+    "Country" : "الدولة",
+    "Choose Country" : "حدد الدولة",
+    "Choose Cemetery" : "حدد المقبرة",
+    "Choose Block" : "حدد المجمع",
+    "Choose City" : "حدد المدينة",
+    "City" : "المدينة",
+    "Search" : "بحث"
+    
 }
