@@ -16,6 +16,7 @@
                         <div class="col-md">
                             <label for="">الدولة</label>
                             <select name="country_id" class="form-control" required>
+                               <option value="0">_._._</option>
                                 @foreach ($countries as $country)
                                     <option value="{{$country->id}}">{{$country->name}}</option>
                                 @endforeach

@@ -121,7 +121,7 @@ class Graving extends Component
             $information->grave_id = $this->grave_id;
             $information->medical_diagnosis = $this->dead_reasone;
             $information->date_of_death = $this->dead_date;
-            $information->burial_date = now();
+            $information->burial_date = $this->graving_date;
             $information->save();
 
             DB::commit();
