@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\blocks\BlockController;
+use App\Http\Controllers\localizationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 // controllers
@@ -38,10 +39,12 @@ Auth::routes(['register' => false]);
 
 // Route::get('/{page}', [App\Http\Controllers\AdminController::class , 'index']);
 
-
+//localization Routes
+Route::get('locale/{lange}', [localizationController::class, 'setLang']);
 
 Route::middleware([
-    'auth'
+    'auth',
+    'localizationMiddleware'
     ])->group(function()
     {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

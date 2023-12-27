@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::middleware([
-    'auth'
+    'auth',
+    'localizationMiddleware'
 ])->group(function(){
     Route::name('admin.')->prefix('admin')->group(function(){
         Route::resource('roles',RoleController::class);

@@ -12,8 +12,8 @@ class CreateGuardiansTable extends Migration {
 			$table->id();
 			$table->string('name', 255);
 			$table->string('phone_number', 20);
-			$table->string('email', 255);
-			$table->string('address', 255);
+			$table->string('email', 255)->nullable();
+			$table->string('address', 255)->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 		});
