@@ -58,7 +58,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn ripple btn-warning" type="submit"><i class="fa fa-edit"></i> تعدسل</button>
+                <button class="btn ripple btn-warning" type="submit"
+                ><i class="fa fa-edit"></i> تعدسل</button>
                 <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
             </div>
         </form>
