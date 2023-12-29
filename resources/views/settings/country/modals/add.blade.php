@@ -7,11 +7,15 @@
             </div>
             <div class="modal-body">
                 <form action="{{route('country.store')}}" method="post">
-                @csrf
-                    <div class="row">
-                        <div class="col-md">
-                            <label for="">إسم الدولة</label>
-                            <input type="text" name="name" class="form-control" placeholder="إسم الدولة" required>
+                    @csrf
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="">إسم الدولة بالعربية</label>
+                            <input type="text" name="name_ar" class="form-control" placeholder="إسم الدولة بالعربية" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">إسم الدولة بالإنجليزية</label>
+                            <input type="text" name="name_en" class="form-control" placeholder="إسم الدولة بالإنجليزية" required>
                         </div>
                     </div>
                     <div class="modal-footer">

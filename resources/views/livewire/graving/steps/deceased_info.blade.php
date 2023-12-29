@@ -91,7 +91,10 @@
 </div>
 
 <div class="row ">
-    <div class="col-md-12 d-flex justify-content-end">
+    <div class="col-md-12 d-flex justify-content-between">
+        <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="close">
+            {{__('Close')}}
+        </button>
         <button class="btn btn-success nextBtn btn-lg pull-right" type="button"
                 wire:click="moveStep(2)">التالي</button>
     </div>

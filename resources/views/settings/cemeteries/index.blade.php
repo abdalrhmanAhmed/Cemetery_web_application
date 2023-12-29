@@ -112,9 +112,8 @@
 				method: "GET",
 				success:function(data){
 					$.each(data,function(key, value){
-
 						$('select[name=city_id]').append(`
-							<option value="${value}">${key}</option>
+							<option value="${key}">${value}</option>
 						`);
 					})
 				} 

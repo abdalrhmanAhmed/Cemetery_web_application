@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\City;
 use App\Models\Cemetery;
+use App\Models\Grave;
 
 class CemeteryController extends Controller
 {
@@ -50,6 +51,7 @@ class CemeteryController extends Controller
     {
         try 
         {
+
             $cemetery = Cemetery::findOrFail($id);
             $cemetery->name = $request->name;
             // $cemetery->citiy_id = $request->city_id;
@@ -83,7 +85,7 @@ class CemeteryController extends Controller
     // ajax
     public function getCity($id)
     {
-        $cities = City::where('country_id', $id)->pluck('id', 'name');
+        $cities = City::where('country_id', $id)->pluck('name', 'id');
         return $cities;
     }
 }

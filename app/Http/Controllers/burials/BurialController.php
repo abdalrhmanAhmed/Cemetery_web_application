@@ -70,4 +70,10 @@ class BurialController extends Controller
         }
         return view('livewire.graving.table.table', compact('burials', 'countries'));
     }
+
+    public function edit($id)
+    {
+        $burial = Information::findOrFail($id);
+        return view('livewire.graving.editIndex', compact('burial'));
+    }
 }

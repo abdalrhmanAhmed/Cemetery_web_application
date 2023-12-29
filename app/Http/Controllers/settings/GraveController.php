@@ -7,6 +7,7 @@ use App\Http\Requests\GraveRequest;
 use App\Models\Block;
 use App\Models\Grave;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GraveController extends Controller
 {
@@ -43,10 +44,15 @@ class GraveController extends Controller
     }
 
 
-    public function update(GraveRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try
         {
+            $this->validate($request, [
+                'name_ar' => ['required', Rule::unique('graves')->ignore($id),],
+                'name_en' => ['required', Rule::unique('graves')->ignore($id),],
+                'block_id' => 'required',
+            ]);
             $grave = Grave::findOrFail($id);
             $grave->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $grave->block_id = $request->block_id;

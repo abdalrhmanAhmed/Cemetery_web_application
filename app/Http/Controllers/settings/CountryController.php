@@ -30,8 +30,12 @@ class CountryController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
             $countries = new Country();
-            $countries->name = $request->name;
+            $countries->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $countries->save();
 
             return redirect()->route('country.index');
@@ -75,8 +79,13 @@ class CountryController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
+
             $countries = Country::findOrFail($id);
-            $countries->name = $request->name;
+            $countries->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $countries->save();
 
             return redirect()->route('country.index');
@@ -97,9 +106,7 @@ class CountryController extends Controller
     {
         try 
         {
-            $countries = Country::findOrFail($id);
-            $countries->delete();
-
+            Country::destroy($id);
             return redirect()->route('country.index');
         } 
         catch (\Exception $e) 

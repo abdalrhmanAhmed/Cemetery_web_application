@@ -62,7 +62,7 @@
 													<td>{{$block->name}}</td>
 													<td>{{$block->cemeteries->name}}</td>
 													<td>
-														<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editBlock{{$block->id}}"><i class="fa fa-edit"></i></button>
+														<a href="{{route('blocks.edit', $block->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
 														<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteBlock{{$block->id}}"><i class="fa fa-trash"></i></button>
 													</td>
 												</tr>

@@ -32,8 +32,13 @@ class CityController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+                'country_id' => 'required',
+            ]);
             $cities = new City();
-            $cities->name = $request->name;
+            $cities->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $cities->country_id	 = $request->country_id;
             $cities->save();
 
@@ -78,8 +83,14 @@ class CityController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+                'country_id' => 'required',
+            ]);
+            
             $cities = City::findOrFail($id);
-            $cities->name = $request->name;
+            $cities->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $cities->country_id	 = $request->country_id;
             $cities->save();
 
@@ -101,9 +112,7 @@ class CityController extends Controller
     {
         try 
         {
-            $cities = City::findOrFail($id);
-            $cities->delete();
-
+            City::destroy($id);
             return redirect()->route('city.index');
         } 
         catch (\Exception $e) 

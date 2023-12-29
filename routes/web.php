@@ -20,6 +20,7 @@ use App\Http\Controllers\posts\HistoricalGraveController;
 use App\Http\Controllers\posts\ProcedureController;
 use App\Http\Controllers\posts\ContactController;
 use App\Http\Controllers\settings\GraveController;
+use App\Http\Livewire\Graving\EditGrave;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,7 @@ Route::middleware([
         Route::controller(BlockController::class)->prefix('blocks')->group(function(){
             Route::get('/', 'index')->name('blocks.index');
             Route::post('/store', 'store')->name('blocks.store');
+            Route::get('/edit/{id}', 'edit')->name('blocks.edit');
             Route::post('/update/{id}', 'update')->name('blocks.update');
             Route::post('/destroy/{id}', 'destroy')->name('blocks.destroy');
         });
@@ -92,6 +94,7 @@ Route::middleware([
 
         ############################# graving livewire route #############################
         Route::view('graving', 'livewire.graving.index');
+        Route::get('burials/edit/{id}', [EditGrave::class])->name('burials.edit');
         Route::get('burials', [BurialController::class, 'index'])->name('burials.index');
         Route::post('burials/destroy/{id}', [BurialController::class, 'destroy'])->name('burials.destroy');
         Route::get('burials/getCityes/{id}',[BurialController::class, 'getCityes']);

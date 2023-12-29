@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="">المقبرة</label>
                             <select name="cemetery" class="form-control" id="">
                                 <option value="" selected disabled>--حدد المقبرة--</option>
@@ -26,6 +26,10 @@
                                     <option value="{{$cemetery->id}}">{{ $cemetery->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">عدد القبور</label>
+                            <input type="number" class="form-control" name="grave_count" id="">
                         </div>
                     </div>
                     <div class="map-container" style="margin: 2px;">

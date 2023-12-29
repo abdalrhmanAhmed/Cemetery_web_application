@@ -27,22 +27,22 @@ class Dead extends Model
 
     public function religions()
     {
-        return $this->belongsTo('Religion', 'relagen_id');
+        return $this->belongsTo(Religion::class, 'relagen_id');
     }
 
     public function nationalities()
     {
-        return $this->belongsTo('Nationality', 'national_id');
+        return $this->belongsTo(Nationality::class, 'national_id');
     }
 
     public function ganders()
     {
-        return $this->belongsTo('Gander', 'gander_id');
+        return $this->belongsTo(Gander::class, 'gander_id');
     }
 
     public function genealogy()
     {
-        return $this->belongsTo('Genealogy', 'genealogy_id');
+        return $this->belongsTo(Genealogy::class, 'genealogy_id');
     }
 
 }

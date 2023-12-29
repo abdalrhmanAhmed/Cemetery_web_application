@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Graving;
 
 use App\Models\Block;
 use App\Models\Cemetery;
-use App\Models\Country;
 use App\Models\Dead;
 use App\Models\Gander;
 use App\Models\Genealogy;
@@ -17,14 +16,11 @@ use App\Models\Religion;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class Graving extends Component
+class EditGrave extends Component
 {
     public $currentStep = 1;
-
-    //config tabel and edit mode
-    public $showTable = true;
-    public $editMode = false, $information_id , $deceased_id, $guardian_id, $old_grave_id;
-
+    public $information;
+    
     //step 1 variables
     public $ft_name_ar, $s_name_ar, $t_name_ar, $f_name_ar, $ft_name_en, $s_name_en, $t_name_en, $f_name_en,
             $identity, $age, $genealogy_id, $religin, $nationality, $gender;
@@ -33,77 +29,21 @@ class Graving extends Component
     //step 3 variables
     public $cemetery_id, $blocks = [], $graves = [], $block_id, $grave_id;
 
+    public function mount($id)
+    {
+      $this->information = Information::findOrFail($id);
+    }
+
     public function render()
     {
-        return view('livewire.graving.graving', [
+        return view('livewire.graving.edit-grave', [
             'genealoges' => Genealogy::all(),
             'relagens' => Religion::all(),
             'nationalities' => Nationality::all(),
             'gendors' => Gander::all(),
             'hospitals' => Hospital::all(),
             'cemeteries' => Cemetery::all(),
-            'burials' => Information::all(),
-            'countries' => Country::all()
         ]);
-    }
-
-    public function addMode()
-    {
-        $this->showTable = false;
-    }
-
-    public function close()
-    {
-        return redirect()->to('graving');
-    }
-
-    public function editMode($id)
-    {
-        $this->showTable = false;
-        $this->editMode = true;
-        $information = Information::findOrFail($id);
-        $deceased = Dead::findOrFail($information->deceased_id);
-        $guardian = Guardian::findOrFail($information->guardian_id);
-        $hospital = Hospital::findOrFail($information->hospital_id);
-        $grave = Grave::findOrFail($information->grave_id);
-
-        $this->information_id = $information->id;
-        $this->guardian_id = $guardian->id;
-        $this->deceased_id = $deceased->id;
-        $this->old_grave_id = $grave->id;
-
-        //step one data
-        $this->ft_name_ar = $deceased->getTranslation('name', 'ar');
-        $this->s_name_ar = $deceased->getTranslation('father', 'ar');
-        $this->t_name_ar = $deceased->getTranslation('grand_father', 'ar');
-        $this->f_name_ar = $deceased->getTranslation('great_grand_father', 'ar');
-        $this->ft_name_en = $deceased->getTranslation('name', 'en');
-        $this->s_name_en = $deceased->getTranslation('father', 'en');
-        $this->t_name_en = $deceased->getTranslation('grand_father', 'en');
-        $this->f_name_en = $deceased->getTranslation('great_grand_father', 'en');
-        $this->identity = $deceased->identity;
-        $this->age = $deceased->age;
-        $this->genealogy_id = $deceased->genealogy_id;
-        $this->religin = $deceased->relagen_id;
-        $this->nationality = $deceased->national_id;
-        $this->gender = $deceased->gander_id;
-
-        //step two data
-        $this->guardian_name = $guardian->name;
-        $this->phone = $guardian->phone_number;
-        $this->email = $guardian->email;
-        $this->address = $guardian->address;
-        $this->dead_date = $information->date_of_death;
-        $this->graving_date = $information->burial_date;
-        $this->hospital = $hospital->id;
-        $this->dead_reasone = $information->medical_diagnosis;
-
-        //step three data
-        $this->cemetery_id = $grave->blocks->cemetery_id;
-        $this->block_id = $grave->block_id;
-        $this->grave_id = $grave->id;
-        $this->blocks = Block::where('cemetery_id', $grave->blocks->cemetery_id)->get();
-        $this->graves = Grave::where('block_id', $grave->block_id)->get();
     }
 
     public function moveStep($step)
@@ -151,7 +91,7 @@ class Graving extends Component
         $this->graves = Grave::where('block_id', $this->block_id)->where('status', 0)->get();
     }
 
-    public function store()
+    public function update()
     {
         DB::beginTransaction();
         try
@@ -160,12 +100,7 @@ class Graving extends Component
                 'grave_id' => 'required'
             ]);
 
-            if($this->editMode)
-            {
-                $deceased = Dead::findOrFail($this->deceased_id);
-            }else{
-                $deceased = new Dead();
-            }
+            $deceased = new Dead();
             $deceased->name = ['ar' => $this->ft_name_ar, 'en' => $this->ft_name_en];
             $deceased->father = ['ar' => $this->s_name_ar, 'en' => $this->s_name_en];
             $deceased->grand_father = ['ar' => $this->t_name_ar, 'en' => $this->t_name_en];
@@ -178,24 +113,14 @@ class Graving extends Component
             $deceased->gander_id = $this->gender;
             $deceased->save();
 
-            if($this->editMode)
-            {
-                $guardian = Guardian::findOrFail($this->guardian_id);
-            }else{
-                $guardian = new Guardian();
-            }
+            $guardian = new Guardian();
             $guardian->name = $this->guardian_name;
             $guardian->phone_number = $this->phone;
             $guardian->email = $this->email;
             $guardian->address = $this->address;
             $guardian->save();
 
-            if($this->editMode)
-            {
-                $information = Information::findOrFail($this->information_id);
-            }else{
-                $information = new Information();
-            }
+            $information = new Information();
             $information->deceased_id = $deceased->id;
             $information->guardian_id = $guardian->id;
             $information->hospital_id = $this->hospital;
@@ -205,24 +130,14 @@ class Graving extends Component
             $information->burial_date = $this->graving_date;
             $information->save();
 
-            if($this->grave_id == $this->old_grave_id)
-            {
-                $grave = Grave::where('id', $this->old_grave_id)->first();
-                $grave->status = 0;
-                $grave->save();
-
-                $grave = Grave::where('id', $this->grave_id)->first();
-                $grave->status = 1;
-                $grave->save();
-            }else{
-                $grave = Grave::where('id', $this->grave_id)->first();
-                $grave->status = 1;
-                $grave->save();
-            }
+            $grave = Grave::where('id', $this->grave_id)->first();
+            $grave->status = 1;
+            $grave->save();
 
             DB::commit();
             $this->clearForm();
-            return redirect()->to('graving');
+            session()->flash('success','تم حفظ البيانات بنجاح');
+            $this->currentStep = 1;
         }
         catch(\Illuminate\Validation\ValidationException  $e)
         {
@@ -230,20 +145,6 @@ class Graving extends Component
             $validate = $e->validator;
             throw $e;
         }
-    }
-
-    public function delete($id)
-    {
-        $information = Information::findOrFail($id);
-        $deceased = Dead::findOrFail($information->deceased_id);
-        $guardian = Guardian::findOrFail($information->guardian_id);
-        $information->delete();
-        $deceased->delete();
-        $guardian->delete();
-        $grave = Grave::findOrFail($information->grave_id);
-        $grave->status = 0;
-        $grave->save();
-        return redirect()->to('graving');
     }
 
     public function clearForm()

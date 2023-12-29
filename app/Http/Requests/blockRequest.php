@@ -29,6 +29,7 @@ class blockRequest extends FormRequest
             'cemetery' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
+            'grave_count' => 'required',
         ];
     }
 }

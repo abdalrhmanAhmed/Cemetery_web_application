@@ -9,16 +9,21 @@
                 <form action="{{route('city.update', $city->id)}}" method="POST">
                 @csrf
                 @method('PUT')
-                    <div class="row">
-                        <div class="col-md">
-                            <label for="">إسم الدولة</label>
-                            <input type="text" name="name" value="{{$city->name}}" class="form-control" placeholder="إسم الدولة" required>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="">إسم مدينة بالعربية</label>
+                            <input type="text" name="name_ar" value="{{$city->getTranslation('name', 'ar')}}" class="form-control" placeholder="إسم مدينة بالعربية" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">إسم مدينة بالإنجليزية</label>
+                            <input type="text" name="name_en" value="{{$city->getTranslation('name', 'en')}}" class="form-control" placeholder="إسم مدينة بالإنجليزية" required>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md">
                             <label for="">الدولة</label>
                             <select name="country_id" class="form-control">
+                                <option value="" selected disabled>-- حدد الدولة --</option>
                                 @foreach ($countries as $country)
                                     <option value="{{$country->id}}" {{$country->id == $city->country_id ? 'selected' : '' }}>{{$country->name}}</option>
                                 @endforeach

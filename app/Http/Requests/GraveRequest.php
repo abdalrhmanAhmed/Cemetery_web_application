@@ -24,8 +24,8 @@ class GraveRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required',
-            'name_en' => 'required',
+            'name_ar' => 'required|unique:graves',
+            'name_en' => 'required|unique:graves',
             'block_id' => 'required',
         ];
     }

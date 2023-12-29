@@ -38,9 +38,9 @@
 									<table class="table text-md-nowrap" id="example1">
 										<thead>
 											<tr>
-												<th class="wd-15p border-bottom-0">#</th>
-												<th class="wd-15p border-bottom-0">إسم الدولة</th>
-												<th class="wd-20p border-bottom-0">العمليات</th>
+												<th class="wd-5p border-bottom-0">#</th>
+												<th class="wd-20p border-bottom-0">إسم الدولة</th>
+												<th class="wd-25p border-bottom-0">العمليات</th>
 											</tr>
 										</thead>
 										<tbody>

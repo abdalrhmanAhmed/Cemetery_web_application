@@ -25,4 +25,9 @@ class Block extends Model
         return $this->belongsTo(Cemetery::class, 'cemetery_id');
     }
 
+    public function graves()
+    {
+        return $this->hasMany(Grave::class, 'block_id');
+    }
+
 }

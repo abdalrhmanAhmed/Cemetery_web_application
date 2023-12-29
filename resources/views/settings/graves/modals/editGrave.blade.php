@@ -10,11 +10,11 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="">إسم القبر بالعربية</label>
-                            <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{$grave->getTranslation('name', 'ar')}}" required>
+                            <input type="text" class="form-control" name="name_ar" id="name_ar" value="" required>
                         </div>
                         <div class="col-md-6">
                             <label for="">إسم القبر بالإنجليزية</label>
-                            <input type="text" class="form-control" name="name_en" id="name_en" value="{{$grave->getTranslation('name', 'en')}}"  required>
+                            <input type="text" class="form-control" name="name_en" id="name_en" value=""  required>
                         </div>
                     </div>
                     <div class="row mb-3">

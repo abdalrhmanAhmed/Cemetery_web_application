@@ -8,11 +8,9 @@ use Spatie\Translatable\HasTranslations;
 
 class Grave extends Model 
 {
-    use HasTranslations;
     protected $table = 'graves';
     public $timestamps = true;
     protected $guarded = [];
-    public $translatable = ['name'];
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];

@@ -55,7 +55,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn ripple btn-info" type="submit"><i class="fa fa-plus"></i> إضافة</button>
-                <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+                <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">{{__('Close')}}</button>
             </div>
         </form>
         </div>
