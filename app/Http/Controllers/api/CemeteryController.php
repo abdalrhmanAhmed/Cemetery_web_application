@@ -99,7 +99,7 @@ class CemeteryController extends Controller
     public function get_all_grave($id)
     {
         try {
-            return $graves = Grave::where('id', $id)->select('id', 'name')->get();
+            $graves = Grave::where('id', $id)->select('id', 'name')->get();
             $data = [];
             foreach ($graves as $grave) {
                 $data[] = array(
@@ -116,6 +116,34 @@ class CemeteryController extends Controller
                 'code' => 200,
             );
         } catch (\Exception $e) {
+            $response = array(
+                'error' => true,
+                'message' => trans('error_occurred'),
+                'code' => 103,
+            );
+        }
+        return response()->json($response);
+    }
+
+    public function get_grave_details($id)
+    {
+        try {
+            $grave = Grave::where('id', $id)->select('id', 'name')->first();
+            $data = [];
+            $data[] = array(
+                'id'        => $grave->id,
+                'name'      => $grave->name,
+                // 'latitude'  => $grave->latitude,
+                // 'Longitude' => $grave->Longitude
+            );
+            $response = array(
+                'error' => false,
+                'message' => "تم تحميل البيانات بنجاح",
+                'data' => $data,
+                'code' => 200,
+            );
+        } catch (\Exception $e) {
+            return $e;
             $response = array(
                 'error' => true,
                 'message' => trans('error_occurred'),
