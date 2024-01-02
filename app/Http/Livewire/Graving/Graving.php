@@ -216,7 +216,7 @@ class Graving extends Component
             'hospitals' => $hospitals,
             'cemeteries' => $cemeteries,
             'burials' => $burials,
-            'countries' => $countries
+            'countries' => $countries,
         ]);
     }
 
@@ -410,9 +410,10 @@ class Graving extends Component
                 $grave->save();
             }
 
-            DB::commit();
+            // DB::commit();
             $this->clearForm();
-            return redirect()->to('graving');
+            // return redirect()->to('graving');
+            $this->redirectRoute('setpLocaltion',$grave->id);
         }
         catch(\Illuminate\Validation\ValidationException  $e)
         {

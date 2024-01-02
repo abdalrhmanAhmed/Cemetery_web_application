@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="map-container" style="margin: 2px;">
+                <div class="map-container" style="margin: 2px;">
                     <div class="row map-input-fields">
                         <div class="col-md">
                             <div class="form-group row">
