@@ -36,4 +36,12 @@ class Information extends Model
         return $this->belongsTo(Grave::class, 'grave_id');
     }
 
+    // public function scopeSearch($query, $term)
+    // {
+    //     $term = "%$term%";
+    //     $query->where(function($query) use ($term){
+    //         // $query->where()
+    //     });
+    // }
+
 }

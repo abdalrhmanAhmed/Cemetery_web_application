@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Graving;
 
 use App\Models\Block;
 use App\Models\Cemetery;
+use App\Models\City;
 use App\Models\Country;
 use App\Models\Dead;
 use App\Models\Gander;
@@ -16,14 +17,29 @@ use App\Models\Nationality;
 use App\Models\Religion;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Graving extends Component
 {
+    use WithPagination;
+
     public $currentStep = 1;
+    // public $paginate = 3;
+    public $search = '';
 
     //config tabel and edit mode
     public $showTable = true;
     public $editMode = false, $information_id , $deceased_id, $guardian_id, $old_grave_id;
+    public $filterMode = false;
+
+    //filter data
+    public $filter_country_id = '',
+           $filter_city_id = '',
+           $filter_block_id = '',
+           $filter_cemetery_id = '';
+    public $filter_cityes = [],
+           $filter_blocks = [],
+           $filter_cemeteries = [];
 
     //step 1 variables
     public $ft_name_ar, $s_name_ar, $t_name_ar, $f_name_ar, $ft_name_en, $s_name_en, $t_name_en, $f_name_en,
@@ -35,16 +51,190 @@ class Graving extends Component
 
     public function render()
     {
+        if($this->filterMode)
+        {
+            if($this->filter_country_id == '')
+            {
+                $burials = Information::with(['graves', 'deceased'])->where(fn($query) => 
+                                            $query->whereHas('graves', fn($query2) => 
+                                                $query2->where('name', 'LIKE','%'.$this->search.'%')
+                                            )->orWhereHas('deceased', fn($query3) => 
+                                                $query3->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                       ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                            )->orWhereHas('graves', fn($query4) => 
+                                                $query4->with('blocks')->whereHas('blocks', fn($q) => 
+                                                    $q->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                    ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                )
+                                            )->orWhereHas('graves', fn($query5) =>
+                                                $query5->with('blocks')->whereHas('blocks', fn($qu) => 
+                                                    $qu->with('cemeteries')->whereHas('cemeteries', fn($que) => 
+                                                        $que->where('name', 'LIKE', '%'.$this->search.'%')
+                                                            ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                    )
+                                                )
+                                            )
+                                        )->paginate(3);
+            }
+            else if($this->filter_city_id == '')
+            {
+                $cityes = City::where('country_id', $this->filter_country_id)->get('id');
+                $cemeteries = Cemetery::whereIn('citiy_id', $cityes)->get('id');
+                $blocks = Block::whereIn('cemetery_id', $cemeteries)->get('id');
+                $graves = Grave::whereIn('block_id', $blocks)->get('id');
+                $burials = Information::whereIn('grave_id', $graves)->with(['graves', 'deceased'])->where(fn($query) => 
+                                            $query->whereHas('graves', fn($query2) => 
+                                                $query2->where('name', 'LIKE','%'.$this->search.'%')
+                                            )->orWhereHas('deceased', fn($query3) => 
+                                                $query3->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                       ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                            )->orWhereHas('graves', fn($query4) => 
+                                                $query4->with('blocks')->whereHas('blocks', fn($q) => 
+                                                    $q->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                    ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                )
+                                            )->orWhereHas('graves', fn($query5) =>
+                                                $query5->with('blocks')->whereHas('blocks', fn($qu) => 
+                                                    $qu->with('cemeteries')->whereHas('cemeteries', fn($que) => 
+                                                        $que->where('name', 'LIKE', '%'.$this->search.'%')
+                                                            ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                    )
+                                                )
+                                            )
+                                        )->paginate(3);
+            }
+            else if($this->filter_cemetery_id == '')
+            {
+                $cemeteries = Cemetery::where('citiy_id', $this->filter_city_id)->get('id');
+                $blocks = Block::whereIn('cemetery_id', $cemeteries)->get('id');
+                $graves = Grave::whereIn('block_id', $blocks)->get('id');
+                $burials = Information::whereIn('grave_id', $graves)->with(['graves', 'deceased'])->where(fn($query) => 
+                                            $query->whereHas('graves', fn($query2) => 
+                                                $query2->where('name', 'LIKE','%'.$this->search.'%')
+                                            )->orWhereHas('deceased', fn($query3) => 
+                                                $query3->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                       ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                            )->orWhereHas('graves', fn($query4) => 
+                                                $query4->with('blocks')->whereHas('blocks', fn($q) => 
+                                                    $q->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                    ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                )
+                                            )->orWhereHas('graves', fn($query5) =>
+                                                $query5->with('blocks')->whereHas('blocks', fn($qu) => 
+                                                    $qu->with('cemeteries')->whereHas('cemeteries', fn($que) => 
+                                                        $que->where('name', 'LIKE', '%'.$this->search.'%')
+                                                            ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                    )
+                                                )
+                                            )
+                                        )->paginate(3);
+            }
+            else if($this->filter_block_id == '')
+            {
+                $blocks = Block::where('cemetery_id', $this->filter_cemetery_id)->get('id');
+                $graves = Grave::whereIn('block_id', $blocks)->get('id');
+                $burials = Information::whereIn('grave_id', $graves)->with(['graves', 'deceased'])->where(fn($query) => 
+                                            $query->whereHas('graves', fn($query2) => 
+                                                $query2->where('name', 'LIKE','%'.$this->search.'%')
+                                            )->orWhereHas('deceased', fn($query3) => 
+                                                $query3->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                       ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                            )->orWhereHas('graves', fn($query4) => 
+                                                $query4->with('blocks')->whereHas('blocks', fn($q) => 
+                                                    $q->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                    ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                )
+                                            )->orWhereHas('graves', fn($query5) =>
+                                                $query5->with('blocks')->whereHas('blocks', fn($qu) => 
+                                                    $qu->with('cemeteries')->whereHas('cemeteries', fn($que) => 
+                                                        $que->where('name', 'LIKE', '%'.$this->search.'%')
+                                                            ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                    )
+                                                )
+                                            )    
+                                        )->paginate(3);
+            }
+            else
+            {
+                $graves = Grave::where('block_id', $this->filter_block_id)->get('id');
+                $burials = Information::whereIn('grave_id', $graves)->with(['graves', 'deceased'])->where(fn($query) => 
+                                            $query->whereHas('graves', fn($query2) => 
+                                                $query2->where('name', 'LIKE','%'.$this->search.'%')
+                                            )->orWhereHas('deceased', fn($query3) => 
+                                                $query3->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                       ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                            )->orWhereHas('graves', fn($query4) => 
+                                                $query4->with('blocks')->whereHas('blocks', fn($q) => 
+                                                    $q->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                                                    ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                )
+                                            )->orWhereHas('graves', fn($query5) =>
+                                                $query5->with('blocks')->whereHas('blocks', fn($qu) => 
+                                                    $qu->with('cemeteries')->whereHas('cemeteries', fn($que) => 
+                                                        $que->where('name', 'LIKE', '%'.$this->search.'%')
+                                                            ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                                                    )
+                                                )
+                                            )    
+                                        )->paginate(3);
+            }
+            
+        }else{
+            $burials = Information::with(['graves', 'deceased'])->where(fn($query) => 
+                $query->whereHas('graves', fn($query2) => 
+                    $query2->where('name', 'LIKE','%' . $this->search . '%')
+                )->orWhereHas('deceased', fn($query3) => 
+                    $query3->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                           ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                )->orWhereHas('graves', fn($query4) => 
+                    $query4->with('blocks')->whereHas('blocks', fn($q) => 
+                        $q->where('name->ar', 'LIKE', '%'.$this->search.'%')
+                          ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                    )
+                )->orWhereHas('graves', fn($query5) =>
+                    $query5->with('blocks')->whereHas('blocks', fn($qu) => 
+                        $qu->with('cemeteries')->whereHas('cemeteries', fn($que) => 
+                            $que->where('name', 'LIKE', '%'.$this->search.'%')
+                                ->orWhere('name->en', 'LIKE', '%'.$this->search.'%')
+                        )
+                    )
+                )
+            )->paginate(3);
+        }
+        $genealoges = Genealogy::all();
+        $relagens = Religion::all();
+        $nationalities = Nationality::all();
+        $gendors = Gander::all();
+        $hospitals = Hospital::all();
+        $cemeteries = Cemetery::all();
+        $countries = Country::all();
         return view('livewire.graving.graving', [
-            'genealoges' => Genealogy::all(),
-            'relagens' => Religion::all(),
-            'nationalities' => Nationality::all(),
-            'gendors' => Gander::all(),
-            'hospitals' => Hospital::all(),
-            'cemeteries' => Cemetery::all(),
-            'burials' => Information::all(),
-            'countries' => Country::all()
+            'genealoges' => $genealoges,
+            'relagens' => $relagens,
+            'nationalities' => $nationalities,
+            'gendors' => $gendors,
+            'hospitals' => $hospitals,
+            'cemeteries' => $cemeteries,
+            'burials' => $burials,
+            'countries' => $countries
         ]);
+    }
+
+
+    public function getCity()
+    {
+        $this->filter_cityes = City::where('country_id', $this->filter_country_id)->get();
+        $this->filterMode = true;
+    }
+
+    public function getCemetery()
+    {
+        $this->filter_cemeteries = Cemetery::where('citiy_id', $this->filter_city_id)->get();
+    }
+
+    public function filterGetBlocks()
+    {
+        $this->filter_blocks = Block::where('cemetery_id', $this->filter_cemetery_id)->get();
     }
 
     public function addMode()
@@ -103,7 +293,7 @@ class Graving extends Component
         $this->block_id = $grave->block_id;
         $this->grave_id = $grave->id;
         $this->blocks = Block::where('cemetery_id', $grave->blocks->cemetery_id)->get();
-        $this->graves = Grave::where('block_id', $grave->block_id)->get();
+        $this->graves = Grave::where('block_id', $grave->block_id)->where('status', 0)->orWhere('id', $this->old_grave_id)->get();
     }
 
     public function moveStep($step)

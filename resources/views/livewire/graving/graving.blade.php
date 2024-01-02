@@ -13,48 +13,62 @@
                 <button class="btn btn-primary btn-block" wire:click="addMode">{{ __('Add New Burial') }}</button>
             </div>
         </div>
-        <form action="{{route('burials.filter')}}" method="GET">
-            <div class="row mb-3">
-                @csrf
-                <div class="col-md-3">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="">{{ __('Country') }}</label>
+                <select wire:model.lazy="filter_country_id" wire:change="getCity" class="form-control" id="">
+                    <option value="" readonly>-- {{ __('Choose Country') }} --</option>
+                    @foreach ($countries as $country)
+                        <option value="{{$country->id}}">{{ $country->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
 
-                    <label for="">{{ __('Country') }}</label>
-                    <select name="country"  class="form-control" id="">
-                        <option value="" selected disabled>-- {{ __('Choose Country') }}</option>
-                        @foreach ($countries as $country)
-                            <option value="{{$country->id}}">{{ $country->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-3">
+                <label for="">{{ __('City') }}</label>
+                <select wire:model="filter_city_id" wire:change="getCemetery" class="form-control"  id="">
+                    <option value="" selected>-- {{ __('Choose City') }} --</option>
+                    @foreach ($filter_cityes as $city)
+                        <option value="{{$city->id}}">{{ $city->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="">{{ __('Cemetery') }}</label>
+                <select wire:model="filter_cemetery_id" wire:change="filterGetBlocks"  class="form-control" id="">
+                    <option value="" selected>-- {{ __('Choose Cemetery') }} --</option>
+                    @foreach ($filter_cemeteries as $cemetery)
+                        <option value="{{$cemetery->id}}">{{ $cemetery->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
 
-                    <label for="">{{ __('City') }}</label>
-                    <select name="city" class="form-control"  id="">
-                        
+                <label for="">{{ __('Block') }}</label>
+                <select wire:model="filter_block_id" class="form-control"  id="">
+                    <option value="" selected>-- {{ __('Choose Block') }} --</option>
+                    @foreach ($filter_blocks as $block)
+                        <option value="{{$block->id}}">{{ $block->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        
+        <div class="">
+            <div class="row mb-3 d-flex justify-content-end">
+                {{-- <div class="col-md-1">
+                    <select wire:model="pagenate" class="form-control" id="">
+                        <option value="3">3</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
                     </select>
-                </div>
+                </div> --}}
                 <div class="col-md-3">
-                    <label for="">{{ __('Cemetery') }}</label>
-                    <select name="cemetery"  class="form-control" id="">
-                        
-                    </select>
-                </div>
-                <div class="col-md-3">
-
-                    <label for="">{{ __('Block') }}</label>
-                    <select name="block" class="form-control"  id="">
-                        
-                    </select>
+                    <input type="search" class="form-control" wire:model="search" placeholder="Search...">
                 </div>
             </div>
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> {{ __('Search') }}</button>
-                </div>
-            </div>
-        </form>
-        <div class="table-responsive">
-            <table class="table text-md-nowrap" id="example1">
+            <table class="table text-md-nowrap table-bordered">
                 <thead>
                     <tr>
                         <th class="wd-5p border-bottom-0">#</th>
@@ -66,7 +80,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($burials as $burial)                                      
+                    @forelse ($burials as $burial)                                      
                         <tr>
                             <td>{{$loop->index+1}}</td>
                             <td>{{ $burial->graves->blocks->cemeteries->name }}</td>
@@ -81,9 +95,16 @@
                             </td>
                         </tr>
                         @include('livewire.graving.modals.deleteBurial')
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <b>{{ __('Sorry!! No Data Found') }} ...</b>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
+            {{ $burials->links('pagination::bootstrap-4') }}
         </div>
     @else
         <div class="stepwizard">
