@@ -21,3 +21,19 @@ Route::prefix('posts')->group(function(){
     Route::get('historical_grave', [App\Http\Controllers\api\QuoteController::class, 'historical_graves']);
     Route::get('contact', [App\Http\Controllers\api\QuoteController::class, 'contacts']);
 });
+
+
+Route::prefix('cemeteries')->group(function()
+{
+    Route::get('get-country', [App\Http\Controllers\api\CemeteryController::class, 'get_country']);
+    Route::get('get-cemetery/{id}', [App\Http\Controllers\api\CemeteryController::class, 'get_cemetery']);
+    Route::get('get-cemetery-details/{id}', [App\Http\Controllers\api\CemeteryController::class, 'get_cemetery_details']);
+});
+
+
+
+Route::prefix('graves')->group(function()
+{
+    Route::get('get-all-grave/{id}', [App\Http\Controllers\api\CemeteryController::class, 'get_all_grave']);
+    Route::get('get-grave-details/{id}', [App\Http\Controllers\api\CemeteryController::class, 'get_grave_details']);
+});
