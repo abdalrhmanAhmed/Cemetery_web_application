@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // models
+use App\Models\Information;
 use App\Models\Cemetery;
 use App\Models\Country;
 use App\Models\Grave;
@@ -15,10 +16,11 @@ class CemeteryController extends Controller
     public function get_country()
     {
         try {
-            $countries = Country::get();
+            $countries = Country::select('id', 'name')->get();
             $data = [];
             foreach ($countries as $country) {
                 $data[] = array(
+                    'id' => $country->id,
                     'name' => $country->name,
                 );
             }
@@ -43,12 +45,14 @@ class CemeteryController extends Controller
         try {
             $cities = City::where('country_id', $id)->get('id');
             $data = $this->ToIntArray($cities);
-            $cemeteries = Cemetery::whereIn('citiy_id', $data)->select('id', 'name')->get();
+            $cemeteries = Cemetery::whereIn('citiy_id', $data)->select('id', 'name', 'citiy_id')->get();
             $data = [];
             foreach ($cemeteries as $cemetery) {
                 $data[] = array(
                     'id'        => $cemetery->id,
                     'name'      => $cemetery->name,
+                    'city'      => $cemetery->cities->name ?? "",
+                    'country'   => $cemetery->cities->countries->name ?? "",
                 );
             }
             $response = array(
@@ -103,10 +107,8 @@ class CemeteryController extends Controller
             $data = [];
             foreach ($graves as $grave) {
                 $data[] = array(
-                    'id'        => $grave->id,
-                    'name'      => $grave->name,
-                    // 'latitude'  => $grave->latitude,
-                    // 'Longitude' => $grave->Longitude
+                    'id'       => $grave->id,
+                    'name'     => $grave->name,
                 );
             }
             $response = array(
@@ -129,12 +131,19 @@ class CemeteryController extends Controller
     {
         try {
             $grave = Grave::where('id', $id)->select('id', 'name')->first();
+            $infos = Information::where('grave_id', $id)->first();
             $data = [];
             $data[] = array(
-                'id'        => $grave->id,
-                'name'      => $grave->name,
-                // 'latitude'  => $grave->latitude,
-                // 'Longitude' => $grave->Longitude
+                'id'                    => $grave->id,
+                'name'                  => $grave->name,
+                'dead_name'             => $infos->deceased->name . ' ' . $infos->deceased->father . ' ' . $infos->deceased->grand_father . ' ' . $infos->deceased->great_grand_father,
+                'date_of_death'         => $infos->date_of_death,
+                'burial_date'           => $infos->burial_date,
+                'cemetery_name'         => $infos->graves->blocks->cemeteries->name ?? "",
+                'city'                  => $infos->graves->blocks->cemeteries->cities->name ?? "",
+                'country'               => $infos->graves->blocks->cemeteries->cities->countries->name ?? "",
+                'latitude'              => 25.1338688,
+                'Longitude'             => 56.33327390000002
             );
             $response = array(
                 'error' => false,
