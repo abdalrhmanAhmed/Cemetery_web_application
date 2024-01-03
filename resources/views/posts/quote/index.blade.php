@@ -13,7 +13,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">الأحاديث</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الإعدادات </span>
+							<h4 class="content-title mb-0 my-auto">{{__('Hadiths')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{__('Articles')}} </span>
 						</div>
 					</div>
 				</div>
@@ -27,9 +27,8 @@
 					<div class="col-xl-12">
 						<div class="card">
 							<div class="card-header pb-0">
-								<div class="d-flex justify-content-between">
-									<h4 class="card-title mg-b-0">الأحاديث</h4>
-									<button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> إضافة حديث جديدة </button>
+								<div class="d-flex justify-content-end">
+									<button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> {{__('Add New Hadith')}} </button>
 									@include('posts.quote.modals.add')
 								</div>
 							</div>
@@ -39,10 +38,10 @@
 										<thead>
 											<tr>
 												<th class="wd-15p border-bottom-0">#</th>
-												<th class="wd-15p border-bottom-0">عنوان عريض</th>
-												<th class="wd-15p border-bottom-0">عوان فرعي</th>
-												<th class="wd-15p border-bottom-0">المحتوى</th>
-												<th class="wd-20p border-bottom-0">العمليات</th>
+												<th class="wd-15p border-bottom-0">{{__('Bold Title')}}</th>
+												<th class="wd-15p border-bottom-0">{{__('Subhead')}}</th>
+												<th class="wd-15p border-bottom-0">{{__('Content')}}</th>
+												<th class="wd-20p border-bottom-0">{{__('Actions')}}</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -51,10 +50,10 @@
 												<td>{{$loop->index + 1}}</td>
 												<td>{{$quote->title}}</td>
 												<td>{{$quote->sub_title}}</td>
-												<td>{{$quote->text}}</td>
+												<td>{!! $quote->text !!}</td>
 												<td>
-													<button data-toggle="modal" data-target="#delete{{$quote->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</button>
-													<button data-toggle="modal" data-target="#edit{{$quote->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</button>
+													<button data-toggle="modal" data-target="#edit{{$quote->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> {{__('Edit')}}</button>
+													<button data-toggle="modal" data-target="#delete{{$quote->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> {{__('Delete')}}</button>
 												</td>
 											</tr>
 											@include('posts.quote.modals.edit')
@@ -95,4 +94,9 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
+<script src="https://cdn.ckbox.io/ckbox/2.3.1/ckbox.js"></script>
+<script src="{{URL::asset('assets/plugins/ckeditor/ckeditor.js')}}"></script>
+<script>
+	CKEDITOR.config.language = "{{app()->getLocale()}}"
+</script>
 @endsection

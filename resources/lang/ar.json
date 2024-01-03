@@ -116,5 +116,16 @@
     "Latitude" : "خط العرض",
     "Longitude" : "خط الطول",
     "Edit Block" : "تعديل المجمع",
-    "Delete Block" : "حذف المجمع"
+    "Delete Block" : "حذف المجمع",
+    "Add New Cemetery" : "إضافة مقبرة جديدة",
+    "Cemetery Name" : "إسم المقبرة",
+    "Add Cemetery" : "إضافة مقبرة",
+    "Edit Cemetery" : "تعديل المقبرة",
+    "There Is Block Belongs To This Cemetery !" : "هنالك مجمعات تابعة لهذه المقبرة",
+    "Delete Cemetery" : "حذف المقبرة",
+    "Add New Hadith" : "إضافة حديث جديدة",
+    "Bold Title" : "عنوان عريض",
+    "Subhead" : "عوان فرعي",
+    "Content" : "المحتوى",
+    "Add Hadith" : "إضافة حديث"
 }
