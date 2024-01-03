@@ -25,6 +25,9 @@
     "City" : "المدينة",
     "Search" : "بحث",
     "Add New Burial" : "دفن جديد",
-    "Sorry!! No Data Found" : "عفوا!! لا توجد بيانات"
+    "Sorry!! No Data Found" : "عفوا!! لا توجد بيانات",
+    "Burial Name" : "إسم المدفون",
+    "Edit Burial" : "تعديل الدفن",
+    "Add Burial" : "إضافة مدفن"
     
 }

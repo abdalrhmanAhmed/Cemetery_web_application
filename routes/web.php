@@ -95,8 +95,8 @@ Route::middleware([
 
         ############################# graving livewire route #############################
         Route::view('graving', 'livewire.graving.index');
-        Route::get('setpLocaltion/{id}', [GraveLocationController::class, 'chooseLocation'])->name('setpLocaltion');
-        Route::get('setpLocaltion/storeLocation/{id}', [GraveLocationController::class, 'storeLocation'])->name('setpLocaltion.storeLocation');
+        Route::get('setpLocaltion/{grave_id}/{information_id}/{edit}', [GraveLocationController::class, 'chooseLocation'])->name('setpLocaltion');
+        Route::post('setpLocaltion/storeLocation/{id}', [GraveLocationController::class, 'storeLocation'])->name('setpLocaltion.storeLocation');
     }
 );
 

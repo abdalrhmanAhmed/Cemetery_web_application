@@ -12,7 +12,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">Pages</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ Empty</span>
+							<h4 class="content-title mb-0 my-auto">{{ __('Burials') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ $edit == 1 ? __('Edit Burial') : __('Add Burial') }}</span>
 						</div>
 					</div>
 				</div>
@@ -26,6 +26,20 @@
 							<div class="card-body">
 								<form action="{{route('setpLocaltion.storeLocation', $grave->id)}}" method="POST">
 									@csrf
+									<div class="row">
+										<div class="col-md-4">
+											<label for="">{{ __('Burial Name') }}</label>
+											<input type="text" class="form-control" readonly value="{{$information->deceased->name}} {{ $information->deceased->father }} {{ $information->deceased->grand_father }} {{  $information->deceased->great_grand_father }}" id="">
+										</div>
+										<div class="col-md-4">
+											<label for="">{{ __('Block') }}</label>
+											<input type="text" class="form-control" readonly value="{{$grave->blocks->name}}" id="">
+										</div>
+										<div class="col-md-4">
+											<label for="">{{ __('Grave') }}</label>
+											<input type="text" class="form-control" readonly value="{{ $grave->name }}" id="">
+										</div>
+									</div>
 									<div class="map-container" style="margin: 2px;">
 										<div class="row map-input-fields">
 											<div class="col-md">
@@ -72,8 +86,8 @@
 	function initMap() {
 		map = new google.maps.Map(document.getElementById("map"), {
 			center: {
-				lat: 25.1338688,
-				lng: 56.3332739,
+				lat: {{$latitude}},
+				lng: {{$longitude}},
 			},
 			zoom: 15
 		});

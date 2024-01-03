@@ -412,8 +412,15 @@ class Graving extends Component
 
             // DB::commit();
             $this->clearForm();
-            // return redirect()->to('graving');
-            $this->redirectRoute('setpLocaltion',$grave->id);
+            if($this->editMode)
+            {
+                $edit = 1;
+            }
+            else
+            {
+                $edit = 0;
+            }
+            $this->redirectRoute('setpLocaltion',[$grave->id, $information->id, $edit]);
         }
         catch(\Illuminate\Validation\ValidationException  $e)
         {
