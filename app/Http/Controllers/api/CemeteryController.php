@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Information;
 use App\Models\Cemetery;
 use App\Models\Country;
+use App\Models\Block;
 use App\Models\Grave;
 use App\Models\City;
 
@@ -103,7 +104,10 @@ class CemeteryController extends Controller
     public function get_all_grave($id)
     {
         try {
-            $graves = Grave::where('id', $id)->select('id', 'name')->get();
+            $cemeteries = Cemetery::where('id', $id)->select('id', 'name')->first();
+            $blocks = Block::where('cemetery_id', $cemeteries->id)->select('id', 'name')->get();
+            $data = $this->ToIntArray($blocks);
+            $graves = Grave::whereIn('block_id', $data)->select('id', 'name')->get();
             $data = [];
             foreach ($graves as $grave) {
                 $data[] = array(
