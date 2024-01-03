@@ -88,8 +88,6 @@ Route::middleware([
         ############################ graves routes #############################
         Route::controller(GraveController::class)->prefix('graves')->group(function(){
             Route::get('/', 'index')->name('graves.index');
-            Route::post('/store', 'store')->name('graves.store');
-            Route::post('/update/{id}', 'update')->name('graves.update');
             Route::post('/destroy/{id}', 'destroy')->name('graves.destroy');
         });
 

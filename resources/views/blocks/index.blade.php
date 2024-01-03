@@ -26,7 +26,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">المقابر</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ مجمعات المقابر</span>
+							<h4 class="content-title mb-0 my-auto">{{ __('Blocks') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{__('Settings')}}</span>
 						</div>
 					</div>
 				</div>
@@ -38,8 +38,8 @@
 					<div class="col-xl-12">
 						<div class="card">
 							<div class="card-header pb-0">
-								<div class="d-flex justify-content-between">
-									<button class="btn btn-primary" data-toggle="modal" data-target="#addBlock"><i class="fa fa-plus"></i> إضافة مجمع جديد</button>
+								<div class="d-flex justify-content-end">
+									<button class="btn btn-primary" data-toggle="modal" data-target="#addBlock"><i class="fa fa-plus"></i> {{__('Add New Block')}}</button>
 								</div>
 								{{-- <p class="tx-12 tx-gray-500 mb-2">Example of Valex Simple Table. <a href="">Learn more</a></p> --}}
 							</div>
@@ -49,9 +49,9 @@
 										<thead>
 											<tr>
 												<th class="wd-5p border-bottom-0">#</th>
-												<th class="wd-15p border-bottom-0">إسم المجمع</th>
-												<th class="wd-20p border-bottom-0">المقبرة</th>
-												<th class="wd-25p border-bottom-0">العمليات</th>
+												<th class="wd-15p border-bottom-0">{{__('Block Name')}}</th>
+												<th class="wd-20p border-bottom-0">{{__('Cemetery')}}</th>
+												<th class="wd-25p border-bottom-0">{{__('Action')}}</th>
 
 											</tr>
 										</thead>
@@ -66,9 +66,7 @@
 														<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteBlock{{$block->id}}"><i class="fa fa-trash"></i></button>
 													</td>
 												</tr>
-												@include('blocks.modals.editBlock')
 												@include('blocks.modals.deleteBlock')
-												
 											@endforeach
 										</tbody>
 									</table>

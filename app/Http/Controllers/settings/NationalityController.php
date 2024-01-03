@@ -30,10 +30,16 @@ class NationalityController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
+
             $Nationalitys = new Nationality();
-            $Nationalitys->name = $request->name;
+            $Nationalitys->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Nationalitys->save();
 
+            toastr()->success(__('Data has been saved successfully!'));
             return redirect()->route('nationality.index');
         } 
         catch (\Exception $e)
@@ -42,43 +48,21 @@ class NationalityController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return 1;
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
+
             $Nationalitys = Nationality::findOrFail($id);
-            $Nationalitys->name = $request->name;
+            $Nationalitys->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Nationalitys->save();
 
+            toastr()->success(__('Data has been Updated successfully!'));
             return redirect()->route('nationality.index');
         } 
         catch (\Exception $e) 
@@ -100,6 +84,7 @@ class NationalityController extends Controller
             $Nationalitys = Nationality::findOrFail($id);
             $Nationalitys->delete();
 
+            toastr()->success(__('Data has been Deleted successfully!'));
             return redirect()->route('nationality.index');
         } 
         catch (\Exception $e) 

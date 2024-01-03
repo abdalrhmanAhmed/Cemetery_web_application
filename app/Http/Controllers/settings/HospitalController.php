@@ -30,10 +30,16 @@ class HospitalController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
+
             $hospitals = new Hospital();
-            $hospitals->name = $request->name;
+            $hospitals->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $hospitals->save();
 
+            toastr()->success(__('Data has been saved successfully!'));
             return redirect()->route('hospital.index');
         } 
         catch (\Exception $e)
@@ -42,43 +48,20 @@ class HospitalController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return 1;
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
+
             $hospitals = Hospital::findOrFail($id);
-            $hospitals->name = $request->name;
+            $hospitals->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $hospitals->save();
 
+            toastr()->success(__('Data has been Updated successfully!'));
             return redirect()->route('hospital.index');
         } 
         catch (\Exception $e) 
@@ -100,6 +83,7 @@ class HospitalController extends Controller
             $hospitals = Hospital::findOrFail($id);
             $hospitals->delete();
 
+            toastr()->success(__('Data has been Deleted successfully!'));
             return redirect()->route('hospital.index');
         } 
         catch (\Exception $e) 

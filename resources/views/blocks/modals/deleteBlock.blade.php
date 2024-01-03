@@ -2,14 +2,14 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">حذف المجمع</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h6 class="modal-title">{{__('Delete Block')}}</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
             <form action="{{route('blocks.destroy', $block->id)}}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="row mb-3">
                         <div class="col-md-12 text-center">
-                            <h4 class="text-danger">هل أنت متأكد من عملية الحذف ؟؟</h4>
+                            <h4 class="text-danger">{{__('Are You Sure About Deleting')}}</h4>
         
                         </div>
                         <div class="col-md-12">
@@ -19,8 +19,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn ripple btn-danger" type="submit">حذف</button>
-                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">إلغاء</button>
+                    <button class="btn ripple btn-danger" type="submit">{{__('Delete')}}</button>
+                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">{{__('Close')}}</button>
                 </div>
             </form>
         </div>

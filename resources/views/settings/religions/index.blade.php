@@ -7,13 +7,14 @@
 <link href="{{URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">الديانة</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الإعدادات </span>
+							<h4 class="content-title mb-0 my-auto">{{ __('Religions') }}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{__('Settings')}} </span>
 						</div>
 					</div>
 				</div>
@@ -22,14 +23,15 @@
 @section('content')
 				<!-- row opened -->
 				<div class="row row-sm">
-
 					<!--div-->
 					<div class="col-xl-12">
 						<div class="card">
 							<div class="card-header pb-0">
-								<div class="d-flex justify-content-between">
-									<h4 class="card-title mg-b-0">الديانة</h4>
-									<button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> إضافة ديانة جديدة </button>
+								<div class="d-flex justify-content-end">
+									<button class="btn btn-info" data-toggle="modal" data-target="#add">
+										<i class="fa fa-plus"></i>
+										{{ __('Add New Religion') }}
+										</button>
 									@include('settings.religions.modals.add')
 								</div>
 							</div>
@@ -39,8 +41,8 @@
 										<thead>
 											<tr>
 												<th class="wd-15p border-bottom-0">#</th>
-												<th class="wd-15p border-bottom-0">إسم الديانة</th>
-												<th class="wd-20p border-bottom-0">العمليات</th>
+												<th class="wd-15p border-bottom-0">{{__('Religion Name')}}</th>
+												<th class="wd-20p border-bottom-0">{{__('Actions')}}</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -49,8 +51,14 @@
 												<td>{{$loop->index + 1}}</td>
 												<td>{{$religion->name}}</td>
 												<td>
-													<button data-toggle="modal" data-target="#delete{{$religion->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</button>
-													<button data-toggle="modal" data-target="#edit{{$religion->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</button>
+													<button data-toggle="modal" data-target="#edit{{$religion->id}}" class="btn btn-warning btn-sm"> 
+														<i class="fa fa-edit"></i>
+														{{ __('Edit') }}
+													</button>
+													<button data-toggle="modal" data-target="#delete{{$religion->id}}" class="btn btn-danger btn-sm"> 
+														<i class="fa fa-trash"></i>
+														{{ __('Delete') }}
+													</button>
 												</td>
 											</tr>
 											@include('settings.religions.modals.edit')
@@ -72,6 +80,7 @@
 		<!-- main-content closed -->
 @endsection
 @section('js')
+
 <!-- Internal Data tables -->
 <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>

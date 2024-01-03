@@ -13,7 +13,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">المستشفيات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الإعدادات </span>
+							<h4 class="content-title mb-0 my-auto">{{__('Hospitals')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{__('Settings')}} </span>
 						</div>
 					</div>
 				</div>
@@ -27,9 +27,8 @@
 					<div class="col-xl-12">
 						<div class="card">
 							<div class="card-header pb-0">
-								<div class="d-flex justify-content-between">
-									<h4 class="card-title mg-b-0">المستشفيات</h4>
-									<button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> إضافة مستشفى جديدة </button>
+								<div class="d-flex justify-content-end">
+									<button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> {{__('Add New Hospital')}} </button>
 									@include('settings.hospitals.modals.add')
 								</div>
 							</div>
@@ -39,8 +38,8 @@
 										<thead>
 											<tr>
 												<th class="wd-15p border-bottom-0">#</th>
-												<th class="wd-15p border-bottom-0">إسم المستشفى</th>
-												<th class="wd-20p border-bottom-0">العمليات</th>
+												<th class="wd-15p border-bottom-0">{{__('Hospital Name')}}</th>
+												<th class="wd-20p border-bottom-0">{{__('Actions')}}</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -49,8 +48,14 @@
 												<td>{{$loop->index + 1}}</td>
 												<td>{{$hospital->name}}</td>
 												<td>
-													<button data-toggle="modal" data-target="#delete{{$hospital->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</button>
-													<button data-toggle="modal" data-target="#edit{{$hospital->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</button>
+													<button data-toggle="modal" data-target="#edit{{$hospital->id}}" class="btn btn-warning btn-sm"> 
+														<i class="fa fa-edit"></i>
+														{{__('Edit')}}
+													</button>
+													<button data-toggle="modal" data-target="#delete{{$hospital->id}}" class="btn btn-danger btn-sm"> 
+														<i class="fa fa-trash"></i>
+														{{__('Delete')}}
+													</button>
 												</td>
 											</tr>
 											@include('settings.hospitals.modals.edit')

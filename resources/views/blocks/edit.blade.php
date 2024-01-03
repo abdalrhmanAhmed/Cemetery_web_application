@@ -12,7 +12,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">المجمعات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تعديل المجمع</span>
+							<h4 class="content-title mb-0 my-auto">{{__('Blocks')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ <a href="{{route('blocks.index')}}">{{__('Edit Block')}}</a></span>
 						</div>
 					</div>
 				</div>
@@ -29,26 +29,26 @@
                                     <div class="modal-body">
                                         <div class="row mb-3">
                                             <div class="col-md-6">
-                                                <label for="">إسم مجمع بالعربية</label>
+                                                <label for="">{{__('Block Name By Arabic')}}</label>
                                                 <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{$block->getTranslation('name', 'ar')}}" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="">إسم مجمع بالإنجليزية</label>
+                                                <label for="">{{__('Block Name By English')}}</label>
                                                 <input type="text" class="form-control" name="name_en" id="name_en" value="{{$block->getTranslation('name', 'en')}}"  required>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
-                                                <label for="">المقبرة</label>
+                                                <label for="">{{__('Cemetery')}}</label>
                                                 <select name="cemetery" class="form-control" id="">
-                                                    <option value="" selected disabled>--حدد المقبرة--</option>
+                                                    <option value="" selected disabled>--{{__('Choose Cemetery')}}--</option>
                                                     @foreach ($cemeteries as $cemetery)
                                                         <option value="{{$cemetery->id}}" {{$block->cemetery_id == $cemetery->id ? 'selected' : ''}}>{{ $cemetery->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="">عدد القبور</label>
+                                                <label for="">{{__('Graves Count')}}</label>
                                                 <input type="number" class="form-control" name="grave_count" value="{{$block->graves->count()}}" id="">
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@
                                                 <div class="col-md">
                                                     <div class="form-group row">
                                                         <div class="col-md map-input-with-no-padding">
-                                                            <label for=""> خط العرض</label>
+                                                            <label for=""> {{__('Latitude')}}</label>
                                                             <input class="form-control" readonly name="latitude" value="{{$block->latitude}}" type="text"><br>
                                                         </div>
                                                     </div>
@@ -65,7 +65,7 @@
                                                 <div class="col-md">
                                                     <div class="form-group row">
                                                         <div class="col-md map-input-with-no-padding">
-                                                            <label for="">خط الطول</label>
+                                                            <label for="">{{__('Longitude')}}</label>
                                                             <input class="form-control" readonly  name="longitude" value="{{$block->Longitude}}" type="text"><br>
                                                         </div>
                                                     </div>
@@ -75,7 +75,11 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn ripple btn-primary" type="submit">حفظ البيانات</button>
+										<div class="row">
+											<div class="col-md-12 d-flex justify-content-center">
+												<button class="btn btn-primary" type="submit">{{__('Edit')}}</button>
+											</div>
+										</div>
                                     </div>
                                 </form>
                             </div>

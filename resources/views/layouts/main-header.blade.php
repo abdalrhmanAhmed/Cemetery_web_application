@@ -16,7 +16,10 @@
 					<div class="main-header-right">
 						<div class="nav nav-item  navbar-nav-right ml-auto">
 							<div class="dropdown  main-profile-menu nav nav-item nav-link ">
-								<a href="" class="app-lang d-flex btn btn-default">{{ __('Language') }}</a>
+								<a href="" class="app-lang d-flex btn btn-default">
+									<i class="fa fa-globe fa-xl" style="margin-top: 3px;"></i> &nbsp;
+									 {{ __('Language') }}
+									</a>
 								<div class="dropdown-menu">
 									<a href="locale/en" class="dropdown-item">
 										<img src="{{asset('assets/img/flags/US.png')}}" alt="">&nbsp;
