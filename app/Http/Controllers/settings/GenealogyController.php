@@ -30,10 +30,16 @@ class GenealogyController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
+
             $Genealogys = new Genealogy();
-            $Genealogys->name = $request->name;
+            $Genealogys->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Genealogys->save();
 
+            toastr()->success(__('Data has been saved successfully!'));
             return redirect()->route('gnealogy.index');
         } 
         catch (\Exception $e)
@@ -42,43 +48,21 @@ class GenealogyController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return 1;
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function update(Request $request, $id)
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
+
             $Genealogys = Genealogy::findOrFail($id);
-            $Genealogys->name = $request->name;
+            $Genealogys->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Genealogys->save();
 
+            toastr()->success(__('Data has been Updated successfully!'));
             return redirect()->route('gnealogy.index');
         } 
         catch (\Exception $e) 
@@ -100,6 +84,7 @@ class GenealogyController extends Controller
             $Genealogys = Genealogy::findOrFail($id);
             $Genealogys->delete();
 
+            toastr()->success(__('Data has been Deleted successfully!'));
             return redirect()->route('gnealogy.index');
         } 
         catch (\Exception $e) 

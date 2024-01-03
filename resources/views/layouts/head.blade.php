@@ -31,5 +31,6 @@
 @endif
 <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 <!--Internal   Notify -->
-<link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+
+{{-- <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" /> --}}
 <script src="{{ asset('js/app.js') }} " defer ></script>

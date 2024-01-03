@@ -13,7 +13,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">الجنسية</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الإعدادات </span>
+							<h4 class="content-title mb-0 my-auto">{{__('Nationalities')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{__('Settings')}} </span>
 						</div>
 					</div>
 				</div>
@@ -27,9 +27,8 @@
 					<div class="col-xl-12">
 						<div class="card">
 							<div class="card-header pb-0">
-								<div class="d-flex justify-content-between">
-									<h4 class="card-title mg-b-0">الجنسية</h4>
-									<button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> إضافة جنسية جديدة </button>
+								<div class="d-flex justify-content-end">
+									<button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> {{__('Add New Nationality')}} </button>
 									@include('settings.nationalitys.modals.add')
 								</div>
 							</div>
@@ -38,9 +37,9 @@
 									<table class="table text-md-nowrap" id="example1">
 										<thead>
 											<tr>
-												<th class="wd-15p border-bottom-0">#</th>
-												<th class="wd-15p border-bottom-0">إسم الجنسية</th>
-												<th class="wd-20p border-bottom-0">العمليات</th>
+												<th class="wd-5p border-bottom-0">#</th>
+												<th class="wd-15p border-bottom-0">{{__('Nationality Name')}}</th>
+												<th class="wd-20p border-bottom-0">{{__('Actions')}}</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -49,8 +48,14 @@
 												<td>{{$loop->index + 1}}</td>
 												<td>{{$nationality->name}}</td>
 												<td>
-													<button data-toggle="modal" data-target="#delete{{$nationality->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</button>
-													<button data-toggle="modal" data-target="#edit{{$nationality->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</button>
+													<button data-toggle="modal" data-target="#edit{{$nationality->id}}" class="btn btn-warning btn-sm"> 
+														<i class="fa fa-edit"></i>
+														{{__('Edit')}}
+													</button>
+													<button data-toggle="modal" data-target="#delete{{$nationality->id}}" class="btn btn-danger btn-sm"> 
+														<i class="fa fa-trash"></i>
+														{{__('Delete')}}
+													</button>
 												</td>
 											</tr>
 											@include('settings.nationalitys.modals.edit')

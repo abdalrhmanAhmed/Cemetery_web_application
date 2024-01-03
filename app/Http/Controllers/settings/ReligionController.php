@@ -30,10 +30,15 @@ class ReligionController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required'
+            ]);
             $Religions = new Religion();
-            $Religions->name = $request->name;
+            $Religions->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Religions->save();
 
+            toastr(__('Data has been saved successfully!'), 'success');
             return redirect()->route('religion.index');
         } 
         catch (\Exception $e)
@@ -42,43 +47,19 @@ class ReligionController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try 
         {
+            $this->validate($request, [
+                'name' => 'required'
+            ]);
+
             $Religions = Religion::findOrFail($id);
             $Religions->name = $request->name;
             $Religions->save();
 
+            toastr(__('Data has been Updated successfully!'), 'success');
             return redirect()->route('religion.index');
         } 
         catch (\Exception $e) 
@@ -100,6 +81,7 @@ class ReligionController extends Controller
             $Religions = Religion::findOrFail($id);
             $Religions->delete();
 
+            toastr(__('Data has been Deleted successfully!'), 'success');
             return redirect()->route('religion.index');
         } 
         catch (\Exception $e) 

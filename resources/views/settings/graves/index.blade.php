@@ -20,7 +20,7 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="my-auto">
 						<div class="d-flex">
-							<h4 class="content-title mb-0 my-auto">المقابر</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ مجمعات المقابر</span>
+							<h4 class="content-title mb-0 my-auto">{{__('Graves')}}</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('Settings') }}</span>
 						</div>
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 						<div class="card">
 							<div class="card-header pb-0">
 								<div class="d-flex justify-content-between">
-									<button class="btn btn-primary" data-toggle="modal" data-target="#addGrave"><i class="fa fa-plus"></i> إضافة مجمع جديد</button>
+									<h5>{{ __('Graves List') }}</h5>
 								</div>
 								{{-- <p class="tx-12 tx-gray-500 mb-2">Example of Valex Simple Table. <a href="">Learn more</a></p> --}}
 							</div>
@@ -43,9 +43,9 @@
 										<thead>
 											<tr>
 												<th class="wd-5p border-bottom-0">#</th>
-												<th class="wd-15p border-bottom-0">إسم المجمع</th>
-												<th class="wd-20p border-bottom-0">المقبرة</th>
-												<th class="wd-25p border-bottom-0">العمليات</th>
+												<th class="wd-20p border-bottom-0">{{__('Grave Name')}}</th>
+												<th class="wd-15p border-bottom-0">{{__('Block')}}</th>
+												<th class="wd-25p border-bottom-0">{{__('Actions')}}</th>
 
 											</tr>
 										</thead>
@@ -56,11 +56,9 @@
 													<td>{{$grave->name}}</td>
 													<td>{{$grave->blocks->name}}</td>
 													<td>
-														<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editGrave{{$grave->id}}"><i class="fa fa-edit"></i></button>
 														<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteGrave{{$grave->id}}"><i class="fa fa-trash"></i></button>
 													</td>
 												</tr>
-												@include('settings.graves.modals.editGrave')
 												@include('settings.graves.modals.deleteGrave')
 												
 											@endforeach
@@ -70,7 +68,6 @@
 							</div>
 						</div>
 					</div>
-					@include('settings.graves.modals.addGrave')
 				</div>
 				<!-- row closed -->
 			</div>

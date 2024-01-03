@@ -30,10 +30,15 @@ class GanderController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
             $ganders = new Gander();
-            $ganders->name = $request->name;
+            $ganders->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $ganders->save();
 
+            toastr()->success(__('Data has been saved successfully!'));
             return redirect()->route('gander.index');
         } 
         catch (\Exception $e)
@@ -42,43 +47,20 @@ class GanderController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return 1;
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try 
         {
+            $this->validate($request, [
+                'name_ar' => 'required',
+                'name_en' => 'required',
+            ]);
             $ganders = Gander::findOrFail($id);
-            $ganders->name = $request->name;
+            $ganders->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $ganders->save();
 
+            toastr()->success(__('Data has been Updated successfully!'));
             return redirect()->route('gander.index');
         } 
         catch (\Exception $e) 
@@ -99,7 +81,7 @@ class GanderController extends Controller
         {
             $ganders = Gander::findOrFail($id);
             $ganders->delete();
-
+            toastr()->success(__('Data has been Deleted successfully!'));
             return redirect()->route('gander.index');
         } 
         catch (\Exception $e) 
