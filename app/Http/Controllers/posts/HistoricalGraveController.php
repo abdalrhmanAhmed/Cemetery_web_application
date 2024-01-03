@@ -26,7 +26,17 @@ class HistoricalGraveController extends Controller
      */
     public function create()
     {
-        //
+        $initialMarkers = [
+            [
+                'position' => [
+                    'lat' => 25.1338688,
+                    'lng' => 56.3332739
+                ],
+                'label' => [ 'color' => 'white'],
+                'draggable' => true
+            ],
+        ];
+        return view('posts.historical_grave.add', compact('initialMarkers'));
     }
 
     /**
@@ -41,17 +51,20 @@ class HistoricalGraveController extends Controller
         {
             $historical_grave = new HistoricalGrave();
             $historical_grave->title = $request->title;
-            $historical_grave->sub_title = $request->sub_title;
+            $historical_grave->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $historical_grave->text = $request->text;
-            $historical_grave->location = $request->location;
-
+            $historical_grave->latitude = $request->latitude;
+            $historical_grave->Longitude = $request->longitude;
             $historical_grave->save();
 
+            toastr()->success('تمت اللإضافة بنجاح');
             return redirect()->route('historical_grave.index');
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('historical_grave.index');
+            return $e;
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
+            return redirect()->route('historical_grave.create');
         }  
     }
 
@@ -74,7 +87,18 @@ class HistoricalGraveController extends Controller
      */
     public function edit($id)
     {
-        //
+        $historical_grave = HistoricalGrave::where('id', $id)->first();
+        $initialMarkers = [
+            [
+                'position' => [
+                    'lat' => $historical_grave->latitude,
+                    'lng' => $historical_grave->Longitude
+                ],
+                'label' => [ 'color' => 'white'],
+                'draggable' => true
+            ],
+        ];
+        return view('posts.historical_grave.edit', compact('historical_grave', 'initialMarkers'));
     }
 
     /**
@@ -93,13 +117,13 @@ class HistoricalGraveController extends Controller
             $historical_grave->sub_title = $request->sub_title;
             $historical_grave->text = $request->text;
             $historical_grave->location = $request->location;
-
             $historical_grave->save();
-
+            toastr()->warning('تم التعديل بنجاح');
             return redirect()->route('historical_grave.index');
         } 
         catch (\Exception $e) 
         {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('historical_grave.index');
         }  
     }
@@ -112,8 +136,19 @@ class HistoricalGraveController extends Controller
      */
     public function destroy($id)
     {
-        $historical_grave =  HistoricalGrave::findOrfail($id);   
-        $historical_grave->delete();
-        return redirect()->route('historical_grave.index');
+        try 
+        {
+            $historical_grave =  HistoricalGrave::findOrfail($id);   
+            $historical_grave->delete();
+            toastr()->success('تم حذف بنجاح');
+            return redirect()->route('historical_grave.index');
+        } 
+        catch (\Exception $e) 
+        {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
+            return redirect()->route('historical_grave.index');
+        }
+
+
     }
 }

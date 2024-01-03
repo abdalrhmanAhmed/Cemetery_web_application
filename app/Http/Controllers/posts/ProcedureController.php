@@ -44,11 +44,12 @@ class ProcedureController extends Controller
             $procedures->sub_title = $request->sub_title;
             $procedures->text = $request->text;
             $procedures->save();
+            toastr()->success('تمت اللإضافة بنجاح');
             return redirect()->route('procedure.index');
         } 
         catch (\Exception $e) 
         {
-            
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('procedure.index');
         }
     }
@@ -91,10 +92,12 @@ class ProcedureController extends Controller
             $procedures->sub_title = $request->sub_title;
             $procedures->text = $request->text;
             $procedures->save();
+            toastr()->warning('تم التعديل بنجاح');
             return redirect()->route('procedure.index');
         } 
         catch (\Exception $e) 
         {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('procedure.index');
         }
     }
@@ -110,8 +113,10 @@ class ProcedureController extends Controller
         try {
             $procedures =  Procedure::findOrFail($id);
             $procedures->delete();
+            toastr()->success('تم حذف بنجاح');
             return redirect()->route('procedure.index');
         } catch (\Exception $e) {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('procedure.index');
         }
     }

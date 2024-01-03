@@ -44,11 +44,12 @@ class TeachingController extends Controller
             $teachings->sub_title = $request->sub_title;
             $teachings->text = $request->text;
             $teachings->save();
+            toastr()->success('تمت اللإضافة بنجاح');
             return redirect()->route('teaching.index');
         } 
         catch (\Exception $e) 
         {
-            
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('teaching.index');
         }
     }
@@ -91,10 +92,12 @@ class TeachingController extends Controller
             $teachings->sub_title = $request->sub_title;
             $teachings->text = $request->text;
             $teachings->save();
+            toastr()->warning('تم التعديل بنجاح');
             return redirect()->route('teaching.index');
         } 
         catch (\Exception $e) 
         {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('teaching.index');
         }
     }
@@ -110,8 +113,10 @@ class TeachingController extends Controller
         try {
             $teachings =  Teaching::findOrFail($id);
             $teachings->delete();
+            toastr()->success('تم حذف بنجاح');
             return redirect()->route('teaching.index');
         } catch (\Exception $e) {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('teaching.index');
         }
     }

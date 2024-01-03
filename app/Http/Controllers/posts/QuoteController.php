@@ -44,11 +44,12 @@ class QuoteController extends Controller
             $quotes->sub_title = $request->sub_title;
             $quotes->text = $request->text;
             $quotes->save();
+            toastr()->success('تمت اللإضافة بنجاح');
             return redirect()->route('quote.index');
         } 
         catch (\Exception $e) 
         {
-            
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('quote.index');
         }
     }
@@ -91,10 +92,12 @@ class QuoteController extends Controller
             $quotes->sub_title = $request->sub_title;
             $quotes->text = $request->text;
             $quotes->save();
+            toastr()->warning('تم التعديل بنجاح');
             return redirect()->route('quote.index');
         } 
         catch (\Exception $e) 
         {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('quote.index');
         }
     }
@@ -110,8 +113,10 @@ class QuoteController extends Controller
         try {
             $quotes =  Quote::findOrFail($id);
             $quotes->delete();
+            toastr()->success('تم حذف بنجاح');
             return redirect()->route('quote.index');
         } catch (\Exception $e) {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('quote.index');
         }
     }

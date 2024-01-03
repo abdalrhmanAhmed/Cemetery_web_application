@@ -117,7 +117,8 @@
 @endsection
 @section('js')
 
-
+@toastr_js
+@toastr_render
 <!-- Internal Nice-select js-->
 <script src="{{URL::asset('assets/plugins/jquery-nice-select/js/jquery.nice-select.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/jquery-nice-select/js/nice-select.js')}}"></script>

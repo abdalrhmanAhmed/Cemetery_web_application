@@ -64,6 +64,8 @@
 <!-- main-content closed -->
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <script src="{{URL::asset('assets/plugins/treeview/treeview.js')}}"></script>
 
 @endsection

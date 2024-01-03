@@ -15,19 +15,19 @@
 						</div>
 					</div>
 					<div class="main-dashboard-header-right">
-						<div>
+						{{-- <div>
 							<label class="tx-13">تقييم العملاء</label>
 							<div class="main-star">
 								<i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star"></i> <span>(14,873)</span>
 							</div>
-						</div>
+						</div> --}}
 						<div>
 							<label class="tx-13">المقابر الفارغة</label>
-							<h5>563,275</h5>
+							<h5>{{App\Models\Grave::where('status', 0)->get()->count() ?? 0}}</h5>
 						</div>
 						<div>
 							<label class="tx-13">المقابر الشاغرة</label>
-							<h5>783,675</h5>
+							<h5>{{App\Models\Grave::where('status', 1)->get()->count() ?? 0}}</h5>
 						</div>
 					</div>
 				</div>
@@ -41,17 +41,20 @@
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TODAY ORDERS</h6>
+									<h6 class="mb-3 tx-12 text-white">{{__('Country Total')}}</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$5,74.12</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{App\Models\Country::get()->count() ?? 0}}</h4>
 										</div>
 										<span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-up text-white"></i>
-											<span class="text-white op-7"> +427</span>
+											<span class="mb-0 tx-12 text-white op-7">
+												<a href="{{route('country.index')}}" class="text-white">
+													<i class="fas fa-eye"></i>
+													{{__('See All')}}
+												</a>
+											</span>
 										</span>
 									</div>
 								</div>
@@ -442,6 +445,8 @@
 		<!-- Container closed -->
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <!--Internal  Chart.bundle js -->
 <script src="{{URL::asset('assets/plugins/chart.js/Chart.bundle.min.js')}}"></script>
 <!-- Moment js -->

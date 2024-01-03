@@ -48,8 +48,8 @@
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{ route('quote.index') }}">{{__('Hadiths')}}</a></li>
 							<li><a class="slide-item" href="{{ route('teaching.index') }}">{{__('Teachings')}}</a></li>
-							<li><a class="slide-item" href="{{ route('historical_grave.index') }}">{{__('Historical Graves')}}</a></li>
 							<li><a class="slide-item" href="{{ route('procedure.index') }}">{{__('Procedures')}}</a></li>
+							<li><a class="slide-item" href="{{ route('historical_grave.index') }}">{{__('Historical Graves')}}</a></li>
 							<li><a class="slide-item" href="{{ route('contact.index') }}">{{ __('Contact Data') }}</a></li>
 						</ul>
 					</li>

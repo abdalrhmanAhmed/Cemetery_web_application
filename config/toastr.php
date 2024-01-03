@@ -34,7 +34,7 @@ return [
         'preventDuplicates' => true,
         'progressBar'       => true,
         'progressClass'     => 'toast-progress',
-        'rtl'               => false,
+        'rtl'               => true,
         'showDuration'      => 300,
         'showEasing'        => 'swing',
         'showMethod'        => 'fadeIn',

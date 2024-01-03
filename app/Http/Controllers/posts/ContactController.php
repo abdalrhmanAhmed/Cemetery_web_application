@@ -45,11 +45,13 @@ class ContactController extends Controller
             $contact->icon = $request->icon;
             // $contact->Longitude = $request->longitude;
             $contact->save();
-
+            
+            toastr()->success('تمت اللإضافة بنجاح');
             return redirect()->route('contact.index');
         } 
         catch (\Exception $e) 
         {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('contact.index');
         }
     }
@@ -92,11 +94,12 @@ class ContactController extends Controller
             $contact->url = $request->url;
             $contact->icon = $request->icon;
             $contact->save();
-
+            toastr()->warning('تم التعديل بنجاح');
             return redirect()->route('contact.index');
         } 
         catch (\Exception $e) 
         {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
             return redirect()->route('contact.index');
         }
     }
@@ -109,9 +112,18 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        $contact =  Contact::findOrFail($id);
-        $contact->delete();
-        return redirect()->route('contact.index');
+        try 
+        {
+            $contact =  Contact::findOrFail($id);
+            $contact->delete();
+            toastr()->success('تم حذف بنجاح');
+            return redirect()->route('contact.index');
+        } 
+        catch (\Exception $e) 
+        {
+            toastr()->error('يوجد خطأ في البيانات المدخلة');
+            return redirect()->route('contact.index');
+        }
 
     }
 }

@@ -84,6 +84,8 @@
 {!! Form::close() !!}
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <!-- Internal Treeview js -->
 <script src="{{URL::asset('assets/plugins/treeview/treeview.js')}}"></script>
 @endsection

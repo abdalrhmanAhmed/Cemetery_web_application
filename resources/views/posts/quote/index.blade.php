@@ -50,7 +50,7 @@
 												<td>{{$loop->index + 1}}</td>
 												<td>{{$quote->title}}</td>
 												<td>{{$quote->sub_title}}</td>
-												<td>{!! $quote->text !!}</td>
+												<td>{!! \Illuminate\Support\Str::limit($quote->text, $limit = 40, $end = '...') !!}</td>
 												<td>
 													<button data-toggle="modal" data-target="#edit{{$quote->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> {{__('Edit')}}</button>
 													<button data-toggle="modal" data-target="#delete{{$quote->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> {{__('Delete')}}</button>
@@ -75,6 +75,8 @@
 		<!-- main-content closed -->
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <!-- Internal Data tables -->
 <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>
@@ -94,7 +96,7 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
-<script src="https://cdn.ckbox.io/ckbox/2.3.1/ckbox.js"></script>
+{{-- <script src="https://cdn.ckbox.io/ckbox/2.3.1/ckbox.js"></script> --}}
 <script src="{{URL::asset('assets/plugins/ckeditor/ckeditor.js')}}"></script>
 <script>
 	CKEDITOR.config.language = "{{app()->getLocale()}}"

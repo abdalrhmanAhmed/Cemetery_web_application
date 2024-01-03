@@ -1,6 +1,6 @@
 <!-- Basic modal -->
 <div class="modal" id="add">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
                 <h6 class="modal-title">إضافة الإجراء</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="">المحتوى</label>
-                            <textarea name="text" class="form-control" cols="30" rows="10" required></textarea>
+                            <textarea name="text" class="form-control ckeditor" cols="30" rows="10" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

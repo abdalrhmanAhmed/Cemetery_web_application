@@ -84,6 +84,8 @@
 		<!-- main-content closed -->
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <!-- Internal Data tables -->
 <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>

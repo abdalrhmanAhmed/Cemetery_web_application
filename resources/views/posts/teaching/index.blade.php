@@ -51,7 +51,7 @@
 												<td>{{$loop->index + 1}}</td>
 												<td>{{$teaching->title}}</td>
 												<td>{{$teaching->sub_title}}</td>
-												<td>{{$teaching->text}}</td>
+												<td>{!! \Illuminate\Support\Str::limit($teaching->text, $limit = 40, $end = '...') !!}</td>
 												<td>
 													<button data-toggle="modal" data-target="#delete{{$teaching->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</button>
 													<button data-toggle="modal" data-target="#edit{{$teaching->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</button>
@@ -76,6 +76,8 @@
 		<!-- main-content closed -->
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <!-- Internal Data tables -->
 <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>
@@ -95,4 +97,8 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
+<script src="{{URL::asset('assets/plugins/ckeditor/ckeditor.js')}}"></script>
+<script>
+	CKEDITOR.config.language = "{{app()->getLocale()}}"
+</script>
 @endsection

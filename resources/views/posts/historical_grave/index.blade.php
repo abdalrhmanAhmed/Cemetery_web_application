@@ -29,8 +29,7 @@
 							<div class="card-header pb-0">
 								<div class="d-flex justify-content-between">
 									<h4 class="card-title mg-b-0"> قبور تاريخية</h4>
-									<button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> إضافة قبر تاريخي جديد </button>
-									@include('posts.historical_grave.modals.add')
+									<a class="btn btn-info" href="{{route('historical_grave.create')}}"><i class="fa fa-plus"></i> إضافة قبر تاريخي جديد </a>
 								</div>
 							</div>
 							<div class="card-body">
@@ -39,10 +38,9 @@
 										<thead>
 											<tr>
 												<th class="wd-15p border-bottom-0">#</th>
+												<th class="wd-15p border-bottom-0">عنوان القبر</th>
 												<th class="wd-15p border-bottom-0"> إسم صاحب القبر التاريخي</th>
-												<th class="wd-15p border-bottom-0"> العنوان الفرعي </th>
 												<th class="wd-15p border-bottom-0">نبذة عن صاحب الفبر </th>
-												<th class="wd-15p border-bottom-0">عنوان القبر الجغرافي</th>
 												<th class="wd-20p border-bottom-0">العمليات</th>
 											</tr>
 										</thead>
@@ -51,16 +49,14 @@
 											<tr>
 												<td>{{$loop->index + 1}}</td>
 												<td>{{$historical_grave->title}}</td>
-												<td>{{$historical_grave->sub_title}}</td>
+												<td>{{$historical_grave->name}}</td>
 												<td>{{$historical_grave->text}}</td>
-												<td>{{$historical_grave->location}}</td>
 
 												<td>
-													<button data-toggle="modal" data-target="#delete{{$historical_grave->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</button>
+													<a href="{{route('historical_grave.update', $historical_grave->id)}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</a>
 													<button data-toggle="modal" data-target="#edit{{$historical_grave->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</button>
 												</td>
 											</tr>
-											@include('posts.historical_grave.modals.edit')
 											@include('posts.historical_grave.modals.delete')
 											@endforeach
 										</tbody>
@@ -79,6 +75,8 @@
 		<!-- main-content closed -->
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <!-- Internal Data tables -->
 <script src="{{URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js')}}"></script>

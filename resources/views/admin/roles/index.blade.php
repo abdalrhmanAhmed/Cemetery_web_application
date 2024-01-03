@@ -130,6 +130,8 @@
 <!-- main-content closed -->
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <!--Internal  Notify js -->
 <script src="{{ URL::asset('assets/plugins/notify/js/notifIt.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/notify/js/notifit-custom.js') }}"></script>

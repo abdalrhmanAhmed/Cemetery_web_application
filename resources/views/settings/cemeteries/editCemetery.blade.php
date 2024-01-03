@@ -96,6 +96,8 @@
 		<!-- main-content closed -->
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL__x5g-TIhqIoQQazJzEbHZQWKXReeF8&callback=initMap" async></script>
 <script>
 	$('select[name=country_id]').on('change', function(){

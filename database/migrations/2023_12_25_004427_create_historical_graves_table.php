@@ -10,12 +10,13 @@ class CreateHistoricalGravesTable extends Migration {
 	{
 		Schema::create('historical_graves', function(Blueprint $table) {
 			$table->id();
-			$table->timestamps();
-			$table->softDeletes();
 			$table->string('title', 255);
-			$table->string('sub_title', 255);
+			$table->string('name', 255);
 			$table->text('text');
-			$table->string('locations', 255);
+			$table->string('latitude', 255);
+			$table->string('Longitude', 255);
+			$table->softDeletes();
+			$table->timestamps();
 		});
 	}
 

@@ -52,7 +52,7 @@
 
                     <div class="row mg-b-20">
                         <div class="parsley-input col-md-6" id="fnWrapper">
-                            <label>اسم المستخدم: <span class="tx-danger">*</span></label>
+                            <label>{{__('User Name')}}: <span class="tx-danger">*</span></label>
                             {!! Form::text('name', null, array('class' => 'form-control','required')) !!}
                         </div>
 
@@ -116,7 +116,8 @@
 <!-- main-content closed -->
 @endsection
 @section('js')
-
+@toastr_js
+@toastr_render
 <!-- Internal Nice-select js-->
 <script src="{{URL::asset('assets/plugins/jquery-nice-select/js/jquery.nice-select.js')}}"></script>
 <script src="{{URL::asset('assets/plugins/jquery-nice-select/js/nice-select.js')}}"></script>
