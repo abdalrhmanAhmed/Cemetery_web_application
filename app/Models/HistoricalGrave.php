@@ -8,7 +8,7 @@ use Spatie\Translatable\HasTranslations;
 
 class HistoricalGrave extends Model 
 {
-
+    use HasTranslations;
     protected $table = 'historical_graves';
     public $timestamps = true;
     protected $guarded = [];

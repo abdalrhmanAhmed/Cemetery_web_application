@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GendorSeeder::class);
         $this->call(ReliginSeeder::class);
         $this->call(CountriesSeeder::class);
+        $this->call(NationalitySeeder::class);
+        $this->call(FamilySeeder::class);
     }
 }

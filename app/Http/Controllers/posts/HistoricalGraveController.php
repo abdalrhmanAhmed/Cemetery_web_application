@@ -91,8 +91,8 @@ class HistoricalGraveController extends Controller
         $initialMarkers = [
             [
                 'position' => [
-                    'lat' => $historical_grave->latitude,
-                    'lng' => $historical_grave->Longitude
+                    'lat' => floatval($historical_grave->latitude),
+                    'lng' => floatval($historical_grave->Longitude)
                 ],
                 'label' => [ 'color' => 'white'],
                 'draggable' => true
