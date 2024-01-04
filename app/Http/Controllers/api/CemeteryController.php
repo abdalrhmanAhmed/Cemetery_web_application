@@ -78,7 +78,7 @@ class CemeteryController extends Controller
             $cemeteries = Cemetery::where('id', $id)->select('id', 'name', 'latitude', 'Longitude')->get();
             $data = [];
             foreach ($cemeteries as $cemetery) {
-                $data[] = array(
+                $data = array(
                     'id'        => $cemetery->id,
                     'name'      => $cemetery->name,
                     'latitude'  => $cemetery->latitude,
