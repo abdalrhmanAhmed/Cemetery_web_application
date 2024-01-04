@@ -204,5 +204,15 @@
     "Login" : "تسجيل الدخول",
     "Welcome" : "مرحبا بك",
     "Password" : "كلمة المرور",
-    "Remember Me" : "تذكرني"
+    "Remember Me" : "تذكرني",
+    "Welcome Back" : "مرحبا بك من جديد",
+    "Dashboard of Cemeteries Management System" : "لوحة التحكم في نظام المقابر",
+    "Empty Graves" : "المقابر الفارغة",
+    "Used Graves" : "المقابر الشاغرة",
+    "Country Total" : "عدد الدول",
+    "Cemeteries Management System" : "نظام إدارة المقابر",
+    "Country Count" : "عدد الدول",
+    "Cities Count" : "عدد المدن",
+    "Cemetery Count" : "عدد المقابر",
+    "Choose Status" : "إختر حالة"
 }

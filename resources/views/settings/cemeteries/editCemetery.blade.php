@@ -127,8 +127,8 @@
 	function initMap() {
 		map = new google.maps.Map(document.getElementById("map"), {
 			center: {
-				lat: 25.1338688,
-				lng: 56.3332739,
+				lat: <?php echo json_encode(floatval($cemeterie->latitude)); ?>,
+				lng: <?php echo json_encode(floatval($cemeterie->Longitude)); ?>,
 			},
 			zoom: 15
 		});

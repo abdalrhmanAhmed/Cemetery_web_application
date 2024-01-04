@@ -15,14 +15,14 @@ class FamilySeeder extends Seeder
     public function run()
     {
         $families = [
-            ['name_ar' => 'الظاهري', 'name_en' => 'Al-Dhahiri'],
-            ['name_ar' => 'البلوشي', 'name_en' => 'Al-Balushi'],
-            ['name_ar' => 'البدوي', 'name_en' => 'Al-Bedawi'],
-            ['name_ar' => 'الحمادي', 'name_en' => 'Al-Hammadi'],
-            ['name_ar' => 'الخميري', 'name_en' => 'Al-Khamiri'],
-            ['name_ar' => 'الخليفي', 'name_en' => 'Al-Khalifi'],
-            ['name_ar' => 'الشحيمي', 'name_en' => 'Al-Shahimi'],
-            ['name_ar' => 'الشنقيطي', 'name_en' => 'Al-Shanqeeti'],
+            ['ar' => 'الظاهري', 'en' => 'Al-Dhahiri'],
+            ['ar' => 'البلوشي', 'en' => 'Al-Balushi'],
+            ['ar' => 'البدوي', 'en' => 'Al-Bedawi'],
+            ['ar' => 'الحمادي', 'en' => 'Al-Hammadi'],
+            ['ar' => 'الخميري', 'en' => 'Al-Khamiri'],
+            ['ar' => 'الخليفي', 'en' => 'Al-Khalifi'],
+            ['ar' => 'الشحيمي', 'en' => 'Al-Shahimi'],
+            ['ar' => 'الشنقيطي', 'en' => 'Al-Shanqeeti'],
         ];
 
         foreach ($families as $family) {

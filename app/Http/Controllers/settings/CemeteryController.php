@@ -58,18 +58,18 @@ class CemeteryController extends Controller
 
     public function edit($id)
     {
+        $countries = Country::all();
+        $cemeterie = Cemetery::findOrFail($id);
         $initialMarkers = [
             [
                 'position' => [
-                    'lat' => 25.1338688,
-                    'lng' => 56.3332739
+                    'lat' => floatval($cemeterie->latitude),
+                    'lng' => floatval($cemeterie->Longitude)
                 ],
                 'label' => [ 'color' => 'white'],
                 'draggable' => true
             ],
         ];
-        $countries = Country::all();
-        $cemeterie = Cemetery::findOrFail($id);
         return view('settings.cemeteries.editCemetery', compact('cemeterie', 'initialMarkers', 'countries'));
     }
 

@@ -10,8 +10,8 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="left-content">
 						<div>
-						  <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">مرحبا بك من جديد {{Auth::user()->name}}</h2>
-						  <p class="mg-b-0">لوحة التحكم في نظام المقابر</p>
+						  <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">{{__('Welcome Back')}} {{Auth::user()->name}}</h2>
+						  <p class="mg-b-0">{{__('Dashboard of Cemeteries Management System')}}</p>
 						</div>
 					</div>
 					<div class="main-dashboard-header-right">
@@ -22,11 +22,11 @@
 							</div>
 						</div> --}}
 						<div>
-							<label class="tx-13">المقابر الفارغة</label>
+							<label class="tx-13">{{__('Empty Graves')}}</label>
 							<h5>{{App\Models\Grave::where('status', 0)->get()->count() ?? 0}}</h5>
 						</div>
 						<div>
-							<label class="tx-13">المقابر الشاغرة</label>
+							<label class="tx-13">{{__('Used Graves')}}</label>
 							<h5>{{App\Models\Grave::where('status', 1)->get()->count() ?? 0}}</h5>
 						</div>
 					</div>
@@ -41,15 +41,15 @@
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">{{__('Country Total')}}</h6>
+									<h6 class="mb-3 tx-18 text-white">{{__('Country Total')}}</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
-										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{App\Models\Country::get()->count() ?? 0}}</h4>
+										<div class="float-left my-auto mr-auto">
+											<h4 class="tx-15 font-weight-bold mb-1 text-white">{{__('Country Count')}} {{App\Models\Country::get()->count() ?? 0}}</h4>
 										</div>
 										<span class="float-right my-auto mr-auto">
-											<span class="mb-0 tx-12 text-white op-7">
+											<span class="mb-0  text-white op-7">
 												<a href="{{route('country.index')}}" class="text-white">
 													<i class="fas fa-eye"></i>
 													{{__('See All')}}
@@ -66,17 +66,18 @@
 						<div class="card overflow-hidden sales-card bg-danger-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TODAY EARNINGS</h6>
+									<p class="mb-3 tx-18 text-white">{{__('Cities')}}</p>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
-										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$1,230.17</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+										<div class="float-left my-auto mr-auto">
+											<h4 class="tx-15 font-weight-bold mb-1 text-white">{{__('Cities Count')}} {{App\Models\City::get()->count() ?? 0}}</h4>
 										</div>
 										<span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-down text-white"></i>
-											<span class="text-white op-7"> -23.09%</span>
+											<a href="{{route('city.index')}}" class="text-white">
+												<i class="fas fa-eye"></i>
+												{{__('See All')}}
+											</a>
 										</span>
 									</div>
 								</div>
@@ -89,17 +90,18 @@
 						<div class="card overflow-hidden sales-card bg-success-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TOTAL EARNINGS</h6>
+									<h6 class="mb-3 tx-18 text-white">{{__('Cemeteries')}}</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
-										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$7,125.70</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+										<div class="float-left my-auto mr-auto">
+											<h4 class="tx-15 font-weight-bold mb-1 text-white">{{__('Cemetery Count')}} {{App\Models\Cemetery::get()->count() ?? 0}}</h4>
 										</div>
 										<span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-up text-white"></i>
-											<span class="text-white op-7"> 52.09%</span>
+											<a href="{{route('cemetery.index')}}" class="text-white">
+												<i class="fas fa-eye"></i>
+												{{__('See All')}}
+											</a>
 										</span>
 									</div>
 								</div>
@@ -111,17 +113,18 @@
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">PRODUCT SOLD</h6>
+									<h6 class="mb-3 tx-18 text-white">{{__('Graves')}}</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
-										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$4,820.50</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+										<div class="float-left my-auto mr-auto">
+											<h4 class="tx-15 font-weight-bold mb-1 text-white">{{__('Graves Count')}} {{App\Models\Grave::get()->count() ?? 0}}</h4>
 										</div>
 										<span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-down text-white"></i>
-											<span class="text-white op-7"> -152.3</span>
+											<a href="{{route('graves.index')}}" class="text-white">
+												<i class="fas fa-eye"></i>
+												{{__('See All')}}
+											</a>
 										</span>
 									</div>
 								</div>
@@ -141,7 +144,7 @@
 									<h4 class="card-title mb-0">Order status</h4>
 									<i class="mdi mdi-dots-horizontal text-gray"></i>
 								</div>
-								<p class="tx-12 text-muted mb-0">Order Status and Tracking. Track your order from ship date to arrival. To begin, enter your order number.</p>
+								<p class="tx-18 text-muted mb-0">Order Status and Tracking. Track your order from ship date to arrival. To begin, enter your order number.</p>
 							</div>
 							<div class="card-body">
 								<div class="total-revenue">
@@ -165,7 +168,7 @@
 					<div class="col-lg-12 col-xl-5">
 						<div class="card card-dashboard-map-one">
 							<label class="main-content-label">Sales Revenue by Customers in USA</label>
-							<span class="d-block mg-b-20 text-muted tx-12">Sales Performance of all states in the United States</span>
+							<span class="d-block mg-b-20 text-muted tx-18">Sales Performance of all states in the United States</span>
 							<div class="">
 								<div class="vmap-wrapper ht-180" id="vmap2"></div>
 							</div>
@@ -180,7 +183,7 @@
 						<div class="card">
 							<div class="card-header pb-1">
 								<h3 class="card-title mb-2">Recent Customers</h3>
-								<p class="tx-12 mb-0 text-muted">A customer is an individual or business that purchases the goods service has evolved to include real-time</p>
+								<p class="tx-18 mb-0 text-muted">A customer is an individual or business that purchases the goods service has evolved to include real-time</p>
 							</div>
 							<div class="card-body p-0 customers mt-1">
 								<div class="list-group list-lg-group list-group-flush">
@@ -272,27 +275,27 @@
 						<div class="card">
 							<div class="card-header pb-1">
 								<h3 class="card-title mb-2">Sales Activity</h3>
-								<p class="tx-12 mb-0 text-muted">Sales activities are the tactics that salespeople use to achieve their goals and objective</p>
+								<p class="tx-18 mb-0 text-muted">Sales activities are the tactics that salespeople use to achieve their goals and objective</p>
 							</div>
 							<div class="product-timeline card-body pt-2 mt-1">
 								<ul class="timeline-1 mb-0">
 									<li class="mt-0"> <i class="ti-pie-chart bg-primary-gradient text-white product-icon"></i> <span class="font-weight-semibold mb-4 tx-14 ">Total Products</span> <a href="#" class="float-left tx-11 text-muted">3 days ago</a>
-										<p class="mb-0 text-muted tx-12">1.3k New Products</p>
+										<p class="mb-0 text-muted tx-18">1.3k New Products</p>
 									</li>
 									<li class="mt-0"> <i class="mdi mdi-cart-outline bg-danger-gradient text-white product-icon"></i> <span class="font-weight-semibold mb-4 tx-14 ">Total Sales</span> <a href="#" class="float-left tx-11 text-muted">35 mins ago</a>
-										<p class="mb-0 text-muted tx-12">1k New Sales</p>
+										<p class="mb-0 text-muted tx-18">1k New Sales</p>
 									</li>
 									<li class="mt-0"> <i class="ti-bar-chart-alt bg-success-gradient text-white product-icon"></i> <span class="font-weight-semibold mb-4 tx-14 ">Toatal Revenue</span> <a href="#" class="float-left tx-11 text-muted">50 mins ago</a>
-										<p class="mb-0 text-muted tx-12">23.5K New Revenue</p>
+										<p class="mb-0 text-muted tx-18">23.5K New Revenue</p>
 									</li>
 									<li class="mt-0"> <i class="ti-wallet bg-warning-gradient text-white product-icon"></i> <span class="font-weight-semibold mb-4 tx-14 ">Toatal Profit</span> <a href="#" class="float-left tx-11 text-muted">1 hour ago</a>
-										<p class="mb-0 text-muted tx-12">3k New profit</p>
+										<p class="mb-0 text-muted tx-18">3k New profit</p>
 									</li>
 									<li class="mt-0"> <i class="si si-eye bg-purple-gradient text-white product-icon"></i> <span class="font-weight-semibold mb-4 tx-14 ">Customer Visits</span> <a href="#" class="float-left tx-11 text-muted">1 day ago</a>
-										<p class="mb-0 text-muted tx-12">15% increased</p>
+										<p class="mb-0 text-muted tx-18">15% increased</p>
 									</li>
 									<li class="mt-0 mb-0"> <i class="icon-note icons bg-primary-gradient text-white product-icon"></i> <span class="font-weight-semibold mb-4 tx-14 ">Customer Reviews</span> <a href="#" class="float-left tx-11 text-muted">1 day ago</a>
-										<p class="mb-0 text-muted tx-12">1.5k reviews</p>
+										<p class="mb-0 text-muted tx-18">1.5k reviews</p>
 									</li>
 								</ul>
 							</div>
@@ -302,7 +305,7 @@
 						<div class="card">
 							<div class="card-header pb-0">
 								<h3 class="card-title mb-2">Recent Orders</h3>
-								<p class="tx-12 mb-0 text-muted">An order is an investor's instructions to a broker or brokerage firm to purchase or sell</p>
+								<p class="tx-18 mb-0 text-muted">An order is an investor's instructions to a broker or brokerage firm to purchase or sell</p>
 							</div>
 							<div class="card-body sales-info ot-0 pt-0 pb-0">
 								<div id="chart" class="ht-150"></div>
@@ -356,7 +359,7 @@
 				{{-- <div class="row row-sm row-deck">
 					<div class="col-md-12 col-lg-4 col-xl-4">
 						<div class="card card-dashboard-eight pb-2">
-							<h6 class="card-title">Your Top Countries</h6><span class="d-block mg-b-10 text-muted tx-12">Sales performance revenue based by country</span>
+							<h6 class="card-title">Your Top Countries</h6><span class="d-block mg-b-10 text-muted tx-18">Sales performance revenue based by country</span>
 							<div class="list-group">
 								<div class="list-group-item border-top-0">
 									<i class="flag-icon flag-icon-us flag-icon-squared"></i>
@@ -391,7 +394,7 @@
 								<h4 class="card-title mb-1">Your Most Recent Earnings</h4>
 								<i class="mdi mdi-dots-horizontal text-gray"></i>
 							</div>
-							<span class="tx-12 tx-muted mb-3 ">This is your most recent earnings for today's date.</span>
+							<span class="tx-18 tx-muted mb-3 ">This is your most recent earnings for today's date.</span>
 							<div class="table-responsive country-table">
 								<table class="table table-striped table-bordered mb-0 text-sm-nowrap text-lg-nowrap text-xl-nowrap">
 									<thead>
