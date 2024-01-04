@@ -76,7 +76,7 @@
                                                 <div class="form-group row">
                                                     <div class="col-md map-input-with-no-padding">
                                                         <label for="">{{__('Longitude')}}</label>
-                                                        <input class="form-control" readonly value="{{$historical_grave->longitude}}"  name="longitude" type="text" required><br>
+                                                        <input class="form-control" readonly value="{{$historical_grave->Longitude}}"  name="longitude" type="text" required><br>
                                                     </div>
                                                 </div>
                                             </div>

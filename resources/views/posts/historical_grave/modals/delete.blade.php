@@ -1,5 +1,5 @@
 <!-- Large Modal -->
-<div class="modal" id="delete{{$contact->id}}">
+<div class="modal" id="delete{{$historical_grave->id}}">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">

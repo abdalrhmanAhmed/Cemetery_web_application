@@ -53,8 +53,8 @@
 												<td>{{$historical_grave->text}}</td>
 
 												<td>
-													<a href="{{route('historical_grave.update', $historical_grave->id)}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</a>
-													<button data-toggle="modal" data-target="#edit{{$historical_grave->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</button>
+													<button data-toggle="modal" data-target="#edit{{$historical_grave->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</button>
+													<a href="{{route('historical_grave.edit', $historical_grave->id)}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</a>
 												</td>
 											</tr>
 											@include('posts.historical_grave.modals.delete')

@@ -114,9 +114,10 @@ class HistoricalGraveController extends Controller
         {
             $historical_grave = HistoricalGrave::findOrfail($id);
             $historical_grave->title = $request->title;
-            $historical_grave->sub_title = $request->sub_title;
+            $historical_grave->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $historical_grave->text = $request->text;
-            $historical_grave->location = $request->location;
+            $historical_grave->latitude = $request->latitude;
+            $historical_grave->Longitude = $request->longitude;
             $historical_grave->save();
             toastr()->warning('تم التعديل بنجاح');
             return redirect()->route('historical_grave.index');
