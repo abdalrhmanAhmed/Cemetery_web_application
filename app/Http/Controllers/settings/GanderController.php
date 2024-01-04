@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dead;
 use Illuminate\Http\Request;
 use App\Models\Gander;
 
@@ -38,12 +39,11 @@ class GanderController extends Controller
             $ganders->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $ganders->save();
 
-            toastr()->success(__('Data has been saved successfully!'));
-            return redirect()->route('gander.index');
+            return redirect()->route('gander.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e)
         {
-            return redirect()->route('gander.index');
+            return redirect()->route('gander.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -60,12 +60,11 @@ class GanderController extends Controller
             $ganders->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $ganders->save();
 
-            toastr()->success(__('Data has been Updated successfully!'));
-            return redirect()->route('gander.index');
+            return redirect()->route('gander.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('gander.index');
+            return redirect()->route('gander.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -79,14 +78,20 @@ class GanderController extends Controller
     {
         try 
         {
-            $ganders = Gander::findOrFail($id);
-            $ganders->delete();
-            toastr()->success(__('Data has been Deleted successfully!'));
-            return redirect()->route('gander.index');
+            $dead = Dead::where('gander_id', $id)->get();
+            if($dead)
+            {
+                return redirect()->route('gander.index')->with(['error' => __('You Can`t Delete This Gender')]);
+            }else{
+                $ganders = Gander::findOrFail($id);
+                $ganders->delete();
+            }
+
+            return redirect()->route('gander.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('gander.index');
+            return redirect()->route('gander.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

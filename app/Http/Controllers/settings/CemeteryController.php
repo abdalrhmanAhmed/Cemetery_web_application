@@ -48,12 +48,11 @@ class CemeteryController extends Controller
             $cemetery->Longitude = $request->longitude;
             $cemetery->save();
 
-            toastr()->success(__('Data has been saved successfully!'));
-            return redirect()->route('cemetery.index');
+            return redirect()->route('cemetery.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('cemetery.index');
+            return redirect()->route('cemetery.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -93,12 +92,11 @@ class CemeteryController extends Controller
             $cemetery->Longitude = $request->longitude;
             $cemetery->save();
 
-            toastr()->success(__('Data has been Updated successfully!'));
-            return redirect()->route('cemetery.index');
+            return redirect()->route('cemetery.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('cemetery.index');
+            return redirect()->route('cemetery.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -110,16 +108,15 @@ class CemeteryController extends Controller
             $blocks = Block::where('cemetery_id', $id)->get();
             if($blocks)
             {
-                toastr()->error(__('There Is Block Belongs To This Cemetery !'));
+                return redirect()->route('cemetery.index')->with(['error' => __('There Is Block Belongs To This Cemetery !')]);
             }else{$Cemetery->delete();}
 
 
-            toastr()->success(__('Data has been Deleted successfully!'));
-            return redirect()->route('cemetery.index');
+            return redirect()->route('cemetery.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('cemetery.index');
+            return redirect()->route('cemetery.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 

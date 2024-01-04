@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dead;
 use Illuminate\Http\Request;
 use App\Models\Genealogy;
 
@@ -39,12 +40,11 @@ class GenealogyController extends Controller
             $Genealogys->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Genealogys->save();
 
-            toastr()->success(__('Data has been saved successfully!'));
-            return redirect()->route('gnealogy.index');
+            return redirect()->route('gnealogy.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e)
         {
-            return redirect()->route('gnealogy.index');
+            return redirect()->route('gnealogy.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -62,12 +62,11 @@ class GenealogyController extends Controller
             $Genealogys->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Genealogys->save();
 
-            toastr()->success(__('Data has been Updated successfully!'));
-            return redirect()->route('gnealogy.index');
+            return redirect()->route('gnealogy.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('gnealogy.index');
+            return redirect()->route('gnealogy.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -81,15 +80,20 @@ class GenealogyController extends Controller
     {
         try 
         {
-            $Genealogys = Genealogy::findOrFail($id);
-            $Genealogys->delete();
+            $dead = Dead::where('genealogy_id', $id)->get();
+            if($dead)
+            {
+                return redirect()->route('gnealogy.index')->with(['error' => __('You Can`t Delete This Genealogy')]);
+            }else{
+                $Genealogys = Genealogy::findOrFail($id);
+                $Genealogys->delete();
+            }
 
-            toastr()->success(__('Data has been Deleted successfully!'));
-            return redirect()->route('gnealogy.index');
+            return redirect()->route('gnealogy.index')->with(['success' => __('Data has been Deleted successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('gnealogy.index');
+            return redirect()->route('gnealogy.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

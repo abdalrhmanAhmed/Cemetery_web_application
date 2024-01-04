@@ -28,10 +28,9 @@ class GraveController extends Controller
         $grave = Grave::findOrFail($id);
         if($grave->status == 1)
         {
-            toastr()->error(__('The Grave Is Used')); return redirect()->route('graves.index');
+            return redirect()->route('graves.index')->with(['error' => __('The Grave Is Used')]);
         }else {$grave->delete();}
         
-        toastr()->success(__('Data has been Deleted successfully!'));
-        return redirect()->route('graves.index');
+        return redirect()->route('graves.index')->with(['warning' => __('Data has been Deleted successfully!')]);
     }
 }

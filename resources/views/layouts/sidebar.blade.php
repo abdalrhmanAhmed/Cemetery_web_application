@@ -2,7 +2,7 @@
 		<div class="sidebar sidebar-left sidebar-animate">
 			<div class="panel panel-primary card mb-0 box-shadow">
 				<div class="tab-menu-heading border-0 p-3">
-					<div class="card-title mb-0">الإعدادت</div>
+					<div class="card-title mb-0">{{__('Settings')}}</div>
 					<div class="card-options mr-auto">
 						<a href="#" class="sidebar-remove"><i class="fe fe-x"></i></a>
 					</div>
@@ -11,9 +11,9 @@
 					<div class="tabs-menu ">
 						<!-- Tabs -->
 						<ul class="nav panel-tabs">
-							<li class=""><a href="#side1" class="active" data-toggle="tab"><i class="ion ion-md-cog tx-18 ml-2"></i> إعدادات الحساب</a></li>
-							<li><a href="#side2" data-toggle="tab"><i class="ion ion-md-person tx-18  ml-2"></i> إعدادات المظهر</a></li>
-							<li><a href="#side3" data-toggle="tab"><i class="ion ion-md-lock tx-18 ml-2"></i> تغيير كلمة المرور</a></li>
+							<li class=""><a href="#side1" class="active" data-toggle="tab"><i class="ion ion-md-cog tx-18 ml-2"></i> {{__('Account Settings')}}</a></li>
+							<li><a href="#side2" data-toggle="tab"><i class="ion ion-md-person tx-18  ml-2"></i> {{__('Theme Settings')}}</a></li>
+							<li><a href="#side3" data-toggle="tab"><i class="ion ion-md-lock tx-18 ml-2"></i> {{__('Change Password')}}</a></li>
 						</ul>
 					</div>
 					<div class="tab-content">
@@ -21,7 +21,7 @@
 
 							<div class="list d-flex align-items-center p-3">
 								<div class="">
-									<span class="avatar bg-blue brround avatar-md">A</span>
+									<span class="avatar bg-blue brround avatar-md">{{ substr(Auth::user()->name, 0,1) }}</span>
 								</div>
 								<a class="wrapper w-100 mr-3" href="#" >
 									<p class="mb-0 d-flex ">
@@ -44,7 +44,7 @@
 										<span class="avatar avatar-lg brround cover-image" data-image-src="{{URL::asset('assets/img/media/settings/dark-light.png')}}"><span class="avatar-status bg-success"></span></span>
 									</div>
 									<div class="col-md-6">
-										<strong>الوضع الليلي</strong> 
+										<strong>{{__('Dark Mode')}}</strong> 
 										
 										<div class="small text-muted">
 											12 mintues ago

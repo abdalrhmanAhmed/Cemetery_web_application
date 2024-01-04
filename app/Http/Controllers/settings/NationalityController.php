@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dead;
 use Illuminate\Http\Request;
 use App\Models\Nationality;
 
@@ -39,12 +40,11 @@ class NationalityController extends Controller
             $Nationalitys->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Nationalitys->save();
 
-            toastr()->success(__('Data has been saved successfully!'));
-            return redirect()->route('nationality.index');
+            return redirect()->route('nationality.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e)
         {
-            return redirect()->route('nationality.index');
+            return redirect()->route('nationality.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -62,12 +62,11 @@ class NationalityController extends Controller
             $Nationalitys->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Nationalitys->save();
 
-            toastr()->success(__('Data has been Updated successfully!'));
-            return redirect()->route('nationality.index');
+            return redirect()->route('nationality.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('nationality.index');
+            return redirect()->route('nationality.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -81,15 +80,21 @@ class NationalityController extends Controller
     {
         try 
         {
-            $Nationalitys = Nationality::findOrFail($id);
-            $Nationalitys->delete();
+            $dead = Dead::where('national_id', $id)->get();
+            if($dead)
+            {
+                return redirect()->route('nationality.index')->with(['error' => __('You Can`t Delete This Nationality')]);
+            }else{
+                $Nationalitys = Nationality::findOrFail($id);
+                $Nationalitys->delete();
+            }
 
-            toastr()->success(__('Data has been Deleted successfully!'));
-            return redirect()->route('nationality.index');
+            
+            return redirect()->route('nationality.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('nationality.index');
+            return redirect()->route('nationality.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

@@ -39,66 +39,49 @@ class TeachingController extends Controller
     {
         try 
         {
+            $this->validate($request, [
+                'title' => 'requried',
+                'sub_title' => 'required',
+                'text' => 'required'
+            ]);
+
             $teachings = new Teaching();
             $teachings->title = $request->title;
             $teachings->sub_title = $request->sub_title;
             $teachings->text = $request->text;
             $teachings->save();
-            toastr()->success('تمت اللإضافة بنجاح');
-            return redirect()->route('teaching.index');
+            
+            return redirect()->route('teaching.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('teaching.index');
+            return redirect()->route('teaching.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function update(Request $request, $id)
     {
         try 
         {
+            $this->validate($request, [
+                'title' => 'requried',
+                'sub_title' => 'required',
+                'text' => 'required'
+            ]);
+
             $teachings =  Teaching::findOrFail($id);
             $teachings->title = $request->title;
             $teachings->sub_title = $request->sub_title;
             $teachings->text = $request->text;
             $teachings->save();
-            toastr()->warning('تم التعديل بنجاح');
-            return redirect()->route('teaching.index');
+
+            return redirect()->route('teaching.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('teaching.index');
+            return redirect()->route('teaching.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -113,11 +96,9 @@ class TeachingController extends Controller
         try {
             $teachings =  Teaching::findOrFail($id);
             $teachings->delete();
-            toastr()->success('تم حذف بنجاح');
-            return redirect()->route('teaching.index');
+            return redirect()->route('teaching.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } catch (\Exception $e) {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('teaching.index');
+            return redirect()->route('teaching.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

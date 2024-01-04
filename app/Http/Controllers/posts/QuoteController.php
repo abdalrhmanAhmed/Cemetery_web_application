@@ -19,86 +19,54 @@ class QuoteController extends Controller
         return view('posts.quote.index', compact('quotes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {
         try 
         {
+            $this->validate($request, [
+                'title' => 'required',
+                'sub_title' => 'required',
+                'text' => 'required'
+            ]);
+
             $quotes = new Quote();
             $quotes->title = $request->title;
             $quotes->sub_title = $request->sub_title;
             $quotes->text = $request->text;
             $quotes->save();
-            toastr()->success('تمت اللإضافة بنجاح');
-            return redirect()->route('quote.index');
+
+            return redirect()->route('quote.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('quote.index');
+            return redirect()->route('quote.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
 
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try 
         {
+            $this->validate($request, [
+                'title' => 'required',
+                'sub_title' => 'required',
+                'text' => 'required'
+            ]);
+
             $quotes =  Quote::findOrFail($id);
             $quotes->title = $request->title;
             $quotes->sub_title = $request->sub_title;
             $quotes->text = $request->text;
             $quotes->save();
-            toastr()->warning('تم التعديل بنجاح');
-            return redirect()->route('quote.index');
+
+            return redirect()->route('quote.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('quote.index');
+            return redirect()->route('quote.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -113,11 +81,9 @@ class QuoteController extends Controller
         try {
             $quotes =  Quote::findOrFail($id);
             $quotes->delete();
-            toastr()->success('تم حذف بنجاح');
-            return redirect()->route('quote.index');
+            return redirect()->route('quote.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } catch (\Exception $e) {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('quote.index');
+            return redirect()->route('quote.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

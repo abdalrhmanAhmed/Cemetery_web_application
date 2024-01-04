@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cemetery;
 use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\City;
@@ -42,43 +43,15 @@ class CityController extends Controller
             $cities->country_id	 = $request->country_id;
             $cities->save();
 
-            return redirect()->route('city.index');
+            return redirect()->route('city.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e)
         {
-            return redirect()->route('city.index');
+            return redirect()->route('city.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return 1;
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try 
@@ -94,11 +67,11 @@ class CityController extends Controller
             $cities->country_id	 = $request->country_id;
             $cities->save();
 
-            return redirect()->route('city.index');
+            return redirect()->route('city.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('city.index');
+            return redirect()->route('city.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -112,12 +85,17 @@ class CityController extends Controller
     {
         try 
         {
-            City::destroy($id);
-            return redirect()->route('city.index');
+            $cemetery = Cemetery::where('citiy_id', $id)->get();
+            if($cemetery)
+            {
+                return redirect()->route('city.index')->with(['error' => __('You Can`t Delete This City Because There Is Cemeteries Belongs To It')]);
+            }else{City::destroy($id);}
+            
+            return redirect()->route('city.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('city.index');
+            return redirect()->route('city.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

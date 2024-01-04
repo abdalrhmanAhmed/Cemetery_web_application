@@ -26,14 +26,13 @@ class SettingsController extends Controller
         {
             if (!(Hash::check($request->get('old_password'), Auth::user()->password))) {
                 // The passwords matches
-                session()->flash('same_password');
-                return redirect()->back();
+                
+                return redirect()->back()->with(['error' => __('Old Password Is Incorrect')]);
             }
     
             if(strcmp($request->get('old_password'), $request->get('password')) == 0){
                 // Current password and new password same
-                session()->flash('same_password');
-                return redirect()->back()->with("error","New Password cannot be same as your current password.");
+                return redirect()->back()->with(["error"=>__("New Password cannot be same as your current password.")]);
             }
             $validatedData = $request->validate([
                 'old_password' => 'required',
@@ -44,11 +43,11 @@ class SettingsController extends Controller
             $user->password = Hash::make($request->get('password'));
             $user->save();
             
-            return redirect()->back()->with("success","Password successfully changed!");
+            return redirect()->back()->with(["success"=>__("Password successfully changed!")]);
         }
         catch (\Exception $e)
         {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return redirect()->back()->withErrors(['error' => __('There Is A Problem With The Server')]);
         }
   
     }

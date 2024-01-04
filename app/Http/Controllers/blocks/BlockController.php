@@ -58,14 +58,12 @@ class BlockController extends Controller
             }
 
             DB::commit();
-            toastr()->success('تم حفظ البيانات بنجاح');
-            return redirect()->route('blocks.index');
+            return redirect()->route('blocks.index')->with(['success' => __('Data has been saved successfully!')]);
         }
         catch(\Exception $e)
         {
             DB::rollBack();
-            toastr()->error('هنالك مشكلة في البيانات المدخلة');
-            return redirect()->route('blocks.index');
+            return redirect()->route('blocks.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -134,14 +132,12 @@ class BlockController extends Controller
             $block->save();
 
             DB::commit();
-            toastr()->success('تم تعديل البيانات بنجاح');
-            return redirect()->route('blocks.index');
+            return redirect()->route('blocks.index')->with(['success' => __('Data has been Updated successfully!')]);
         }
         catch(\Exception $e)
         {
             DB::rollBack();
-            toastr()->error('هنالك مشكلة في البيانات المدخلة');
-            return redirect()->route('blocks.index');
+            return redirect()->route('blocks.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -153,9 +149,13 @@ class BlockController extends Controller
      */
     public function destroy($id)
     {
-        Block::destroy($id);
-        toastr()->success('تم حذف البيانات بنجاح');
-        return redirect()->route('blocks.index');
+        $graves = Grave::where('block_id', $id)->get();
+        if($graves)
+        {
+            return redirect()->route('blocks.index')->with(['error' => __('You Can`t Delete This Block Because There Is Grave Belongs To It')]);
+        }else{Block::destroy($id);}
+        
+        return redirect()->route('blocks.index')->with(['warning' => __('Data has been Deleted successfully!')]);
 
     }
 }

@@ -19,22 +19,7 @@ class ProcedureController extends Controller
         return view('posts.procedure.index', compact('procedures'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         try 
@@ -44,45 +29,16 @@ class ProcedureController extends Controller
             $procedures->sub_title = $request->sub_title;
             $procedures->text = $request->text;
             $procedures->save();
-            toastr()->success('تمت اللإضافة بنجاح');
-            return redirect()->route('procedure.index');
+
+            return redirect()->route('procedure.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('procedure.index');
+            return redirect()->route('procedure.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         try 
@@ -92,13 +48,12 @@ class ProcedureController extends Controller
             $procedures->sub_title = $request->sub_title;
             $procedures->text = $request->text;
             $procedures->save();
-            toastr()->warning('تم التعديل بنجاح');
-            return redirect()->route('procedure.index');
+
+            return redirect()->route('procedure.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('procedure.index');
+            return redirect()->route('procedure.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -113,11 +68,9 @@ class ProcedureController extends Controller
         try {
             $procedures =  Procedure::findOrFail($id);
             $procedures->delete();
-            toastr()->success('تم حذف بنجاح');
-            return redirect()->route('procedure.index');
+            return redirect()->route('procedure.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } catch (\Exception $e) {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('procedure.index');
+            return redirect()->route('procedure.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

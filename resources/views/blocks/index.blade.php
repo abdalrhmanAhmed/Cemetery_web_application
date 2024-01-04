@@ -33,6 +33,7 @@
 				<!-- breadcrumb -->
 @endsection
 @section('content')
+				@include('notify.notify')
 				<!-- row -->
 				<div class="row">
 					<div class="col-xl-12">

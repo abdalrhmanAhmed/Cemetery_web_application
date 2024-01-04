@@ -20,6 +20,7 @@
 				<!-- breadcrumb -->
 @endsection
 @section('content')
+				@include('notify.notify')
 				<!-- row opened -->
 				<div class="row row-sm">
 

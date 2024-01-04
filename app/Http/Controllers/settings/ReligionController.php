@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dead;
 use Illuminate\Http\Request;
 use App\Models\Religion;
 
@@ -38,12 +39,11 @@ class ReligionController extends Controller
             $Religions->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $Religions->save();
 
-            toastr(__('Data has been saved successfully!'), 'success');
-            return redirect()->route('religion.index');
+            return redirect()->route('religion.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e)
         {
-            return redirect()->route('religion.index');
+            return redirect()->route('religion.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -59,12 +59,11 @@ class ReligionController extends Controller
             $Religions->name = $request->name;
             $Religions->save();
 
-            toastr(__('Data has been Updated successfully!'), 'success');
-            return redirect()->route('religion.index');
+            return redirect()->route('religion.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('religion.index');
+            return redirect()->route('religion.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -78,15 +77,20 @@ class ReligionController extends Controller
     {
         try 
         {
-            $Religions = Religion::findOrFail($id);
-            $Religions->delete();
+            $dead = Dead::where('relagen_id', $id)->get();
+            if($dead)
+            {
+                return redirect()->route('religion.index')->with(['error' => __('You Can`t Delete This Religion')]);
+            }else{
+                $Religions = Religion::findOrFail($id);
+                $Religions->delete();
+            }
 
-            toastr(__('Data has been Deleted successfully!'), 'success');
-            return redirect()->route('religion.index');
+            return redirect()->route('religion.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('religion.index');
+            return redirect()->route('religion.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

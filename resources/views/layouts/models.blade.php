@@ -14,7 +14,7 @@
 											</a>
 										</div>
 										<div class="col">
-											<h5 class="" style="color: aliceblue; width:150px">تغيير كلمة المرور</h5>
+											<h5 class="" style="color: aliceblue; width:150px">{{__('Change Password')}}</h5>
 										</div>
 									</div>
 								</li>
@@ -29,13 +29,13 @@
 								<div class="row row-sm">
 									<div class="col-lg-12">
 										<div class="form-group has-success mg-t-20">
-											<input class="form-control" placeholder="أدخل كلمة المرور القديمة" name="old_password" required type="password" >
+											<input class="form-control" placeholder="{{__('Enter Your Old Password')}}" name="old_password" required type="password" >
 										</div>
 										<div class="form-group has-success mg-b-20">
-											<input class="form-control" placeholder="أدخل كلمة المرور الجديدة" name="password" required type="password" >
+											<input class="form-control" placeholder="{{__('Enter Your New Password')}}" name="password" required type="password" >
 										</div>
 										<div class="form-group has-success mg-b-20">
-											<input id="password-confirm" class="form-control" placeholder="أعد كتابة كلمة المرور الجديدة" name="password_confirmation" required type="password" >
+											<input id="password-confirm" class="form-control" placeholder="{{__('Confirm Your New Password')}}" name="password_confirmation" required type="password" >
 										</div>
 									</div>
 								</div>
@@ -47,7 +47,7 @@
 									<div class="input-group">
 										<button type="submit" class="btn btn-primary ">
 											<i class="fa fa-key" aria-hidden="true"></i>
-											تغيير كلمة المرور
+											{{__('Change Password')}}
 										</button>
 									</div>
 								</div>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\settings;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dead;
 use Illuminate\Http\Request;
 use App\Models\Hospital;
+use App\Models\Information;
 
 class HospitalController extends Controller
 {
@@ -39,12 +41,11 @@ class HospitalController extends Controller
             $hospitals->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $hospitals->save();
 
-            toastr()->success(__('Data has been saved successfully!'));
-            return redirect()->route('hospital.index');
+            return redirect()->route('hospital.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e)
         {
-            return redirect()->route('hospital.index');
+            return redirect()->route('hospital.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -61,12 +62,11 @@ class HospitalController extends Controller
             $hospitals->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $hospitals->save();
 
-            toastr()->success(__('Data has been Updated successfully!'));
-            return redirect()->route('hospital.index');
+            return redirect()->route('hospital.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('hospital.index');
+            return redirect()->route('hospital.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 
@@ -80,15 +80,20 @@ class HospitalController extends Controller
     {
         try 
         {
-            $hospitals = Hospital::findOrFail($id);
-            $hospitals->delete();
+            $info = Information::where('hospital_id', $id)->get();
+            if($info)
+            {
+                return redirect()->route('hospital.index')->with(['error' => __('You Can`t Delete This Hospital')]);
+            }else{
+                $hospitals = Hospital::findOrFail($id);
+                $hospitals->delete();
+            }
 
-            toastr()->success(__('Data has been Deleted successfully!'));
-            return redirect()->route('hospital.index');
+            return redirect()->route('hospital.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return redirect()->route('hospital.index');
+            return redirect()->route('hospital.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }
