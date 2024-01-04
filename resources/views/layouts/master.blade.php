@@ -29,17 +29,7 @@
 			<div class="container-fluid">
 				@yield('page-header')
 					<!-- update message -->
-@if(session()->has('same_password'))
-<script>
-	window.onload = function() {
-		notif({
-			msg: "كلمة الجديدة هي نفس كلمة المرور القديمة",
-			type: "warning"
-		})
-	}
 
-</script>
-@endif
 				@yield('content')
 				@include('layouts.sidebar')
 				@include('layouts.models')

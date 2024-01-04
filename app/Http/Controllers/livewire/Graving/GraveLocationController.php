@@ -25,7 +25,7 @@ class GraveLocationController extends Controller
         ];
         $latitude = floatval($grave->blocks->latitude);
         $longitude = floatval($grave->blocks->Longitude);
-
+       
         return view('livewire.graving.chooseLocation', compact('grave', 'initialMarkers', 'information', 'edit', 'latitude', 'longitude'));
     }
 
@@ -42,11 +42,11 @@ class GraveLocationController extends Controller
             $grave->Longitude = $request->longitude;
             $grave->save();
 
-            return redirect()->to('/graving');
+            return redirect()->to('/graving')->with(['warning' => $request->editMode == 1 ? __('Data has been Updated successfully!') : __('Data has been saved successfully!')]);
         }
         catch(\Exception $e)
         {
-
+            return redirect()->to('/graving')->with(['error' => __('There Is A Problem With The Server')]);
         }
 
     }

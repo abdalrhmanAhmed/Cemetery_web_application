@@ -3,7 +3,7 @@
 <!-- Internal Nice-select css  -->
 <link href="{{URL::asset('assets/plugins/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet" />
 @section('title')
-تعديل مستخدم 
+{{__('Edit User')}} 
 @stop
 
 
@@ -13,8 +13,8 @@
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">المستخدمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تعديل
-                مستخدم</span>
+            <h4 class="content-title mb-0 my-auto">{{__('Users')}}</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{__('Edit User')}}</span>
         </div>
     </div>
 </div>
@@ -30,7 +30,7 @@
             <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <strong>خطا</strong>
+            <strong>{{__('Error')}}</strong>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -43,7 +43,7 @@
             <div class="card-body">
                 <div class="col-lg-12 margin-tb">
                     <div class="pull-right">
-                        <a class="btn btn-primary btn-sm" href="{{ route('admin.users.index') }}">رجوع</a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('admin.users.index') }}">{{__('Back')}}</a>
                     </div>
                 </div><br>
 
@@ -52,37 +52,28 @@
 
                     <div class="row mg-b-20">
                         <div class="parsley-input col-md-6" id="fnWrapper">
-                            <label>{{__('User Name')}}: <span class="tx-danger">*</span></label>
-                            {!! Form::text('name', null, array('class' => 'form-control','required')) !!}
+                            <label>{{__('User Name By Arabic')}}: <span class="tx-danger">*</span></label>
+                            <input type="text" class="form-control" name="name_ar" value="{{$user->getTranslation('name', 'ar')}}" id="">
                         </div>
-
-                        <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" id="lnWrapper">
-                            <label>البريد الالكتروني: <span class="tx-danger">*</span></label>
-                            {!! Form::text('email', null, array('class' => 'form-control','required')) !!}
+                        <div class="parsley-input col-md-6" id="fnWrapper">
+                            <label>{{__('User Name By English')}}: <span class="tx-danger">*</span></label>
+                            <input type="text" class="form-control" name="name_en" value="{{$user->getTranslation('name', 'en')}}" id="">
                         </div>
+                
                     </div>
 
-                </div>
-
-                <div class="row mg-b-20">
-                    <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" id="lnWrapper">
-                        <label>كلمة المرور: <span class="tx-danger">*</span></label>
-                        {!! Form::password('password', array('class' => 'form-control','required')) !!}
-                    </div>
-
-                    <div class="parsley-input col-md-6 mg-t-20 mg-md-t-0" id="lnWrapper">
-                        <label> تاكيد كلمة المرور: <span class="tx-danger">*</span></label>
-                        {!! Form::password('confirm-password', array('class' => 'form-control','required')) !!}
-                    </div>
                 </div>
 
                 <div class="row row-sm mg-b-20">
-                    <div class="col-lg-6">
-                        <label class="form-label">حالة المستخدم</label>
+                    <div class="parsley-input col-md-6" id="lnWrapper">
+                        <label>{{__('E-mail')}}: <span class="tx-danger">*</span></label>
+                        <input type="email" name="email" value="{{$user->email}}" class="form-control" id="">
+                    </div>
+                    <div class="col-lg-6 mg-t-5">
+                        <label class="form-label">{{__('Status')}}</label>
                         <select name="status" id="select-beast" class="form-control  nice-select  custom-select">
-                            <option value="{{ $user->Status}}">{{ $user->Status}}</option>
-                            <option value="1">مفعل</option>
-                            <option value="0">غير مفعل</option>
+                            <option value="1">{{__('Active')}}</option>
+                            <option value="0" {{$user->status == 0 ? 'selected' : ''}}>{{__('Unactive')}}</option>
                         </select>
                     </div>
                 </div>
@@ -90,14 +81,14 @@
                 <div class="row mg-b-20">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>نوع المستخدم</strong>
+                            <strong>{{__('Roles')}}</strong>
                             {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple'))
                             !!}
                         </div>
                     </div>
                 </div>
-                <div class="mg-t-30">
-                    <button class="btn btn-main-primary pd-x-20" type="submit">تحديث</button>
+                <div class="mg-t-30 d-flex justify-content-center">
+                    <button class="btn btn-main-primary pd-x-20" type="submit">{{__('Edit')}}</button>
                 </div>
                 {!! Form::close() !!}
             </div>

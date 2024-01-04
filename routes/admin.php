@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\users\RoleController;
 use App\Http\Controllers\admin\users\userController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\localizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//localization Routes
+Route::get('locale/{lange}', [localizationController::class, 'setLang']);
 Route::middleware([
     'auth',
     'localizationMiddleware'
@@ -41,7 +43,7 @@ Route::middleware([
 Route::get('/', function () {
     return view('auth.login');
 });
-
+Auth::routes(['register' => false]);
 Auth::routes();
 
 

@@ -410,7 +410,7 @@ class Graving extends Component
                 $grave->save();
             }
 
-            // DB::commit();
+            DB::commit();
             $this->clearForm();
             if($this->editMode)
             {
@@ -441,7 +441,7 @@ class Graving extends Component
         $grave = Grave::findOrFail($information->grave_id);
         $grave->status = 0;
         $grave->save();
-        return redirect()->to('graving');
+        return redirect()->to('graving')->with(['warning' => __('Data has been Deleted successfully!')]);
     }
 
     public function clearForm()

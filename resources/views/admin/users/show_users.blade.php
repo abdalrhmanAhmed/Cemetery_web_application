@@ -21,8 +21,8 @@
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">المستخدمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة
-                المستخدمين</span>
+            <h4 class="content-title mb-0 my-auto">{{__('Users')}}</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('Users List') }}</span>
         </div>
     </div>
 </div>
@@ -44,7 +44,7 @@
             <div class="card-header pb-0">
                 <div class="col-sm-1 col-md-2">
                     @can('user-create')
-                        <a class="btn btn-primary btn-sm" href="{{ route('admin.users.create') }}">اضافة مستخدم</a>
+                        <a class="btn btn-primary" href="{{ route('admin.users.create') }}">{{__('Add New User')}}</a>
                     @endcan
                 </div>
             </div>
@@ -55,10 +55,10 @@
                             <tr>
                                 <th class="wd-10p border-bottom-0">#</th>
                                 <th class="wd-15p border-bottom-0">{{__('User Name')}}</th>
-                                <th class="wd-20p border-bottom-0">البريد الالكتروني</th>
-                                <th class="wd-15p border-bottom-0">حالة المستخدم</th>
-                                <th class="wd-15p border-bottom-0">نوع المستخدم</th>
-                                <th class="wd-10p border-bottom-0">العمليات</th>
+                                <th class="wd-20p border-bottom-0">{{__('E-mail')}}</th>
+                                <th class="wd-15p border-bottom-0">{{__('Status')}}</th>
+                                <th class="wd-15p border-bottom-0">{{__('Role')}}</th>
+                                <th class="wd-10p border-bottom-0">{{__('Actions')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,11 +70,13 @@
                                     <td>
                                         @if ($user->status == 1)
                                             <span class="label text-success d-flex">
-                                                <div class="dot-label bg-success ml-1"></div>مفعل
+                                                <div class="dot-label bg-success ml-1"></div>&nbsp;
+                                                {{__('Active')}}
                                             </span>
                                         @else
                                             <span class="label text-danger d-flex">
-                                                <div class="dot-label bg-danger ml-1"></div>غير مفعل
+                                                <div class="dot-label bg-danger ml-1"></div>
+                                                {{__('Unactive')}}
                                             </span>
                                         @endif
                                     </td>

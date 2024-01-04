@@ -1,9 +1,16 @@
 @extends('layouts.master')
 @section('css')
+    <!-- Internal Data table css -->
+
+    <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <!--Internal   Notify -->
     <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @section('title')
-    صلاحيات المستخدمين 
+    {{__('Users Roles')}} 
 @stop
 
 
@@ -13,8 +20,9 @@
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">المستخدمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"> /
-                صلاحيات المستخدمين</span>
+            <h4 class="content-title mb-0 my-auto">{{__('Users')}}</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0"> /
+                {{__('Users Roles')}}</span>
         </div>
     </div>
 </div>
@@ -68,7 +76,7 @@
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-right">
                             @can('role-create')
-                                <a class="btn btn-primary btn-sm" href="{{ route('admin.roles.create') }}">اضافة</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('admin.roles.create') }}">{{__('Add New Role')}}</a>
                             @endcan
                         </div>
                     </div>
@@ -78,12 +86,12 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table mg-b-0 text-md-nowrap table-hover ">
+                    <table class="table mg-b-0 text-md-nowrap table-hover table-bordered" id="example1">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>الاسم</th>
-                                <th>العمليات</th>
+                                <th>{{__('Role Name')}}</th>
+                                <th>{{__('Actions')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,19 +102,19 @@
                                     <td>
                                         @can('role-list')
                                             <a class="btn btn-success btn-sm"
-                                                href="{{ route('admin.roles.show', $role->id) }}">عرض</a>
+                                                href="{{ route('admin.roles.show', $role->id) }}">{{__('Show')}}</a>
                                         @endcan
                                         
                                         @can('role-edit')
                                             <a class="btn btn-primary btn-sm"
-                                                href="{{ route('admin.roles.edit', $role->id) }}">تعديل</a>
+                                                href="{{ route('admin.roles.edit', $role->id) }}">{{__('Edit')}}</a>
                                         @endcan
 
                                         @if ($role->name !== 'Admin')
                                             @can('role-delete')
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['admin.roles.destroy',
                                                 $role->id], 'style' => 'display:inline']) !!}
-                                                {!! Form::submit('حذف', ['class' => 'btn btn-danger btn-sm']) !!}
+                                                {!! Form::submit(__('Delete'), ['class' => 'btn btn-danger btn-sm']) !!}
                                                 {!! Form::close() !!}
                                             @endcan
                                         @endif
@@ -132,7 +140,21 @@
 @section('js')
 @toastr_js
 @toastr_render
+<!-- Internal Data tables -->
+<script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
+<!--Internal  Datatable js -->
+<script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
 <!--Internal  Notify js -->
 <script src="{{ URL::asset('assets/plugins/notify/js/notifIt.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/notify/js/notifit-custom.js') }}"></script>
+<!-- Internal Modal js-->
+<script src="{{ URL::asset('assets/js/modal.js') }}"></script>
 @endsection

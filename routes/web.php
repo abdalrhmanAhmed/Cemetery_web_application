@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\blocks\BlockController;
-use App\Http\Controllers\burials\BurialController;
 use App\Http\Controllers\livewire\Graving\GraveLocationController;
 use App\Http\Controllers\localizationController;
 use Illuminate\Support\Facades\Route;

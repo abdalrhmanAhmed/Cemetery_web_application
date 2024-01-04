@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+	{{__('Burials')}}
+@endsection
 @section('css')
 @livewireStyles
 <link rel="stylesheet" href="{{asset('assets/css/wizard.css')}}">
@@ -17,6 +20,7 @@
 				<!-- breadcrumb -->
 @endsection
 @section('content')
+				@include('notify.notify')
 				<!-- row -->
 				<div class="row">
 					<div class="col-xl-12">

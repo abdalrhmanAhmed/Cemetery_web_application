@@ -26,7 +26,7 @@
 							<div class="card-body">
 								<form action="{{route('setpLocaltion.storeLocation', $grave->id)}}" method="POST">
 									@csrf
-									<div class="row">
+									<div class="row mb-3">
 										<div class="col-md-4">
 											<label for="">{{ __('Burial Name') }}</label>
 											<input type="text" class="form-control" readonly value="{{$information->deceased->name}} {{ $information->deceased->father }} {{ $information->deceased->grand_father }} {{  $information->deceased->great_grand_father }}" id="">
@@ -38,6 +38,7 @@
 										<div class="col-md-4">
 											<label for="">{{ __('Grave') }}</label>
 											<input type="text" class="form-control" readonly value="{{ $grave->name }}" id="">
+											<input type="hidden" value="{{$edit}}" name="editMode">
 										</div>
 									</div>
 									<div class="map-container" style="margin: 2px;">
@@ -45,16 +46,18 @@
 											<div class="col-md">
 												<div class="form-group row">
 													<div class="col-md map-input-with-no-padding">
-														<label for=""> خط العرض</label>
-														<input class="form-control" readonly name="latitude" type="text"><br>
+														<label for=""> {{__('Latitude')}}</label>
+														<input class="form-control" readonly name="latitude"
+														value="{{ $edit == 1 ? $grave->latitude : '' }}" type="text"><br>
 													</div>
 												</div>
 											</div>
 											<div class="col-md">
 												<div class="form-group row">
 													<div class="col-md map-input-with-no-padding">
-														<label for="">خط الطول</label>
-														<input class="form-control" readonly  name="longitude" type="text"><br>
+														<label for="">{{__('Longitude')}}</label>
+														<input class="form-control" readonly  name="longitude"
+														value="{{ $edit == 1 ? $grave->Longitude : '' }}" type="text"><br>
 													</div>
 												</div>
 											</div>
@@ -63,7 +66,7 @@
 									</div>
 									<div class="row mt-4">
 										<div class="col-md-12 d-flex justify-content-center">
-											<button type="submit" class="btn btn-primary">حفظ البيانات</button>
+											<button type="submit" class="btn btn-primary">{{__("Save")}}</button>
 										</div>
 									</div>
 								</form>

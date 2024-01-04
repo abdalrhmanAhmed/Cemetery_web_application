@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Translatable\HasTranslations;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    use HasRoles;
+    use HasRoles, HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -26,6 +27,7 @@ class User extends Authenticatable
         'status'
     ];
 
+    public $translatable = ['name'];
     /**
      * The attributes that should be hidden for serialization.
      *

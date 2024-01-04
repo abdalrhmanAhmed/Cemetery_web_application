@@ -21,11 +21,11 @@
 									 {{ __('Language') }}
 									</a>
 								<div class="dropdown-menu">
-									<a href="locale/en" class="dropdown-item">
+									<a href="{{url('locale/en')}}" class="dropdown-item">
 										<img src="{{asset('assets/img/flags/US.png')}}" alt="">&nbsp;
 										{{__('English')}}
 									</a>
-									<a href="locale/ar" class="dropdown-item">
+									<a href="{{url('locale/ar')}}" class="dropdown-item">
 										<img src="{{asset('assets/img/flags/SA.png')}}" alt="">&nbsp;	
 										{{__('Arabic')}}
 									</a>
