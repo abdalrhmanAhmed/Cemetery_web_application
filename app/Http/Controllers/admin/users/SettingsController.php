@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function dark_mode_on(Request $request){
         $request->session()->put('dark_mode','on'); 
         return redirect()->back();

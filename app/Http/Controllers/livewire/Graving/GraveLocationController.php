@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class GraveLocationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function chooseLocation($grave_id, $information_id, $edit)
     {
         $grave = Grave::findOrFail($grave_id);

@@ -8,6 +8,10 @@ use App\Models\Procedure;
 
 class ProcedureController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

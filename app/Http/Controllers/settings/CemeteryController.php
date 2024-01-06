@@ -12,6 +12,11 @@ use App\Models\Grave;
 
 class CemeteryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $initialMarkers = [

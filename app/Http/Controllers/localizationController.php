@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Session;
 
 class localizationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function setLang($locale)
     {
         App::setLocale($locale);

@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);

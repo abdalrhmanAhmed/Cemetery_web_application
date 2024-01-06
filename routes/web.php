@@ -34,7 +34,7 @@ use App\Http\Livewire\Graving\EditGrave;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('home');
 });
 
 Auth::routes(['register' => false]);
