@@ -130,7 +130,8 @@
 				lat: <?php echo json_encode(floatval($cemeterie->latitude)); ?>,
 				lng: <?php echo json_encode(floatval($cemeterie->Longitude)); ?>,
 			},
-			zoom: 15
+			zoom: 15,
+			mapTypeId: 'satellite'
 		});
 
 		map.addListener("click", function(event) {

@@ -32,24 +32,24 @@
 								</div>
 							</div>
 							<div class="card-body">
-                                <form action="{{route('historical_grave.store')}}" method="POST">
-                                    @csrf                                    
+                                <form action="{{route('historical_grave.update', $historical_grave->id)}}" method="POST">
+                                    @csrf  
+									@method('PUT')                                  
                                     <div class="row">
                                         <div class="col-md">
                                             <label for="location">العنوان</label>
                                             <input name="title" placeholder="عنوان القبر" class="form-control" type="text" value="{{$historical_grave->title}}" required>
-                                            </input>
                                         </div>
                                     </div>
                                     <br>
                                     <div class="row">
                                         <div class="col-md">
                                             <label for="name_ar"> إسم صاحب القبر التاريخي عربي</label>
-                                            <input type="text" name="name_ar" placeholder="إسم صاحب القبر التاريخي" class="form-control" value="{{$historical_grave->name}}" required>
+                                            <input type="text" name="name_ar" placeholder="إسم صاحب القبر التاريخي" class="form-control" value="{{$historical_grave->getTranslation('name', 'ar')}}" required>
                                         </div>
                                         <div class="col-md">
                                             <label for="name_en"> إسم صاحب القبر التاريخي إنجليزي</label>
-                                            <input type="text" name="name_en" placeholder="إسم صاحب القبر التاريخي" class="form-control" value="{{$historical_grave->name}}" required>
+                                            <input type="text" name="name_en" placeholder="إسم صاحب القبر التاريخي" class="form-control" value="{{$historical_grave->getTranslation('name', 'en')}}" required>
                                         </div>
                                     </div>
 
@@ -84,8 +84,7 @@
                                         <div id="map"></div>
                                     </div>
                                     <div class="card-footer">
-                                        <button class="btn ripple btn-info" type="submit"><i class="fa fa-plus"></i> إضافة</button>
-                                        <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+                                        <button class="btn ripple btn-warning" type="submit"><i class="fa fa-plus"></i> تعديل</button>
                                     </div>
                                 </form>
 							</div>
@@ -144,10 +143,11 @@
 	function initMap() {
 		map = new google.maps.Map(document.getElementById("map"), {
 			center: {
-				lat: 25.1338688,
-				lng: 56.3332739,
+				lat: <?php echo json_encode(floatval($historical_grave->latitude)); ?>,
+				lng: <?php echo json_encode(floatval($historical_grave->Longitude)); ?>,
 			},
-			zoom: 15
+			zoom: 24,
+			mapTypeId: 'satellite'
 		});
 
 		map.addListener("click", function(event) {

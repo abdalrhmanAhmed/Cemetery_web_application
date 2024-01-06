@@ -85,7 +85,6 @@
                                     </div>
                                     <div class="card-footer">
                                         <button class="btn ripple btn-info" type="submit"><i class="fa fa-plus"></i> إضافة</button>
-                                        <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
                                     </div>
                                 </form>
 							</div>
@@ -147,7 +146,8 @@
 				lat: 25.1338688,
 				lng: 56.3332739,
 			},
-			zoom: 15
+			zoom: 15,
+			mapTypeId: 'satellite'
 		});
 
 		map.addListener("click", function(event) {

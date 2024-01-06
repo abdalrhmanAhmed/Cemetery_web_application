@@ -146,7 +146,8 @@
 				lat: 25.1338688,
 				lng: 56.3332739,
 			},
-			zoom: 15
+			zoom: 15,
+			mapTypeId: 'satellite'
 		});
 
 		map.addListener("click", function(event) {

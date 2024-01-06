@@ -94,7 +94,8 @@
 				lat: {{$latitude}},
 				lng: {{$longitude}},
 			},
-			zoom: 15
+			zoom: 15,
+			mapTypeId: 'satellite'
 		});
 
 		map.addListener("click", function(event) {

@@ -55,20 +55,17 @@ class HistoricalGraveController extends Controller
         {
             $historical_grave = new HistoricalGrave();
             $historical_grave->title = $request->title;
-            $historical_grave->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
+            $historical_grave->name = ['ar' => $request->ar, 'en' => $request->en];
             $historical_grave->text = $request->text;
             $historical_grave->latitude = $request->latitude;
             $historical_grave->Longitude = $request->longitude;
             $historical_grave->save();
 
-            toastr()->success('تمت اللإضافة بنجاح');
-            return redirect()->route('historical_grave.index');
+            return redirect()->route('historical_grave.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return $e;
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('historical_grave.create');
+            return redirect()->route('historical_grave.create')->with(['error' => __('There Is A Problem With The Server')]);
         }  
     }
 
@@ -123,13 +120,11 @@ class HistoricalGraveController extends Controller
             $historical_grave->latitude = $request->latitude;
             $historical_grave->Longitude = $request->longitude;
             $historical_grave->save();
-            toastr()->warning('تم التعديل بنجاح');
-            return redirect()->route('historical_grave.index');
+            return redirect()->route('historical_grave.index')->with(['success' => __('Data has been Updated successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('historical_grave.index');
+            return redirect()->route('historical_grave.index')->with(['error' => __('There Is A Problem With The Server')]);
         }  
     }
 
@@ -145,13 +140,11 @@ class HistoricalGraveController extends Controller
         {
             $historical_grave =  HistoricalGrave::findOrfail($id);   
             $historical_grave->delete();
-            toastr()->success('تم حذف بنجاح');
-            return redirect()->route('historical_grave.index');
+            return redirect()->route('historical_grave.index')->with(['warning' => __('Data has been Deleted successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            toastr()->error('يوجد خطأ في البيانات المدخلة');
-            return redirect()->route('historical_grave.index');
+            return redirect()->route('historical_grave.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
 
 
