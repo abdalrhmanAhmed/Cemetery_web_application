@@ -166,6 +166,39 @@ class CemeteryController extends Controller
         return response()->json($response);
     }
 
+    public function get_graves()
+    {
+        try {
+            $graves = Information::get();
+            $data = [];
+            foreach ($graves as $grave) {
+                $data[] = array(
+                    'id'       => $grave->graves->id,
+                    'dead_name'     => $grave->deceased->name.' '.$grave->deceased->father.' '.$grave->deceased->grand_father.' '.$grave->deceased->great_grand_father,
+                    'date_of_death' => $grave->date_of_death ?? "" ,
+                    'burial_date' => $grave->burial_date ?? "",
+                    'cemetery_name' => $grave->graves->blocks->cemeteries->name ?? "",
+                    'city' => $grave->graves->blocks->cemeteries->cities->name ?? "",
+                    'country' => $grave->graves->blocks->cemeteries->cities->countries->name ?? "",
+                    'latitude' => $grave->graves->latitude ?? "",
+                    'Longitude' => $grave->graves->Longitude ?? ""
+                );
+            }
+            $response = array(
+                'error' => false,
+                'message' => "تم تحميل البيانات بنجاح",
+                'data' => $data,
+                'code' => 200,
+            );
+        } catch (\Exception $e) {
+            $response = array(
+                'error' => true,
+                'message' => trans('error_occurred'),
+                'code' => 103,
+            );
+        }
+        return response()->json($response);
+    }
 
     // zero codes
     public function ToIntArray($data){

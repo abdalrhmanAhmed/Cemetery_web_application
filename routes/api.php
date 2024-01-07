@@ -35,5 +35,6 @@ Route::prefix('cemeteries')->group(function()
 Route::prefix('graves')->group(function()
 {
     Route::get('get-all-grave/{id}', [App\Http\Controllers\api\CemeteryController::class, 'get_all_grave']);
+    Route::get('get-graves', [App\Http\Controllers\api\CemeteryController::class, 'get_graves']);
     Route::get('get-grave-details/{id}', [App\Http\Controllers\api\CemeteryController::class, 'get_grave_details']);
 });
