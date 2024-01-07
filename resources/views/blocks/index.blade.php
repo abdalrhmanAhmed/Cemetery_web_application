@@ -52,7 +52,7 @@
 												<th class="wd-5p border-bottom-0">#</th>
 												<th class="wd-15p border-bottom-0">{{__('Block Name')}}</th>
 												<th class="wd-20p border-bottom-0">{{__('Cemetery')}}</th>
-												<th class="wd-25p border-bottom-0">{{__('Action')}}</th>
+												<th class="wd-25p border-bottom-0">{{__('Actions')}}</th>
 
 											</tr>
 										</thead>

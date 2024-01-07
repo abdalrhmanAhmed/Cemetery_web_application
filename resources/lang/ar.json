@@ -214,5 +214,13 @@
     "Country Count" : "عدد الدول",
     "Cities Count" : "عدد المدن",
     "Cemetery Count" : "عدد المقابر",
-    "Choose Status" : "إختر حالة"
+    "Choose Status" : "إختر حالة",
+    "Blocks" : "المجمعات",
+    "Gender Name By Arabic" : "إسم الجنس بالعربية",
+    "Gender Name By English" : "إسم الجنس بالإنجليزية",
+    "Cemetery Name By Arabic" : "إسم المقبرة بالعربية",
+    "Cemetery Name By English" : "إسم المقبرة بالإنجليزية",
+    "Countery" : "الدولة",
+    "Hospital Name By Arabic" : "إسم المستشفى بالعربية",
+    "Hospital Name By English" : "إسم المستشفى بالإنجليزية"
 }
