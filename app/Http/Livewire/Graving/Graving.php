@@ -201,7 +201,7 @@ class Graving extends Component
                 )
             )->paginate(3);
         }
-        $genealoges = Genealogy::all();
+        // $genealoges = Genealogy::all();
         $relagens = Religion::all();
         $nationalities = Nationality::all();
         $gendors = Gander::all();
@@ -209,7 +209,7 @@ class Graving extends Component
         $cemeteries = Cemetery::all();
         $countries = Country::all();
         return view('livewire.graving.graving', [
-            'genealoges' => $genealoges,
+            // 'genealoges' => $genealoges,
             'relagens' => $relagens,
             'nationalities' => $nationalities,
             'gendors' => $gendors,
@@ -273,7 +273,7 @@ class Graving extends Component
         $this->f_name_en = $deceased->getTranslation('great_grand_father', 'en');
         $this->identity = $deceased->identity;
         $this->age = $deceased->age;
-        $this->genealogy_id = $deceased->genealogy_id;
+        // $this->genealogy_id = $deceased->genealogy_id;
         $this->religin = $deceased->relagen_id;
         $this->nationality = $deceased->national_id;
         $this->gender = $deceased->gander_id;
@@ -311,7 +311,7 @@ class Graving extends Component
                 'f_name_en' => 'required',
                 'identity' => 'required',
                 'age' => 'required',
-                'genealogy_id' => 'required',
+                // 'genealogy_id' => 'required',
                 'religin' => 'required',
                 'nationality' => 'required',
                 'gender' => 'required',
@@ -362,7 +362,7 @@ class Graving extends Component
             $deceased->great_grand_father = ['ar' => $this->f_name_ar, 'en' => $this->f_name_en];
             $deceased->identity = $this->identity;
             $deceased->age = $this->age;
-            $deceased->genealogy_id = $this->genealogy_id;
+            // $deceased->genealogy_id = $this->genealogy_id;
             $deceased->relagen_id = $this->religin;
             $deceased->national_id = $this->nationality;
             $deceased->gander_id = $this->gender;
@@ -456,7 +456,7 @@ class Graving extends Component
         $this->f_name_en = '';
         $this->identity = '';
         $this->age = '';
-        $this->genealogy_id = '';
+        // $this->genealogy_id = '';
         $this->religin = '';
         $this->nationality = '';
         $this->gender = '';

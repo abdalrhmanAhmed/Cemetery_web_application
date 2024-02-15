@@ -16,6 +16,10 @@ class HospitalsSeeder extends Seeder
     {
         $hospitals = [
             [
+                'ar' => 'أبو ظبي',
+                'en' => 'Abu Dhabi',
+            ],
+            [
                 'ar' => 'مستشفى خليفة العام',
                 'en' => 'Khalifa General Hospital',
             ],

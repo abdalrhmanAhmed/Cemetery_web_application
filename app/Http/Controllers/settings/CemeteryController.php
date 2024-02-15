@@ -29,8 +29,8 @@ class CemeteryController extends Controller
                 'draggable' => true
             ],
         ];
-        $cemeteries = Cemetery::all();
-        $countries = Country::all();
+        $cemeteries =   Cemetery::all();
+        $countries  =   Country::all();
         return view('settings.cemeteries.index',compact('cemeteries', 'countries', 'initialMarkers'));    
     }
 
@@ -65,6 +65,7 @@ class CemeteryController extends Controller
     {
         $countries = Country::all();
         $cemeterie = Cemetery::findOrFail($id);
+        $cities    = City::all();
         $initialMarkers = [
             [
                 'position' => [
@@ -75,7 +76,7 @@ class CemeteryController extends Controller
                 'draggable' => true
             ],
         ];
-        return view('settings.cemeteries.editCemetery', compact('cemeterie', 'initialMarkers', 'countries'));
+        return view('settings.cemeteries.editCemetery', compact('cemeterie', 'initialMarkers', 'countries', 'cities'));
     }
 
     public function update(Request $request, $id)

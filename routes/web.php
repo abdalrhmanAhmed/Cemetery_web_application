@@ -58,7 +58,7 @@ Route::middleware([
         Route::resource('hospital', HospitalController::class);
         Route::resource('gander', GanderController::class);
 
-        Route::resource('gnealogy', GenealogyController::class);
+        // Route::resource('gnealogy', GenealogyController::class);
         Route::resource('religion', ReligionController::class);
         Route::resource('nationality', NationalityController::class);
         Route::resource('cemetery', CemeteryController::class);

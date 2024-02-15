@@ -75,7 +75,7 @@
 							<li><a class="slide-item" href="{{route('graves.index')}}">{{__('Graves')}}</a></li>
 							<li><a class="slide-item" href="{{route('nationality.index')}}">{{ __('Nationalities') }}</a></li>
 							<li><a class="slide-item" href="{{route('religion.index')}}">{{ __('Religions') }}</a></li>
-							<li><a class="slide-item" href="{{route('gnealogy.index')}}">{{__('Genealogies')}}</a></li>
+							{{-- <li><a class="slide-item" href="{{route('gnealogy.index')}}">{{__('Genealogies')}}</a></li> --}}
 							<li><a class="slide-item" href="{{route('gander.index')}}">{{ __('Genders') }}</a></li>
 							<li><a class="slide-item" href="{{route('hospital.index')}}">{{__('Hospitals')}}</a></li>
 						</ul>

@@ -107,12 +107,13 @@ class CemeteryController extends Controller
             $cemeteries = Cemetery::where('id', $id)->select('id', 'name')->first();
             $blocks = Block::where('cemetery_id', $cemeteries->id)->select('id', 'name')->get();
             $data = $this->ToIntArray($blocks);
-            $graves = Grave::whereIn('block_id', $data)->select('id', 'name')->get();
+            $graves = Grave::whereIn('block_id', $data)->where('status', 1)->select('id', 'name')->get();
             $data = [];
             foreach ($graves as $grave) {
+                $infos = Information::where('grave_id', $grave->id)->first();
                 $data[] = array(
                     'id'       => $grave->id,
-                    'name'     => $grave->name,
+                    'name'     => $infos->deceased->name . ' ' . $infos->deceased->father . ' ' . $infos->deceased->grand_father . ' ' . $infos->deceased->great_grand_father,
                 );
             }
             $response = array(
@@ -144,10 +145,12 @@ class CemeteryController extends Controller
                 'date_of_death'         => $infos->date_of_death,
                 'burial_date'           => $infos->burial_date,
                 'cemetery_name'         => $infos->graves->blocks->cemeteries->name ?? "",
+                'medical_diagnosis'     => $infos->medical_diagnosis ?? "",
+                'hospital_name'         => $infos->hospitals->name ?? "",
                 'city'                  => $infos->graves->blocks->cemeteries->cities->name ?? "",
                 'country'               => $infos->graves->blocks->cemeteries->cities->countries->name ?? "",
-                'latitude'              => 25.1338688,
-                'Longitude'             => 56.33327390000002
+                'latitude'              => $infos->graves->latitude,
+                'Longitude'             => $infos->graves->Longitude
             );
             $response = array(
                 'error' => false,

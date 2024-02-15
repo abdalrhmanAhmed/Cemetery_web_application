@@ -17,6 +17,15 @@ class CemeteriesSeeder extends Seeder
         $cemeteries = [
             [
                 'name' => [
+                    'ar' => 'مقبرة الفرفار',
+                    'en' => 'Farfar Cemetery',
+                ],
+                'latitude' => 24.7127752,
+                'Longitude' => 56.4574783,
+                'citiy_id' => 6
+            ],
+            [
+                'name' => [
                     'ar' => 'مقبرة الشيخ زايد',
                     'en' => 'Sheikh Zayed Grand Mosque',
                 ],

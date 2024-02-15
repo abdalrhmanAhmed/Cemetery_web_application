@@ -49,12 +49,21 @@
         <label for="">{{ __('Age') }}</label>
         <input type="number" class="form-control {{ $errors->has('age') ? ' is-invalid' : '' }}" wire:model="age" id="">
     </div>
-    <div class="col-md-4">
+    {{-- <div class="col-md-4">
         <label for="">{{__('Genealogy')}}</label>
         <select wire:model="genealogy_id" class="form-control {{ $errors->has('genealogy_id') ? ' is-invalid' : '' }}" id="">
             <option value="" selected>-- {{__('Choose Genealogy')}} --</option>
             @foreach ($genealoges as $genealog)
                 <option value="{{$genealog->id}}">{{$genealog->name}}</option>
+            @endforeach
+        </select>
+    </div> --}}
+    <div class="col-md-4">
+        <label for="">{{__('Gender')}}</label>
+        <select wire:model="gender" class="form-control {{ $errors->has('gender') ? ' is-invalid' : '' }}" id="">
+            <option value="" selected>-- {{__('Choose Gender')}} --</option>
+            @foreach ($gendors as $gender)
+                <option value="{{$gender->id}}">{{ $gender->name }}</option>
             @endforeach
         </select>
     </div>
@@ -76,15 +85,6 @@
             <option value="" selected>-- {{__('Choose Nationality')}} --</option>
             @foreach ($nationalities as $national)
                 <option value="{{$national->id}}">{{ $national->name }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label for="">{{__('Gender')}}</label>
-        <select wire:model="gender" class="form-control {{ $errors->has('gender') ? ' is-invalid' : '' }}" id="">
-            <option value="" selected>-- {{__('Choose Gender')}} --</option>
-            @foreach ($gendors as $gender)
-                <option value="{{$gender->id}}">{{ $gender->name }}</option>
             @endforeach
         </select>
     </div>

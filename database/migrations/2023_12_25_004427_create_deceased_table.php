@@ -16,7 +16,7 @@ class CreateDeceasedTable extends Migration {
 			$table->string('great_grand_father', 255);
 			$table->string('identity', 255);
 			$table->smallInteger('age')->default('1');
-			$table->bigInteger('genealogy_id');
+			// $table->bigInteger('genealogy_id');
 			$table->bigInteger('relagen_id');
 			$table->bigInteger('national_id');
 			$table->bigInteger('gander_id');

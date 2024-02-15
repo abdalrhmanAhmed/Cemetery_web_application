@@ -39,12 +39,10 @@
 									</div>
 								
 									<div class="row">
-										@php
-											$cities = App\Models\City::where('country_id', $cemeterie->cities->country_id)->first();
-										@endphp
 										<div class="col-md-6">
 											<label for="">{{__('Countery')}}</label>
 											<select name="country_id" class="form-control" required>
+												<option value="0">_._._</option>
 												@foreach ($countries as $country)
 													<option value="{{$country->id}}" {{$country->id == $cemeterie->cities->country_id ? 'selected' : ''}}>{{$country->name}}</option>
 												@endforeach
@@ -53,8 +51,10 @@
 										<div class="col-md-6">
 											<label for="">{{__('City')}}</label>
 											<select name="city_id" class="form-control" required>
-												<option value="{{$cities->id}}">{{$cities->name}}</option>
-											</select>
+												<option value="0">_._._</option>
+												@foreach ($cities as $city)
+													<option value="{{$city->id}}" {{$city->id == $cemeterie->cities->id ? 'selected' : ''}}>{{$city->name}}</option>
+												@endforeach											</select>
 										</div>
 									</div>
 									<br>
@@ -130,7 +130,7 @@
 				lat: <?php echo json_encode(floatval($cemeterie->latitude)); ?>,
 				lng: <?php echo json_encode(floatval($cemeterie->Longitude)); ?>,
 			},
-			zoom: 15,
+			zoom: 24,
 			mapTypeId: 'satellite'
 		});
 

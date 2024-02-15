@@ -131,15 +131,18 @@
 </script>	
 <script>
 	let map, activeInfoWindow, markers = [];
+	let zoomNum = 16;
+	let latNum = 25.1338688;
+	let lngNum = 56.3332739;
 
 	/* ----------------------------- Initialize Map ----------------------------- */
 	function initMap() {
 		map = new google.maps.Map(document.getElementById("map"), {
 			center: {
-				lat: 25.1338688,
-				lng: 56.3332739,
+				lat: latNum,
+				lng: lngNum,
 			},
-			zoom: 15,
+			zoom: zoomNum,
 			mapTypeId: 'satellite'
 		});
 

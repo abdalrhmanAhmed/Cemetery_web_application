@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CountriesSeeder::class);
         $this->call(CitiesSeeder::class);
         $this->call(NationalitySeeder::class);
-        $this->call(FamilySeeder::class);
+        // $this->call(FamilySeeder::class);
         $this->call(HospitalsSeeder::class);
         $this->call(CemeteriesSeeder::class);
     }
