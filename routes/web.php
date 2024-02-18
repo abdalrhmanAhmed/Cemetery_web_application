@@ -20,7 +20,9 @@ use App\Http\Controllers\posts\HistoricalGraveController;
 use App\Http\Controllers\posts\ProcedureController;
 use App\Http\Controllers\posts\ContactController;
 use App\Http\Controllers\settings\GraveController;
+use App\Http\Controllers\uploads\ExcelUploadController;
 use App\Http\Livewire\Graving\EditGrave;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +96,16 @@ Route::middleware([
         Route::view('graving', 'livewire.graving.index');
         Route::get('setpLocaltion/{grave_id}/{information_id}/{edit}', [GraveLocationController::class, 'chooseLocation'])->name('setpLocaltion');
         Route::post('setpLocaltion/storeLocation/{id}', [GraveLocationController::class, 'storeLocation'])->name('setpLocaltion.storeLocation');
+
+        ############################# uplodad excil file route #############################
+
+        Route::controller(ExcelUploadController::class)->prefix('uploadExcel')->group(function(){
+            Route::get('/', 'index')->name('uploadExcel.index');
+            Route::post('/upload', 'upload')->name('uploadExcel.upload');
+            Route::get('/review', 'review')->name('uploadExcel.review');
+            Route::post('/confirm', 'confirm')->name('uploadExcel.confirm');
+            Route::post('/cancel', 'cancel')->name('uploadExcel.cancel');
+        });
     }
 );
 

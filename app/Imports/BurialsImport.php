@@ -9,9 +9,12 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Concerns\Importable;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class BurialsImport implements ToCollection, WithHeadingRow
 {
+    use Importable;
     /**
     * @param Collection $collection
     */
@@ -73,8 +76,8 @@ class BurialsImport implements ToCollection, WithHeadingRow
             $information->hospital_id = $row['hopital'];
             $information->grave_id = $row['grave_id'];
             $information->medical_diagnosis = $row['reason_of_death'];
-            $information->date_of_death = $row['dead_date'];
-            $information->burial_date = $row['burial_date'];
+            $information->date_of_death = Date::excelToDateTimeObject($row['dead_date'])->format('y-m-d');
+            $information->burial_date = Date::excelToDateTimeObject($row['burial_date'])->format('y-m-d');
             $information->save();
         }
     }

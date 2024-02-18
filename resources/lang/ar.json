@@ -223,5 +223,12 @@
     "Countery" : "الدولة",
     "Hospital Name By Arabic" : "إسم المستشفى بالعربية",
     "Hospital Name By English" : "إسم المستشفى بالإنجليزية",
-    "Upload Excel file" : "رفع ملف Excel"
+    "Upload Excel file" : "رفع ملف Excel",
+    "Upload File" : "رفع الملف" ,
+    "Data Review" : "مراجعة البيانات",
+    "Excel Uploads" : "الملفات المرفوعة",
+    "Nationality Number" : "رقم الهوية",
+    "Confirm Data" : "تأكيد البيانات",
+    "Cancel" : "إلغاء",
+    "Grave Already Taken" : "القبر ممتلئ بالفعل"
 }
