@@ -36,43 +36,46 @@ class ExcelUploadController extends Controller
     {
         try
         {
-            // $this->validate($request, [
-            //     'file' =>'required|mimes:xls,xlsx'
-            // ]);
-            foreach ($request->file as $key => $value) 
+            $this->validate($request, [
+                'file' =>'required'
+            ]);
+            foreach ($request->file as $key => $file) 
             {
-                $array = Excel::toArray(new BurialsImport, $value);
+                $array = Excel::toArray(new BurialsImport, $file);
 
                 foreach ($array[0] as $key => $value) 
                 {
-                    ExcelTemperary::updateOrCreate([
-                        "first_name_ar" => $value['first_name_ar'],
-                        "second_name_ar" => $value['second_name_ar'],
-                        "third_name_ar" => $value['third_name_ar'],
-                        "fourth_name_ar" => $value['fourth_name_ar'],
-                        "first_name_en" => $value['first_name_en'],
-                        "second_name_en" => $value['second_name_en'],
-                        "third_name_en" => $value['third_name_en'],
-                        "fourth_name_en" => $value['fourth_name_en'],
-                        "national_number" => $value['national_number'],
-                        "age" => $value['age'],
-                        "gender" => $value['gender'],
-                        "religion" => $value['religion'],
-                        "nationality" => $value['nationality'],
-                        "burial_name_quadruple" => $value['burial_name_quadruple'],
-                        "phone_number" => $value['phone_number'],
-                        "address" => $value['address'],
-                        "email" => $value['email'],
-                        "dead_date" => Date::excelToDateTimeObject($value['dead_date']),
-                        "burial_date" => Date::excelToDateTimeObject($value['burial_date']),
-                        "hopital" => $value['hopital'],
-                        "reason_of_death" => $value['reason_of_death'],
-                        "cemetry" => $value['cemetry'],
-                        "block" => $value['block'],
-                        "grave" => $value['grave'],
-                        "latitude" => $value['latitude'],
-                        "longitude" => $value['longitude'],
-                    ]);
+                    if($value['first_name_ar'] != null)
+                    {
+                        ExcelTemperary::updateOrCreate([
+                            "first_name_ar" => $value['first_name_ar'],
+                            "second_name_ar" => $value['second_name_ar'],
+                            "third_name_ar" => $value['third_name_ar'],
+                            "fourth_name_ar" => $value['fourth_name_ar'],
+                            "first_name_en" => $value['first_name_en'],
+                            "second_name_en" => $value['second_name_en'],
+                            "third_name_en" => $value['third_name_en'],
+                            "fourth_name_en" => $value['fourth_name_en'],
+                            "national_number" => $value['national_number'],
+                            "age" => $value['age'],
+                            "gender" => $value['gender'],
+                            "religion" => $value['religion'],
+                            "nationality" => $value['nationality'],
+                            "burial_name_quadruple" => $value['burial_name_quadruple'],
+                            "phone_number" => $value['phone_number'],
+                            "address" => $value['address'],
+                            "email" => $value['email'],
+                            "dead_date" => Date::excelToDateTimeObject($value['dead_date']),
+                            "burial_date" => Date::excelToDateTimeObject($value['burial_date']),
+                            "hopital" => $value['hopital'],
+                            "reason_of_death" => $value['reason_of_death'],
+                            "cemetry" => $value['cemetry'],
+                            "block" => $value['block'],
+                            "grave" => $value['grave'],
+                            "latitude" => $value['latitude'],
+                            "longitude" => $value['longitude'],
+                        ]);
+                    }
                 }
             }
             return redirect()->back()->with(['success' => __('Data has been saved successfully!')]);
@@ -93,11 +96,10 @@ class ExcelUploadController extends Controller
     {
         try
         {
-            DB::beginTransaction();
             $temp = ExcelTemperary::all();
             foreach ($temp as $key => $value)
             {
-
+                
                 $cemetry = Cemetery::where('name->ar', 'LIKE' , "%{$value['cemetry']}%")->first();
                 // dd($value['cemetry']);
                 $block = Block::where('name->ar', 'LIKE' , "%{$value['block']}%")->where('cemetery_id', $cemetry->id)->first();
@@ -106,7 +108,8 @@ class ExcelUploadController extends Controller
                 $nationality = Nationality::where('name->ar', 'LIKE' , "%{$value['nationality']}%")->first();
                 $gender = Gander::where('name->ar', 'LIKE' , "%{$value['gender']}%")->first();
                 $hospital = Hospital::where('name->ar', 'LIKE' , "%{$value['hopital']}%")->first();
-            
+                
+                DB::beginTransaction();
                 if($oldGrave)
                 {
                     $grave = Grave::where('name', 'LIKE' , "%{$value['grave']}%")->first();
@@ -159,11 +162,10 @@ class ExcelUploadController extends Controller
                 $information->medical_diagnosis = $value['reason_of_death'];
                 $information->grave_id = $grave->id;
                 $information->save();
-    
-                ExcelTemperary::truncate();
                 DB::commit();
-                return redirect()->route('uploadExcel.index')->with(['success' => __('Data has been saved successfully!')]);;
             }
+            ExcelTemperary::truncate();
+            return redirect()->route('uploadExcel.index')->with(['success' => __('Data has been saved successfully!')]);;
         }
         catch(\Exception $e)
         {
