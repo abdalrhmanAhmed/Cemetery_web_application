@@ -30,52 +30,32 @@
 										<thead>
 											<tr>
 												<th class="wd-15p border-bottom-0">#</th>
-												<th class="wd-15p border-bottom-0">{{ __('Burial Name') }}</th>
-												<th class="wd-20p border-bottom-0">{{ __('Nationality Number') }}</th>
-												<th class="wd-15p border-bottom-0">{{ __('Age') }}</th>
-												<th class="wd-10p border-bottom-0">{{ __('Gender') }}</th>
-												<th class="wd-25p border-bottom-0">{{ __('Religion') }}</th>
+												<th class="wd-25p border-bottom-0">{{ __('Burial Name') }}</th>
                                                 <th class="wd-20p border-bottom-0">{{ __('Nationality') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('Burail Name') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('Phone Number') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('Address') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('E-mail') }}</th>
+												<th class="wd-15p border-bottom-0">{{ __('Country') }}</th>
+												<th class="wd-20p border-bottom-0">{{ __('City') }}</th>
+												<th class="wd-20p border-bottom-0">{{ __('Sector') }}</th>
+												<th class="wd-10p border-bottom-0">{{ __('Cemetry') }}</th>
+                                                <th class="wd-20p border-bottom-0">{{ __('Hospital') }}</th>
                                                 <th class="wd-20p border-bottom-0">{{ __('Death Date') }}</th>
                                                 <th class="wd-20p border-bottom-0">{{ __('Burial Date') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('Hospital') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('Cause Of Death') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('Cemetry') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('Block') }}</th>
-                                                <th class="wd-20p border-bottom-0">{{ __('Grave') }}</th>
+												<th class="wd-25p border-bottom-0">{{ __('Grave Code') }}</th>
 											</tr>
 										</thead>
 										<tbody>
-                                            @foreach ($data as $item) 
+                                            @foreach ($data as $item)
                                                 <tr>
                                                     <td>{{$loop->index+1}}</td>
-                                                    <td>
-                                                        @if (app()->getLocale() == 'ar')
-                                                            {{$item->first_name_ar . ' ' . $item->second_name_ar . ' ' . $item->third_name_ar . ' ' . $item->fourth_name_ar}}    
-                                                        @else
-                                                            {{$item->first_name_en . ' ' . $item->second_name_en . ' ' . $item->third_name_en . ' ' . $item->fourth_name_en}}    
-                                                        @endif
-                                                    </td>
-                                                    <td>{{$item->national_number}}</td>
-                                                    <td>{{$item->age}}</td>
-                                                    <td>{{$item->gender}}</td>
-                                                    <td>{{$item->religion}}</td>
-                                                    <td>{{$item->nationality}}</td>
-                                                    <td>{{$item->burial_name_quadruple}}</td>
-                                                    <td>{{$item->phone_number}}</td>
-                                                    <td>{{ $item->address }}</td>
-                                                    <td>{{ $item->email }}</td>
-                                                    <td>{{ $item->dead_date }}</td>
-                                                    <td>{{ $item->burial_date }}</td>
-                                                    <td>{{ $item->hopital }}</td>
-                                                    <td>{{ $item->reason_of_death }}</td>
-                                                    <td>{{ $item->cemetry }}</td>
-                                                    <td>{{ $item->block }}</td>
-                                                    <td>{{ $item->grave }}</td>
+                                                    <td>{{$item->Name}}</td>
+                                                    <td>{{$item->Nationalit}}</td>
+                                                    <td>{{$item->Country}}</td>
+                                                    <td>{{$item->Emirates}}</td>
+                                                    <td>{{$item->Sectors_Ar}}</td>
+                                                    <td>{{$item->NameAr}}</td>
+                                                    <td>{{$item->Hospital}}</td>
+                                                    <td>{{$item->Date_Of_De}}</td>
+                                                    <td>{{$item->Burial_Dat}}</td>
+                                                    <td>{{ $item->Grave_Code }}</td>
                                                 </tr>
                                             @endforeach
 										</tbody>
@@ -95,8 +75,8 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>    
-                        </div>    
+                            </div>
+                        </div>
                     </div>
 				</div>
 				<!-- row closed -->

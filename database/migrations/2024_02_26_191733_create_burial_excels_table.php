@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('excel_temperaries', function (Blueprint $table) {
+        Schema::create('burial_excels', function (Blueprint $table) {
             $table->id();
-            $table->string('FID');
+            $table->integer('FID');
             $table->string('Cemetery_I');
             $table->string('Grave_Sequ');
             $table->string('Grave_Code');
@@ -59,6 +59,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('excel_temperaries');
+        Schema::dropIfExists('burial_excels');
     }
 };

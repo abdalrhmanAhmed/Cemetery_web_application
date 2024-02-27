@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\BurialExcel;
 use App\Models\Dead;
 use App\Models\Guardian;
 use App\Models\Information;
@@ -21,64 +22,77 @@ class BurialsImport implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         Validator::make($rows->toArray(), [
-            '*.first_name_ar' => 'required',
-            '*.second_name_ar' => 'required',
-            '*.third_name_ar' => 'required',
-            '*.fourth_name_ar' => 'required',
-            '*.first_name_en' => 'required',
-            '*.second_name_en' => 'required',
-            '*.third_name_en' => 'required',
-            '*.fourth_name_en' => 'required',
-            '*.national_number' => 'required',
-            '*.age' => 'required',
-            '*.gender' => 'required',
-            '*.religion' => 'required',
-            '*.nationality' => 'required',
-            '*.burial_name_quadruple' => 'required',
-            '*.phone_number' => 'required',
-            // '*.address' => 'required',
-            // '*.email' => 'required',
-            '*.dead_date' => 'required',
-            '*.burial_date' => 'required',
-            '*.hopital' => 'required',
-            '*.reason_of_death' => 'required',
-            '*.cemetry' => 'required',
-            '*.block' => 'required',
-            '*.grave' => 'required',
-            '*.latitude' => 'required',
-            '*.longitude' => 'required',
+            '*.FID' => 'required',
+            '*.Cemetery_I' => 'required',
+            '*.Grave_Sequ' => 'required',
+            '*.Grave_Code' => 'required',
+            '*.Grave_Co_1' => 'required',
+            '*.Emirates_I' => 'required',
+            '*.Name' => 'required',
+            '*.Nationalit' => 'required',
+            '*.Date_Of_De' => 'required',
+            '*.Burial_Dat' => 'required',
+            '*.Shahed_Num' => 'required',
+            '*.Hospital' => 'required',
+            '*.Cause_Of_D' => 'required',
+            '*.Cemetery_N' => 'required',
+            '*.Death_Repo' => 'required',
+            '*.Death_Cert' => 'required',
+            '*.Hospital_Rs' => 'required',
+            '*.Police_Mes' => 'required',
+            '*.Comments' => 'required',
+            '*.Northing' => 'required',
+            '*.Easting' => 'required',
+            '*.Elevation' => 'required',
+            '*.Embassy_Nos' => 'required',
+            '*.Sex' => 'required',
+            '*.Country' => 'required',
+            '*.Emirates' => 'required',
+            '*.NameAr' => 'required',
+            '*.NameEn' => 'required',
+            '*.Sectors_Ar' => 'required',
+            '*.Sectors_En' => 'required',
+            '*.X' => 'required',
+            '*.Y' => 'required',
+            '*.XY' => 'required',
         ])->validate();
 
         foreach ($rows as $row) {
-            $deceased = new Dead();
-            $deceased->name = ['ar' => $row['first_name_ar'], 'en' => $row['first_name_en']];
-            $deceased->father = ['ar' => $row['second_name_ar'], 'en' => $row['second_name_en']];
-            $deceased->grand_father = ['ar' => $row['third_name_ar'], 'en' => $row['third_name_en']];
-            $deceased->great_grand_father = ['ar' => $row['fourth_name_ar'], 'en' => $row['fourth_name_en']];
-            $deceased->identity = $row['national_number'];
-            $deceased->age = $row['age'];
-            // $deceased->genealogy_id = $row['genealogy_id'];
-            $deceased->relagen_id = $row['religion'];
-            $deceased->national_id = $row['nationality'];
-            $deceased->gander_id = $row['gender'];
-            $deceased->save();
-
-            $guardian = new Guardian();
-            $guardian->name = $row['burial_name_quadruple'];
-            $guardian->phone_number = $row['phone_number'];
-            $guardian->email = $row['email'];
-            $guardian->address = $row['address'];
-            $guardian->save();
-
-            $information = new Information();
-            $information->deceased_id = $deceased->id;
-            $information->guardian_id = $guardian->id;
-            $information->hospital_id = $row['hopital'];
-            $information->grave_id = $row['grave_id'];
-            $information->medical_diagnosis = $row['reason_of_death'];
-            $information->date_of_death = Date::excelToDateTimeObject($row['dead_date'])->format('y-m-d');
-            $information->burial_date = Date::excelToDateTimeObject($row['burial_date'])->format('y-m-d');
-            $information->save();
+            $burial = new BurialExcel();
+            $burial->FID = $row['FID'];
+            $burial->Cemetery_I = $row['Cemetery_I'];
+            $burial->Grave_Sequ = $row['Grave_Sequ'];
+            $burial->Grave_Code = $row['Grave_Code'];
+            $burial->Grave_Co_1 = $row['Grave_Co_1'];
+            $burial->Emirates_I = $row['Emirates_I'];
+            $burial->Name = $row['Name'];
+            $burial->Nationalit = $row['Nationalit'];
+            $burial->Date_Of_De = $row['Date_Of_De'];
+            $burial->Burial_Dat = $row['Burial_Dat'];
+            $burial->Shahed_Num = $row['Shahed_Num'];
+            $burial->Hospital = $row['Hospital'];
+            $burial->Cause_Of_D = $row['Cause_Of_D'];
+            $burial->Cemetery_N = $row['Cemetery_N'];
+            $burial->Death_Repo = $row['Death_Repo'];
+            $burial->Death_Cert = $row['Death_Cert'];
+            $burial->Hospital_R = $row['Hospital_R'];
+            $burial->Police_Mes = $row['Police_Mes'];
+            $burial->Comments = $row['Comments'];
+            $burial->Northing = $row['Northing'];
+            $burial->Easting = $row['Easting'];
+            $burial->Elevation = $row['Elevation'];
+            $burial->Embassy_No = $row['Embassy_No'];
+            $burial->Sex = $row['Sex'];
+            $burial->Country = $row['Country'];
+            $burial->Emirates = $row['Emirates'];
+            $burial->NameAr = $row['NameAr'];
+            $burial->NameEn = $row['NameEn'];
+            $burial->Sectors_Ar = $row['Sectors_Ar'];
+            $burial->Sectors_En = $row['Sectors_En'];
+            $burial->X = $row['X'];
+            $burial->Y = $row['Y'];
+            $burial->XY = $row['XY'];
+            $burial->save();
         }
     }
 }

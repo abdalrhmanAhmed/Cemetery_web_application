@@ -230,5 +230,8 @@
     "Nationality Number" : "رقم الهوية",
     "Confirm Data" : "تأكيد البيانات",
     "Cancel" : "إلغاء",
-    "Grave Already Taken" : "القبر ممتلئ بالفعل"
+    "Grave Already Taken" : "القبر ممتلئ بالفعل",
+    "Cemetry" : "المقبرة",
+    "Sector" : "القطاع",
+    "Grave Code" : "كود القبر"
 }
