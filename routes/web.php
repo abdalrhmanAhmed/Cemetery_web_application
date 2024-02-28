@@ -20,6 +20,7 @@ use App\Http\Controllers\posts\HistoricalGraveController;
 use App\Http\Controllers\posts\ProcedureController;
 use App\Http\Controllers\posts\ContactController;
 use App\Http\Controllers\settings\GraveController;
+use App\Http\Controllers\uploads\ExcelShowController;
 use App\Http\Controllers\uploads\ExcelUploadController;
 use App\Http\Livewire\Graving\EditGrave;
 use Maatwebsite\Excel\Facades\Excel;
@@ -52,9 +53,9 @@ Route::middleware([
     ])->group(function()
     {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-        
+
         ############################Settings routes###############################
-        // 
+        //
         Route::resource('country', CountryController::class);
         Route::resource('city', CityController::class);
         Route::resource('hospital', HospitalController::class);
@@ -70,7 +71,7 @@ Route::middleware([
         Route::get('getCity/{id}', [CemeteryController::class, 'getCity'])->name('getCity');
 
         ############################posts routes###############################
-        // 
+        //
         Route::resource('quote', QuoteController::class);
         Route::resource('teaching', TeachingController::class);
         Route::resource('historical_grave', HistoricalGraveController::class);
@@ -105,6 +106,10 @@ Route::middleware([
             Route::get('/review', 'review')->name('uploadExcel.review');
             Route::post('/confirm', 'confirm')->name('uploadExcel.confirm');
             Route::post('/cancel', 'cancel')->name('uploadExcel.cancel');
+        });
+
+        Route::controller(ExcelShowController::class)->prefix('ExcelShow')->group(function(){
+            Route::get('/', 'index')->name('ExcelShow.index');
         });
     }
 );

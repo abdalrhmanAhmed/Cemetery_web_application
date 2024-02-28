@@ -53,7 +53,7 @@
                 </select>
             </div>
         </div>
-        
+
         <div class="">
             <div class="row mb-3 d-flex justify-content-end">
                 {{-- <div class="col-md-1">
@@ -80,7 +80,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($burials as $burial)                                      
+                    @forelse ($burials as $burial)
                         <tr>
                             <td>{{$loop->index+1}}</td>
                             <td>{{ $burial->graves->blocks->cemeteries->name }}</td>
