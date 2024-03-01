@@ -233,5 +233,6 @@
     "Grave Already Taken" : "القبر ممتلئ بالفعل",
     "Cemetry" : "المقبرة",
     "Sector" : "القطاع",
-    "Grave Code" : "كود القبر"
+    "Grave Code" : "كود القبر",
+    "Please Upload An Excel File !!" : "الرجاء رفع ملف الإكسل أولا !!"
 }

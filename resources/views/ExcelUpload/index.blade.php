@@ -29,7 +29,7 @@
                                     {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="file" class="form-control" name="file[]" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" multiple>
+                                            <input type="file" class="form-control" name="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                                         </div>
                                         <div class="col-md-6">
                                             <button class="btn btn-success">{{ __('Upload File') }}</button>
