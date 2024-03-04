@@ -107,10 +107,11 @@ Route::middleware([
             Route::post('/confirm', 'confirm')->name('uploadExcel.confirm');
             Route::post('/cancel', 'cancel')->name('uploadExcel.cancel');
         });
-
         Route::controller(ExcelShowController::class)->prefix('ExcelShow')->group(function(){
             Route::get('/', 'index')->name('ExcelShow.index');
+            Route::post('/upload', 'upload')->name(('ExcelShow.upload'));
         });
     }
 );
+
 

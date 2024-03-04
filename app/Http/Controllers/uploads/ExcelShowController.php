@@ -20,4 +20,14 @@ class ExcelShowController extends Controller
         return view('ExcelUpload.excelShow', compact('burials'));
     }
 
+    public function upload(Request $request)
+    {
+        if($request->has('csv'))
+        {
+            return array_map('str_getcsv',mb_convert_encoding(file($request->csv), 'UTF-8', 'UTF-8'));
+            $csv = mb_convert_encoding($request->csv, 'UTF-8', 'UTF-8');
+            return array_map('str_getcsv', file($request->csv));
+        }
+    }
+
 }

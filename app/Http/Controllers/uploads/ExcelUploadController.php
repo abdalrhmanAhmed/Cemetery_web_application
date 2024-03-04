@@ -38,29 +38,100 @@ class ExcelUploadController extends Controller
 
     public function upload(Request $request)
     {
-        if($request->has('file'))
+        try
         {
+            $this->validate($request, [
+                'file' =>'required'
+            ]);
             // return $request;
-            $excel = file($request->file);
-            $chunks = array_chunk($excel, 1000);
-            $header = [];
-            $batch = Bus::batch([])->dispatch();
+            // foreach ($request->file as $key => $file)
+            // {
+                $array = Excel::toArray(new BurialsImport, $request->file);
 
-            foreach($chunks as $key => $chunk)
-            {
-                dd($chunk);
-                $data = array_map('str_getcsv', $chunk);
-                if($key == 0)
+                foreach ($array[0] as $key => $value)
                 {
-                    $header = $data[0];
-                    unset($data[0]);
+                    // if($value['first_name_ar'] != null)
+                    // {
+                        ExcelTemperary::updateOrCreate([
+                            "FID" => $value['fid'],
+                            "Cemetery_I" => $value['cemetery_i'] ,
+                            "Grave_Sequ" => $value['grave_sequ'] ?? 0,
+                            "Grave_Code" => $value['grave_code'] ?? 0,
+                            "Grave_Co_1" => $value['grave_co_1'] ?? 0,
+                            "Emirates_I" => $value['emirates_i'] ?? 0,
+                            "Name" => $value['name'] ?? 0,
+                            "Nationalit" => $value['nationalit'] ?? 0,
+                            "Date_Of_De" => Date::excelToDateTimeObject($value['date_of_de']) ?? 0,
+                            "Burial_Dat" => Date::excelToDateTimeObject($value['burial_dat']) ?? 0,
+                            "Shahed_Num" => $value['shahed_num'] ?? 0,
+                            "Hospital" => $value['hospital'] ?? 0,
+                            "Cause_Of_D" => $value['cause_of_d'] ?? 0,
+                            "Cemetery_N" => $value['cemetery_n'] ?? 0,
+                            "Death_Repo" => $value['death_repo'] ?? 0,
+                            "Death_Cert" => $value['death_cert'] ?? 0,
+                            "Hospital_R" => $value['hospital_r'] ?? 0,
+                            "Police_Mes" => $value['police_mes'] ?? 0,
+                            "Comments" => $value['comments'] ?? 0,
+                            "Northing" => $value['northing'] ?? 0,
+                            "Easting" => $value['easting'] ?? 0,
+                            "Elevation" => $value['elevation'] ?? 0,
+                            "Embassy_No" => $value['embassy_no'] ?? 0,
+                            "Sex" => $value['sex'] ?? 0,
+                            "Country" => $value['country'] ?? 0,
+                            "Emirates" => $value['emirates'] ?? 0,
+                            "NameAr" => $value['namear'] ?? 0,
+                            "NameEn" => $value['nameen'] ?? 0,
+                            "Sectors_Ar" => $value['sectors_ar'] ?? 0,
+                            "Sectors_En" => $value['Sectors_En'] ?? 0,
+                            "X" => $value['x'] ?? 0,
+                            "Y" => $value['y'] ?? 0,
+                            "XY" => $value['xy'] ?? 0,
+                        ]);
+                    // }
                 }
-                $batch->add(new uploadExcelToTempTable($data, $header));
-            }
+            // }
+            // return $request;
             return redirect()->back()->with(['success' => __('Data has been saved successfully!')]);
-        }else{
-            return redirect()->back()->with(['error' => __('Please Upload An Excel File !!')]);
         }
+        catch (\Exception $e)
+        {
+            return $e;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        // if($request->has('file'))
+        // {
+        //     // return $request;
+        //     $excel = file($request->file);
+        //     $chunks = array_chunk($excel, 1000);
+        //     $header = [];
+        //     $batch = Bus::batch([])->dispatch();
+
+        //     foreach($chunks as $key => $chunk)
+        //     {
+        //         dd($chunk);
+        //         $data = array_map('str_getcsv', $chunk);
+        //         if($key == 0)
+        //         {
+        //             $header = $data[0];
+        //             unset($data[0]);
+        //         }
+        //         $batch->add(new uploadExcelToTempTable($data, $header));
+        //     }
+        //     return redirect()->back()->with(['success' => __('Data has been saved successfully!')]);
+        // }else{
+        //     return redirect()->back()->with(['error' => __('Please Upload An Excel File !!')]);
+        // }
 
 
         // try

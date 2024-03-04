@@ -25,8 +25,24 @@
                     <div class="col-xl-12">
 						<div class="card">
 							<div class="card-header pb-0">
-								<div class="d-flex justify-content-between">
-									<h4 class="card-title mg-b-0" style="font-family: Cairo">{{__('Burials List')}}</h4>
+								<div class="row">
+                                    {{-- <div class="col-md-12 mb-4">
+                                        <form action="{{ route('ExcelShow.upload') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="">{{ __('Upload Excel File') }}</label>
+                                                    <input type="file" name="csv" class="form-control" id="">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="submit" class="btn btn-success" style="margin-top: 28px"><i class="fa fa-upload"></i> {{  __('Upload')}}</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> --}}
+                                    <div class="col-md-12">
+                                        <h4 class="card-title mg-b-0" style="font-family: Cairo">{{__('Burials List')}}</h4>
+                                    </div>
 								</div>
 							</div>
 							<div class="card-body">

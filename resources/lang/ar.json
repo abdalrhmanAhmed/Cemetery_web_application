@@ -234,5 +234,7 @@
     "Cemetry" : "المقبرة",
     "Sector" : "القطاع",
     "Grave Code" : "كود القبر",
-    "Please Upload An Excel File !!" : "الرجاء رفع ملف الإكسل أولا !!"
+    "Please Upload An Excel File !!" : "الرجاء رفع ملف الإكسل أولا !!",
+    "Upload Excel File" : "رفع ملف Excel",
+    "Upload" : "رفع"
 }
