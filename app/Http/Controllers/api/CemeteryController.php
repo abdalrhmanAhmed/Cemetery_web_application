@@ -11,6 +11,7 @@ use App\Models\Country;
 use App\Models\Block;
 use App\Models\Grave;
 use App\Models\City;
+use App\Models\BurialExcel;
 
 class CemeteryController extends Controller
 {
@@ -105,15 +106,15 @@ class CemeteryController extends Controller
     {
         try {
             $cemeteries = Cemetery::where('id', $id)->select('id', 'name')->first();
-            $blocks = Block::where('cemetery_id', $cemeteries->id)->select('id', 'name')->get();
-            $data = $this->ToIntArray($blocks);
-            $graves = Grave::whereIn('block_id', $data)->where('status', 1)->select('id', 'name')->get();
-            $data = [];
+            $graves = BurialExcel::where('Cemetery_N', 'LIKE', '%'. $cemeteries->name .'%')->get();
+            // $blocks = Block::where('cemetery_id', $cemeteries->id)->select('id', 'name')->get();
+            // $data = $this->ToIntArray($blocks);
+            // $graves = Grave::whereIn('block_id', $data)->where('status', 1)->select('id', 'name')->get();
+            // $data = [];
             foreach ($graves as $grave) {
-                $infos = Information::where('grave_id', $grave->id)->first();
                 $data[] = array(
-                    'id'       => $grave->id,
-                    'name'     => $infos->deceased->name . ' ' . $infos->deceased->father . ' ' . $infos->deceased->grand_father . ' ' . $infos->deceased->great_grand_father,
+                    'id'       => $grave->Grave_Code,
+                    'name'     => $grave->Name ,
                 );
             }
             $response = array(
@@ -135,22 +136,21 @@ class CemeteryController extends Controller
     public function get_grave_details($id)
     {
         try {
-            $grave = Grave::where('id', $id)->select('id', 'name')->first();
-            $infos = Information::where('grave_id', $id)->first();
+            $grave = BurialExcel::where('Grave_Code', $id)->first();
             $data = [];
             $data[] = array(
-                'id'                    => $grave->id,
-                'name'                  => $grave->name,
-                'dead_name'             => $infos->deceased->name . ' ' . $infos->deceased->father . ' ' . $infos->deceased->grand_father . ' ' . $infos->deceased->great_grand_father,
-                'date_of_death'         => $infos->date_of_death,
-                'burial_date'           => $infos->burial_date,
-                'cemetery_name'         => $infos->graves->blocks->cemeteries->name ?? "",
-                'medical_diagnosis'     => $infos->medical_diagnosis ?? "",
-                'hospital_name'         => $infos->hospitals->name ?? "",
-                'city'                  => $infos->graves->blocks->cemeteries->cities->name ?? "",
-                'country'               => $infos->graves->blocks->cemeteries->cities->countries->name ?? "",
-                'latitude'              => $infos->graves->latitude,
-                'Longitude'             => $infos->graves->Longitude
+                'id'                    => $grave->Grave_Code,
+                'name'                  => $grave->Grave_Co_1,
+                'dead_name'             => $grave->Name ,
+                'date_of_death'         => $grave->Date_Of_De,
+                'burial_date'           => $grave->Burial_Dat,
+                'cemetery_name'         => $grave->Cemetery_N ?? "",
+                'medical_diagnosis'     => $grave->Hospital_R ?? "",
+                'hospital_name'         => $grave->Hospital ?? "",
+                'city'                  => $grave->Emirates ?? "",
+                'country'               => $grave->Country ?? "",
+                'latitude'              => $grave->X,
+                'Longitude'             => $grave->Y
             );
             $response = array(
                 'error' => false,
@@ -172,19 +172,22 @@ class CemeteryController extends Controller
     public function get_graves()
     {
         try {
-            $graves = Information::get();
+            $graves = BurialExcel::get();
             $data = [];
             foreach ($graves as $grave) {
                 $data[] = array(
-                    'id'       => $grave->graves->id,
-                    'dead_name'     => $grave->deceased->name.' '.$grave->deceased->father.' '.$grave->deceased->grand_father.' '.$grave->deceased->great_grand_father,
-                    'date_of_death' => $grave->date_of_death ?? "" ,
-                    'burial_date' => $grave->burial_date ?? "",
-                    'cemetery_name' => $grave->graves->blocks->cemeteries->name ?? "",
-                    'city' => $grave->graves->blocks->cemeteries->cities->name ?? "",
-                    'country' => $grave->graves->blocks->cemeteries->cities->countries->name ?? "",
-                    'latitude' => $grave->graves->latitude ?? "",
-                    'Longitude' => $grave->graves->Longitude ?? ""
+                    'id'                    => $grave->Grave_Code,
+                    'name'                  => $grave->Grave_Co_1,
+                    'dead_name'             => $grave->Name ,
+                    'date_of_death'         => $grave->Date_Of_De,
+                    'burial_date'           => $grave->Burial_Dat,
+                    'cemetery_name'         => $grave->Cemetery_N ?? "",
+                    'medical_diagnosis'     => $grave->Hospital_R ?? "",
+                    'hospital_name'         => $grave->Hospital ?? "",
+                    'city'                  => $grave->Emirates ?? "",
+                    'country'               => $grave->Country ?? "",
+                    'latitude'              => $grave->X,
+                    'Longitude'             => $grave->Y
                 );
             }
             $response = array(

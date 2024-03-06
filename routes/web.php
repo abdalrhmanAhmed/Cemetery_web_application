@@ -37,7 +37,7 @@ use Maatwebsite\Excel\Facades\Excel;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('home');
 });
 
 Auth::routes(['register' => false]);

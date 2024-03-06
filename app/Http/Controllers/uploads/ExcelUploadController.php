@@ -52,6 +52,21 @@ class ExcelUploadController extends Controller
                 {
                     // if($value['first_name_ar'] != null)
                     // {
+                        if(empty($value['date_of_de']) || $value['date_of_de'] == 0)
+                        {
+                            $dead_date = '0-0-0';
+                        }else{
+                            $date = strtotime($value['date_of_de']);
+
+                            $dead_date = date($date);
+                        } 
+                        if(empty($value['burial_dat']) || $value['burial_dat'] == 0)
+                        {
+                            $burial_date = '0-0-0';
+                        }else{
+                            $date = strtotime($value['burial_dat']);
+                            $burial_date = date($date);
+                        }
                         ExcelTemperary::updateOrCreate([
                             "FID" => $value['fid'],
                             "Cemetery_I" => $value['cemetery_i'] ,
@@ -61,8 +76,8 @@ class ExcelUploadController extends Controller
                             "Emirates_I" => $value['emirates_i'] ?? 0,
                             "Name" => $value['name'] ?? 0,
                             "Nationalit" => $value['nationalit'] ?? 0,
-                            "Date_Of_De" => Date::excelToDateTimeObject($value['date_of_de']) ?? 0,
-                            "Burial_Dat" => Date::excelToDateTimeObject($value['burial_dat']) ?? 0,
+                            "Date_Of_De" => $dead_date,
+                            "Burial_Dat" => $burial_date,
                             "Shahed_Num" => $value['shahed_num'] ?? 0,
                             "Hospital" => $value['hospital'] ?? 0,
                             "Cause_Of_D" => $value['cause_of_d'] ?? 0,

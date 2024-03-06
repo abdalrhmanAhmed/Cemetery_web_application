@@ -41,7 +41,7 @@ Route::middleware([
 });
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect()->route('home');
 });
 Auth::routes(['register' => false]);
 
