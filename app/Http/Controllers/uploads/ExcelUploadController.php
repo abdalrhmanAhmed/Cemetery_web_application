@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class ExcelUploadController extends Controller
@@ -50,6 +51,21 @@ class ExcelUploadController extends Controller
 
                 foreach ($array[0] as $key => $value)
                 {
+                    $cemetry = Cemetery::where('name->ar' , 'like' , "%{$value['cemetery_n']}%")->orWhere('name->en' , 'like' , "%{$value['cemetery_n']}%")->first();
+                    if(!$cemetry)
+                    {
+                        Cemetery::create([
+                            'name' => [
+                                'ar' => $value['cemetery_n'],
+                                'en' => $value['cemetery_n'],
+                            ],
+                            'citiy_id' => 1,
+                            'latitude' => 0.00,
+                            'Longitude' => 0.00,
+                        ]);
+                        $name = $value['cemetery_n'];
+                        Session::flash('warning', __("Cemetry ,:Name are added successfully , Please check it in cemeteries page and setup the cemetery location !", ['name' => $name]));
+                    }
                     // if($value['first_name_ar'] != null)
                     // {
                         if(empty($value['date_of_de']) || $value['date_of_de'] == 0)
