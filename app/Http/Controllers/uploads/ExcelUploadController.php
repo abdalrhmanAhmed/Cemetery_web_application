@@ -120,6 +120,9 @@ class ExcelUploadController extends Controller
                         ]);
                     // }
                 }
+                $file_name =  $request->file('file')->getClientOriginalName();
+                $path = public_path('assets/uploads/excel/');
+                file_put_contents($path. $file_name, file_get_contents($request->file('file')));
             // }
             // return $request;
             return redirect()->back()->with(['success' => __('Data has been saved successfully!')]);

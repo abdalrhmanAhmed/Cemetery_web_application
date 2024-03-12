@@ -152,6 +152,9 @@ class CemeteryController extends Controller
                 'latitude'              => $grave->X,
                 'Longitude'             => $grave->Y
             );
+            // return ;
+            $data[0]['latitude'] = str_replace('"' , '', $data[0]['latitude']);
+            $data[0]['Longitude'] = str_replace('"' , '', $data[0]['Longitude']);
             $response = array(
                 'error' => false,
                 'message' => "تم تحميل البيانات بنجاح",
@@ -174,7 +177,7 @@ class CemeteryController extends Controller
         try {
             $graves = BurialExcel::get();
             $data = [];
-            foreach ($graves as $grave) {
+            foreach ($graves as $key=>$grave) {
                 $data[] = array(
                     'id'                    => $grave->Grave_Code,
                     'name'                  => $grave->Grave_Co_1,
@@ -189,6 +192,8 @@ class CemeteryController extends Controller
                     'latitude'              => $grave->X,
                     'Longitude'             => $grave->Y
                 );
+                $data[$key]['latitude'] = str_replace('"' , '', $data[$key]['latitude']);
+                $data[$key]['Longitude'] = str_replace('"' , '', $data[$key]['Longitude']);
             }
             $response = array(
                 'error' => false,
