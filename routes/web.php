@@ -110,6 +110,8 @@ Route::middleware([
         Route::controller(ExcelShowController::class)->prefix('ExcelShow')->group(function(){
             Route::get('/', 'index')->name('ExcelShow.index');
             Route::post('/upload', 'upload')->name(('ExcelShow.upload'));
+            Route::get('/filtter', 'filtter')->name('ExcelShow.filtter');
+            Route::post('/bulck_delete', 'bulck_delete')->name('ExcelShow.bulck_delete');
         });
     }
 );

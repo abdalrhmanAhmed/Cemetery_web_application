@@ -2,13 +2,22 @@ $(function(e) {
 	//file export datatable
 	var table = $('#example').DataTable({
 		lengthChange: false,
-		buttons: [ 'copy', 'excel', 'pdf', 'colvis' ],
+		buttons: ['excel', 'pdf', 'colvis', 'pageLength' ],
 		responsive: true,
+		select: true,
+		lengthMenu: [
+			[10, 25, 50, -1],
+			[10, 25, 50, 'All']
+		],
 		language: {
 			searchPlaceholder: 'Search...',
 			sSearch: '',
 			lengthMenu: '_MENU_ ',
-		}
+			buttons : { 
+				pageLength: "عرض %d صفوف" 
+			},
+		},
+	
 	});
 	table.buttons().container()
 	.appendTo( '#example_wrapper .col-md-6:eq(0)' );		

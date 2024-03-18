@@ -237,5 +237,7 @@
     "Please Upload An Excel File !!" : "الرجاء رفع ملف الإكسل أولا !!",
     "Upload Excel File" : "رفع ملف Excel",
     "Upload" : "رفع",
-    "Cemetry ,:name are added successfully , Please check it in cemeteries page and setup the cemetery location !" : "المقبرة ,:name تم اضافتها بنجاح، يرجى التحقق منها في صفحة المقابر وتعيين موقع المقبرة !"
+    "Cemetry ,:name are added successfully , Please check it in cemeteries page and setup the cemetery location !" : "المقبرة ,:name تم اضافتها بنجاح، يرجى التحقق منها في صفحة المقابر وتعيين موقع المقبرة !",
+    "Check All" : "تحديد الكل",
+    "Delete Selected Rows" : "حذف الصفوف المختارة"
 }

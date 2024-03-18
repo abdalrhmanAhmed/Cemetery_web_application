@@ -55,7 +55,7 @@ class HistoricalGraveController extends Controller
         {
             $historical_grave = new HistoricalGrave();
             $historical_grave->title = $request->title;
-            $historical_grave->name = ['ar' => $request->ar, 'en' => $request->en];
+            $historical_grave->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $historical_grave->text = $request->text;
             $historical_grave->latitude = $request->latitude;
             $historical_grave->Longitude = $request->longitude;

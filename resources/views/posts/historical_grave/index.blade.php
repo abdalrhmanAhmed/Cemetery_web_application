@@ -41,6 +41,7 @@
 												<th class="wd-15p border-bottom-0">عنوان القبر</th>
 												<th class="wd-15p border-bottom-0"> إسم صاحب القبر التاريخي</th>
 												<th class="wd-15p border-bottom-0">نبذة عن صاحب الفبر </th>
+												<th class="wd-15p border-bottom-0"> موقع القبر </th>
 												<th class="wd-20p border-bottom-0">العمليات</th>
 											</tr>
 										</thead>
@@ -50,14 +51,19 @@
 												<td>{{$loop->index + 1}}</td>
 												<td>{{$historical_grave->title}}</td>
 												<td>{{$historical_grave->name}}</td>
-												<td>{{$historical_grave->text}}</td>
-
+												<td class="text-center">
+													<button data-toggle="modal" data-target="#show{{$historical_grave->id}}" class="btn btn-info btn-sm"> <i class="fa fa-eye"></i> عرض</button>
+												</td>
+												<td class="text-center">
+													<button data-toggle="modal" data-target="#map{{$historical_grave->id}}" class="btn btn-success btn-sm"> <i class="fa fa-map"></i> رؤية</button>
+												</td>
 												<td>
 													<button data-toggle="modal" data-target="#delete{{$historical_grave->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> حذف</button>
 													<a href="{{route('historical_grave.edit', $historical_grave->id)}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> تعديل</a>
 												</td>
 											</tr>
 											@include('posts.historical_grave.modals.delete')
+											@include('posts.historical_grave.modals.show')
 											@endforeach
 										</tbody>
 									</table>
@@ -96,4 +102,5 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
+<script src="{{URL::asset('assets/plugins/ckeditor/ckeditor.js')}}"></script>
 @endsection
