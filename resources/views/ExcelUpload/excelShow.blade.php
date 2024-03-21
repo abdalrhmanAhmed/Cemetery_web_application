@@ -199,13 +199,20 @@
 					{
 						extend: 'colvis',
 						columns: ":not(':first,:last')",
-					}
-				]
+					},
+					'pageLength'
+				],
 			}
 		},
+		lengthMenu: [
+			[10, 25, 50, -1],
+			[10, 25, 50, 'All']
+		],
+	
 		language: {
 			buttons: {
-				colvis: 'hide/show columns'
+				colvis: 'hide/show columns',
+				pageLength: "Show %d Rows",
 			},
 			searchPlaceholder: "... Search",
         	search: "",
