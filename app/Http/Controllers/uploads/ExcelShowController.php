@@ -60,11 +60,22 @@ class ExcelShowController extends Controller
     public function bulck_delete(Request $request)
     {
         // return $request;
+        if(empty($request->burial_id))
+        {
+            return redirect()->route('ExcelShow.index')->with(['error' => __('Please Select at least one record!')]);
+        }
         foreach($request->burial_id as $id)
         {
             $burial = BurialExcel::where('id', $id)->first();
             $burial->delete();
         }
+        return redirect()->route('ExcelShow.index')->with(['warning' => __('Data has been Deleted successfully!')]);
+    }
+
+    public function delete(Request $request)
+    {
+        $burial = BurialExcel::where('id', $request->id)->first();
+        $burial->delete();
         return redirect()->route('ExcelShow.index')->with(['warning' => __('Data has been Deleted successfully!')]);
     }
 

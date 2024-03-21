@@ -239,5 +239,9 @@
     "Upload" : "رفع",
     "Cemetry ,:name are added successfully , Please check it in cemeteries page and setup the cemetery location !" : "المقبرة ,:name تم اضافتها بنجاح، يرجى التحقق منها في صفحة المقابر وتعيين موقع المقبرة !",
     "Check All" : "تحديد الكل",
-    "Delete Selected Rows" : "حذف الصفوف المختارة"
+    "Delete Selected Rows" : "حذف الصفوف المختارة",
+    "Change columns" : "تغيير الأعمدة",
+    "Delete Grave" : "حذف القبر",
+    "Are you sure you want to delete this grave?" : "هل أنت متأكد من حذف هذا القبر ؟",
+    "Please Select at least one record!" : "الرجاء إختيار قبر واحد على الأقل"
 }

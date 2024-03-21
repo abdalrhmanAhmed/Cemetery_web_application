@@ -112,6 +112,7 @@ Route::middleware([
             Route::post('/upload', 'upload')->name(('ExcelShow.upload'));
             Route::get('/filtter', 'filtter')->name('ExcelShow.filtter');
             Route::post('/bulck_delete', 'bulck_delete')->name('ExcelShow.bulck_delete');
+            Route::post('/delete', 'delete')->name('ExcelShow.delete');
         });
     }
 );
