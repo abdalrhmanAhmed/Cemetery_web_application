@@ -18,7 +18,9 @@ Route::prefix('posts')->group(function(){
     Route::get('quote', [App\Http\Controllers\api\QuoteController::class, 'quotes']);
     Route::get('teaching', [App\Http\Controllers\api\QuoteController::class, 'teachings']);
     Route::get('procedure', [App\Http\Controllers\api\QuoteController::class, 'procedures']);
-    Route::get('historical_grave', [App\Http\Controllers\api\QuoteController::class, 'historical_graves']);
+    Route::get('historical-grave-all', [App\Http\Controllers\api\QuoteController::class, 'historical_graves_all']);
+    Route::get('historical-grave-details/{id}', [App\Http\Controllers\api\QuoteController::class, 'historical_graves_details']);
+    Route::get('historical-grave-search/{name}', [App\Http\Controllers\api\QuoteController::class, 'historical_graves_search']);
     Route::get('contact', [App\Http\Controllers\api\QuoteController::class, 'contacts']);
 });
 

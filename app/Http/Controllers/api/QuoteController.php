@@ -96,7 +96,7 @@ class QuoteController extends Controller
         return response()->json($response);
     }
 
-    public function historical_graves()
+    public function historical_graves_all()
     {
         try {
             $historical_graves = HistoricalGrave::get();
@@ -108,6 +108,48 @@ class QuoteController extends Controller
                     'text' => $historical_grave->text
                 );
             }
+            $response = array(
+                'error' => false,
+                'message' => "تم تحميل البيانات بنجاح",
+                'data' => $data,
+                'code' => 200,
+            );
+        } catch (\Exception $e) {
+            $response = array(
+                'error' => true,
+                'message' => trans('error_occurred'),
+                'code' => 103,
+            );
+        }
+        return response()->json($response);
+    }
+
+
+    public function historical_graves_details($id)
+    {
+        try {
+            $data = HistoricalGrave::where('id', $id)->select('id', 'title', 'name', 'text', 'latitude', 'Longitude')->get();
+            $response = array(
+                'error' => false,
+                'message' => "تم تحميل البيانات بنجاح",
+                'data' => $data,
+                'code' => 200,
+            );
+        } catch (\Exception $e) {
+            $response = array(
+                'error' => true,
+                'message' => trans('error_occurred'),
+                'code' => 103,
+            );
+        }
+        return response()->json($response);
+    }
+
+
+    public function historical_graves_search($name)
+    {
+        try {
+            $data = HistoricalGrave::where('name->ar', 'LIKE', '%'.$name.'%')->orWhere('name->en', 'LIKE', '%'.$name.'%')->select('id', 'title', 'name', 'text', 'latitude', 'Longitude')->get();
             $response = array(
                 'error' => false,
                 'message' => "تم تحميل البيانات بنجاح",

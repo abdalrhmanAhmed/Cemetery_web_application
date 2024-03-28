@@ -23,11 +23,12 @@
 						</div> --}}
 						<div>
 							<label class="tx-13">{{__('Empty Graves')}}</label>
-							<h5>{{App\Models\Grave::where('status', 0)->get()->count() ?? 0}}</h5>
+							<h5>????</h5>
+							{{-- {{App\Models\Grave::where('status', 0)->get()->count() ?? 0}} --}}
 						</div>
 						<div>
 							<label class="tx-13">{{__('Used Graves')}}</label>
-							<h5>{{App\Models\Grave::where('status', 1)->get()->count() ?? 0}}</h5>
+							<h5>{{App\Models\BurialExcel::get()->count() ?? 0}}</h5>
 						</div>
 					</div>
 				</div>
@@ -118,10 +119,10 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="float-left my-auto mr-auto">
-											<h4 class="tx-15 font-weight-bold mb-1 text-white">{{__('Graves Count')}} {{App\Models\Grave::get()->count() ?? 0}}</h4>
+											<h4 class="tx-15 font-weight-bold mb-1 text-white">{{__('Graves Count')}} {{App\Models\BurialExcel::get()->count() ?? 0}}</h4>
 										</div>
 										<span class="float-right my-auto mr-auto">
-											<a href="{{route('graves.index')}}" class="text-white">
+											<a href="#" class="text-white">
 												<i class="fas fa-eye"></i>
 												{{__('See All')}}
 											</a>

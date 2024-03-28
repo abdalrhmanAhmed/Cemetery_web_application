@@ -77,7 +77,7 @@
                             <label class="form-label">{{__('Status')}} <span class="tx-danger">*</span></label>
                             <select name="status" id="select-beast" class="form-control  nice-select  custom-select" data-parsley-class-handler="#lnWrapper" required="">
                                 <option value="" selected disabled>{{ __('Choose Status') }} ...</option>
-                                <option value="1">{{__('Active')}}</option>
+                                <option value="1" selected>{{__('Active')}}</option>
                                 <option value="0">{{__('Unactive')}}</option>
                             </select>
                         </div>

@@ -45,7 +45,6 @@
 											<tr>
 												<th class="wd-5p border-bottom-0">#</th>
 												<th class="wd-20p border-bottom-0">{{__('Grave Name')}}</th>
-												<th class="wd-15p border-bottom-0">{{__('Block')}}</th>
 												<th class="wd-25p border-bottom-0">{{__('Actions')}}</th>
 
 											</tr>
@@ -54,8 +53,7 @@
 											@foreach ($graves as $grave)		
 												<tr>
 													<td>{{$loop->index+1}}</td>
-													<td>{{$grave->name}}</td>
-													<td>{{$grave->blocks->name}}</td>
+													<td>{{$grave->Grave_Code}}</td>
 													<td>
 														<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteGrave{{$grave->id}}"><i class="fa fa-trash"></i></button>
 													</td>

@@ -13,7 +13,7 @@
         
                         </div>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="name_en" disabled id="name_en" value="{{$grave->name}}"  required>
+                            <input type="text" class="form-control" name="name_en" disabled id="name_en" value="{{$grave->Grave_Code}}"  required>
                         </div>
                     </div>
 
