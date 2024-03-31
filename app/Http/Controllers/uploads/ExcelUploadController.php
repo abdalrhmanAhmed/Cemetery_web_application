@@ -129,8 +129,7 @@ class ExcelUploadController extends Controller
         }
         catch (\Exception $e)
         {
-            return $e;
-        }
+            return redirect()->back()->with(['error' => __('Some thing bad in data')]);        }
 
 
 

@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\City;
 use App\Models\Cemetery;
 use App\Models\Grave;
+use App\Models\BurialExcel;
 
 class CemeteryController extends Controller
 {
@@ -111,11 +112,8 @@ class CemeteryController extends Controller
         try 
         {
             $Cemetery = Cemetery::findOrFail($id);
-            $blocks = Block::where('cemetery_id', $id)->get();
-            if($blocks)
-            {
-                return redirect()->route('cemetery.index')->with(['error' => __('There Is Block Belongs To This Cemetery !')]);
-            }else{$Cemetery->delete();}
+            BurialExcel::where('Cemetery_N','LIKE','%' . $Cemetery->name . '%')->delete();
+            $Cemetery->delete();
 
 
             return redirect()->route('cemetery.index')->with(['warning' => __('Data has been Deleted successfully!')]);

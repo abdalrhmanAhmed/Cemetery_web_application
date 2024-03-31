@@ -99,13 +99,14 @@ class QuoteController extends Controller
     public function historical_graves_all()
     {
         try {
-            $historical_graves = HistoricalGrave::get();
+            $historical_graves = HistoricalGrave::select('id', 'title', 'name', 'text', 'latitude', 'Longitude')->get();
             $data = [];
             foreach ($historical_graves as $historical_grave) {
                 $data[] = array(
-                    'title' => $historical_grave->title,
-                    'sub_title' => $historical_grave->sub_title,
-                    'text' => $historical_grave->text
+                    'id' =>  $historical_grave->id,
+                    'title' => $historical_grave->title ?? '',
+                    'name' => $historical_grave->name ?? '',
+                    'text' => $historical_grave->text ?? ''
                 );
             }
             $response = array(

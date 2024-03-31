@@ -426,7 +426,7 @@ class Graving extends Component
         {
             DB::rollBack();
             $validate = $e->validator;
-            throw $e;
+            // throw $e;
         }
     }
 
