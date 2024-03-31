@@ -186,16 +186,6 @@
 			topStart: {
 				buttons: [
 					'excel',
-					'pdf',
-					{
-						extend: 'print',
-						text: 'Print',
-						exportOptions: {
-							modifier: {
-								selected: null
-							}
-						}
-					},
 					{
 						extend: 'colvis',
 						columns: ":not(':first,:last')",
