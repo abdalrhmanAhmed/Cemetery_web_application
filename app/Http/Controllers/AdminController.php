@@ -17,8 +17,8 @@ class AdminController extends Controller
      */
     public function index($id)
     {
-        if(view()->exists($id)){
-            return view($id);
+        if(view("themePages.$id")){
+            return view("themePages.$id");
         }
         else
         {

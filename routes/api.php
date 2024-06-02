@@ -14,24 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('posts')->group(function(){
-    Route::get('quote', [App\Http\Controllers\api\QuoteController::class, 'quotes']);
-    Route::get('teaching', [App\Http\Controllers\api\QuoteController::class, 'teachings']);
-    Route::get('procedure', [App\Http\Controllers\api\QuoteController::class, 'procedures']);
-    Route::get('historical-grave-all', [App\Http\Controllers\api\QuoteController::class, 'historical_graves_all']);
-    Route::get('historical-grave-details/{id}', [App\Http\Controllers\api\QuoteController::class, 'historical_graves_details']);
-    Route::get('historical-grave-search/{name}', [App\Http\Controllers\api\QuoteController::class, 'historical_graves_search']);
-    Route::get('contact', [App\Http\Controllers\api\QuoteController::class, 'contacts']);
-});
+// start user routes
+Route::post('login',[App\Http\Controllers\api\auth\LoginController::class,'login']);
 
-
-Route::prefix('cemeteries')->group(function()
+Route::prefix('user')->group(function()
 {
-    Route::get('get-country', [App\Http\Controllers\api\CemeteryController::class, 'get_country']);
-    Route::get('get-cemetery/{id}', [App\Http\Controllers\api\CemeteryController::class, 'get_cemetery']);
-    Route::get('get-cemetery-details/{id}', [App\Http\Controllers\api\CemeteryController::class, 'get_cemetery_details']);
+    Route::get('get-user', [App\Http\Controllers\api\new\UserController::class, 'get_user']);
 });
 
+
+// start Libarary routes
+Route::prefix('libarary')->group(function()
+{
+    Route::post('get-libarares', [App\Http\Controllers\api\new\LibararyController::class, 'get_libarares']);
+    Route::post('get-libarary', [App\Http\Controllers\api\new\LibararyController::class, 'get_libarary']);
+});
+
+// start Libarary routes
+Route::prefix('cemetery_sites')->group(function()
+{
+    Route::post('get-cemetery-sites', [App\Http\Controllers\api\new\CemeterySiteController::class, 'get_cemetery_sites']);
+    Route::post('get-cemetery-site/{id}', [App\Http\Controllers\api\new\CemeterySiteController::class, 'get_cemetery_site']);
+});
 
 
 Route::prefix('graves')->group(function()

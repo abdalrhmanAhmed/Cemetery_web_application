@@ -15,8 +15,10 @@
         "laravelcollective/html": "^6.3",
         "livewire/livewire": "^2.12",
         "maatwebsite/excel": "3.1.48",
+        "matanyadaev/laravel-eloquent-spatial": "^2.10",
         "spatie/laravel-permission": "^6.3",
         "spatie/laravel-translatable": "^6.5",
+        "tymon/jwt-auth": "^2.1",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {

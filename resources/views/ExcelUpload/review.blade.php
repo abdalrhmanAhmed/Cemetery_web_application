@@ -46,16 +46,16 @@
                                             @foreach ($data as $item)
                                                 <tr>
                                                     <td>{{$loop->index+1}}</td>
-                                                    <td>{{$item->Name}}</td>
-                                                    <td>{{$item->Nationalit}}</td>
-                                                    <td>{{$item->Country}}</td>
-                                                    <td>{{$item->Emirates}}</td>
-                                                    <td>{{$item->Sectors_Ar}}</td>
-                                                    <td>{{$item->NameAr}}</td>
-                                                    <td>{{$item->Hospital}}</td>
-                                                    <td>{{$item->Date_Of_De}}</td>
-                                                    <td>{{$item->Burial_Dat}}</td>
-                                                    <td>{{ $item->Grave_Code }}</td>
+                                                    <td>{{$item->name == '' ? __('empty'): $item->name }} </td>
+                                                    <td>{{$item->nationality == '' ? __('empty'): $item->nationality }}</td>
+                                                    <td>{{$item->country == '' ? __('empty'): $item->country }}</td>
+                                                    <td>{{$item->emirates == '' ? __('empty'): $item->emirates }}</td>
+                                                    <td>{{$item->sectors_ar == '' ? __('empty'): $item->sectors_ar }}</td>
+                                                    <td>{{$item->namear == '' ? __('empty'): $item->namear }}</td>
+                                                    <td>{{$item->hospital == '' ? __('empty'): $item->hospital }}</td>
+                                                    <td>{{$item->date_of_death == '' ? __('empty'): $item->date_of_death }}</td>
+                                                    <td>{{$item->burial_date == '' ? __('empty'): $item->burial_date }}</td>
+                                                    <td>{{ $item->grave_code == '' ? __('empty'): $item->grave_code }}</td>
                                                 </tr>
                                             @endforeach
 										</tbody>
