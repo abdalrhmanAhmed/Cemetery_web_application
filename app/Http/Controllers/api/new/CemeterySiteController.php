@@ -21,7 +21,6 @@ class CemeterySiteController extends Controller
                     'id' => $cemetery_site->id,
                     'name' => $cemetery_site->name,
                     'image' => $cemetery_site->image,
-                    'text' => $cemetery_site->text,
                 );
             }
             $response = array(
@@ -40,9 +39,41 @@ class CemeterySiteController extends Controller
         return response()->json($response);
     }
 
+    public function get_cemetery_detail($id)
+    {
+        try 
+        {
+            $cemetery_site = CemeterySites::where('id', $id)->select('id', 'name', 'latitude', 'longitude')->first();
+            $data = array(
+                    'id'        => $cemetery_site->id,
+                    'name'        => $cemetery_site->name,
+                    'text'        => "cemetery_site->text",
+                    'lat'        => $cemetery_site->latitude,
+                    'long'        => $cemetery_site->longitude,
+                );
+            $response = array(
+                'error' => false,
+                'message' => trans('Get Data Successfuly'),
+                'data' => $data,
+                'code' => 200,
+            );
+        } 
+        catch (\Exception $e) 
+        {
+            return $e;
+            $response = array(
+                'error' => true,
+                'message' => trans('error_occurred'),
+                'code' => 103,
+            );
+        }
+        return response()->json($response);
+    }
+
+
+
     public function get_cemetery_site(Request $request)
     {
-        return $request;
         try {
             $cemetery_site = CemeterySites::where('id', $request->id)->get();
             $data = $this->ToIntArray($cemetery_site);

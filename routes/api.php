@@ -27,14 +27,21 @@ Route::prefix('user')->group(function()
 Route::prefix('libarary')->group(function()
 {
     Route::post('get-libarares', [App\Http\Controllers\api\new\LibararyController::class, 'get_libarares']);
-    Route::post('get-libarary', [App\Http\Controllers\api\new\LibararyController::class, 'get_libarary']);
+    Route::get('get-libarary/{id}/{type}', [App\Http\Controllers\api\new\LibararyController::class, 'get_libarary']);
 });
 
 // start Libarary routes
 Route::prefix('cemetery_sites')->group(function()
 {
     Route::post('get-cemetery-sites', [App\Http\Controllers\api\new\CemeterySiteController::class, 'get_cemetery_sites']);
+    Route::get('get_cemetery_detail/{id}', [App\Http\Controllers\api\new\CemeterySiteController::class, 'get_cemetery_detail']);
     Route::post('get-cemetery-site/{id}', [App\Http\Controllers\api\new\CemeterySiteController::class, 'get_cemetery_site']);
+});
+
+// start Setting routes
+Route::prefix('setting')->group(function()
+{
+    Route::get('get-lsetting/{key}', [App\Http\Controllers\api\new\SettingController::class, 'get_setting']);
 });
 
 

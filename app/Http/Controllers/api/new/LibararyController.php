@@ -48,20 +48,17 @@ class LibararyController extends Controller
         return response()->json($response);
     }
 
-    public function get_libarary(Request $request)
+    public function get_libarary($id,$type)
     {
         try {
-            $libarary = Library::where('id', $request->id)->get();
+            $libarary = Library::where('id', $id)->get();
             $data = $this->ToIntArray($libarary);
-            $libarary_details = LibraryDetail::whereIn('library_id', $data)->select('id', 'text', 'image', 'video', 'voice')->get();
+            $libarary_details = LibraryDetail::whereIn('library_id', $data)->where($type, '!=', NULL)->select('id', $type)->get();
             $data = [];
             foreach ($libarary_details as $libarary_detaile) {
                 $data[] = array(
                     'id'        => $libarary_detaile->id,
-                    'text'      => $libarary_detaile->text ?? "",
-                    'image'     => $libarary_detaile->image ?? "",
-                    'video'     => $libarary_detaile->video ?? "",
-                    'voice'     => $libarary_detaile->voice ?? "",
+                    'media'      => $libarary_detaile->$type ?? "",
                 );
             }
             $response = array(
