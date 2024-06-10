@@ -40,7 +40,7 @@
 						</a>
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{ route('admin.users.index') }}">{{ __('Users List') }}</a></li>
-							<li><a class="slide-item" href="{{ route('admin.roles.index') }}">{{ __('Roles List') }}</a></li>
+							{{-- <li><a class="slide-item" href="{{ route('admin.roles.index') }}">{{ __('Roles List') }}</a></li> --}}
 							{{-- <li><a class="slide-item" href="{{ route('admin.permissions.index') }}">{{ __('Permissions List') }}</a></li> --}}
 						</ul>
 					</li>

@@ -14,8 +14,8 @@ class CreateCemeterySitesTable extends Migration {
 			$table->string('image', 255);
 			$table->string('text', 255);
 			$table->integer('dead_total')->default('0');
-			$table->integer('latitude')->default('0');
-			$table->integer('longitude')->default('0');
+			$table->string('latitude')->default('0');
+			$table->string('longitude')->default('0');
 			// $table->polygon('coordinates');
 			$table->softDeletes();
 			$table->timestamps();

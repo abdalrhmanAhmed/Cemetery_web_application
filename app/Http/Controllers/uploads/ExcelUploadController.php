@@ -82,6 +82,9 @@ class ExcelUploadController extends Controller
                     "nameen"                        => $value['nameen']  ?? '',
                     "sectors_ar"                    => $value['sectors_ar']  ?? '',
                     "sectors_en"                    => $value['sectors_en']  ?? '',
+                    "x"                             => $value['x']  ?? '',
+                    "y"                             => $value['y']  ?? '',
+                    "xy"                            => $value['xy']  ?? '',
                 ]);
             }
             $file_name =  $request->file('file')->getClientOriginalName();
@@ -144,6 +147,9 @@ class ExcelUploadController extends Controller
                 $burials->nameen                      = $value['nameen']  ?? '';
                 $burials->sectors_ar                  = $value['sectors_ar']  ?? '';
                 $burials->sectors_en                  = $value['sectors_en']  ?? '';
+                $burials->x                           = $value['x']  ?? '';
+                $burials->y                           = $value['y']  ?? '';
+                $burials->xy                          = $value['xy']  ?? '';
                 $burials->save();
             }
 

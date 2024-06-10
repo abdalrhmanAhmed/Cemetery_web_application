@@ -8,43 +8,23 @@
             <div class="modal-body">
                 <form action="{{ route('DailyDeathController.store',1) }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="row mb-4">
-                        <div class="col-md">
-                            <label for="">{{ __("Name of the deceased") }}</label>
-                            <input type="text" name="name" class="form-control" placeholder='{{ __("Name of the deceased") }}' required>
+                          <div class="row mb-4">
+                        <div class="col-sm-12 col-md-4 mg-t-10 mg-sm-t-0">
+                            <div class="row">
+                                <div class="col-md">
+                                    <label for="">{{ __('Name In Ar') }}</label>
+                                    <input type="text" class="form-control" name="ar" required/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md">
+                                    <label for="">{{ __('Name In En') }}</label>
+                                    <input type="text" class="form-control" name="en" required/>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md">
-                            <label for="">{{ __("Nationality") }}</label>
-                            <input type="text" name="nationality" class="form-control" placeholder='{{ __("Nationality") }}' required>
-                        </div>
-                        <div class="col-md">
-                            <label for="">{{ __("the age") }}</label>
-                            <input type="number" name="age" class="form-control" placeholder="20,30,50,...." required>
-                        </div>
-                    </div>
-                    <div class="row mb-4">    
-                        <div class="col-md">
-                            <label for="">{{ __("Burial day") }}</label>
-                            <select name="day" class="form-control" required>
-                                <option value="0" disabled selected>_._._</option>
-                                <option value='{{ __("Saturday") }}'>{{ __("Saturday") }}</option>
-                                <option value='{{ __("Sunday") }}'>{{ __("Sunday") }}</option>
-                                <option value='{{ __("Monday") }}'>{{ __("Monday") }}</option>
-                                <option value='{{ __("Tuesday") }}'>{{ __("Tuesday") }}</option>
-                                <option value='{{ __("Wednesday") }}'>{{ __("Wednesday") }}</option>
-                                <option value='{{ __("Thursday") }}'>{{ __("Thursday") }}</option>
-                                <option value='{{ __("Friday") }}'>{{ __("Friday") }}</option>
-                            </select>
-                        </div>
-                        <div class="col-md">
-                            <label for="">{{ __("Burial date") }}</label>
-                            <input type="date" name="date" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-md">
-                            <label for="">{{ __("Burial notes") }}</label>
-                            <textarea type="text" name="notes" class="form-control" rows="10" required placeholder="{{__('After Friday prayers, Omar bin Abdulaziz Mosque - Burial Ground, Fujairah Cemetery')}}"></textarea>
+                        <div class="col-sm-12 col-md-8">
+                            <input type="file" class="dropify" data-height="200" name="image" accept=".png" required/>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success">{{ __('Add New') }}</button>

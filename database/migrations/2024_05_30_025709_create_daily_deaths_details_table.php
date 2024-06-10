@@ -8,14 +8,14 @@ class CreateDailyDeathsDetailsTable extends Migration {
 	public function up()
 	{
 		Schema::create('daily_deaths_details', function(Blueprint $table) {
-			$table->increments('id');
-			$table->bigInteger('daily_death_id');
-			$table->string('key');
+			$table->id();
+			$table->bigInteger('project_id');
+			$table->string('type');
 			$table->string('value');
 			$table->bigInteger('created_by');
 			$table->bigInteger('updated_by');
-			$table->timestamps();
 			$table->softDeletes();
+			$table->timestamps();
 		});
 	}
 

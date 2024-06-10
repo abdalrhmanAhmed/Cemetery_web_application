@@ -25,7 +25,7 @@
                     <div class="row mb-4">
                         <div class="col-md">
                             <label for="">{{ __('Text') }} : </label>
-                            <textarea name="text" id="" cols="30" rows="10" class="form-control ckeditor"></textarea>
+                            <textarea name="text" class="form-control ckeditor" rows="10" cols="30" required></textarea>
                         </div>
                     </div>
                     <div class="row mb-4">

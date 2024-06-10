@@ -48,25 +48,29 @@
 										<thead>
 											<tr>
 												<th class="wd-15p border-bottom-0">#</th>
+												<th class="wd-15p border-bottom-0">{{ __('Image') }}</th>
 												<th class="wd-15p border-bottom-0">{{ __('Name') }}</th>
 												<th class="wd-15p border-bottom-0">{{ __("Oprations") }}</th>
 											</tr>
 										</thead>
 										<tbody>
                                             @foreach ($DailyDeaths as $item)    
-                                                <tr>
-                                                    <td>{{ $loop->index + 1 }}</td>
-													<td>{{$item->dead_name}}</td>	
-                                                    <td>
-                                                        <button data-toggle="modal" data-target="#delete{{$item->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> {{ __('Delete') }}</button>
-                                                        <button data-toggle="modal" data-target="#edit{{$item->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-trash"></i> {{ __('Edit') }}</button>
-                                                        <button data-toggle="modal" data-target="#contact{{$item->id}}" class="btn btn-info btn-sm"> <i class="fa fa-info"></i> {{ __('Info') }}</button>
-														
-                                                    </td>
-                                                </tr>
+											<tr>
+												<td>{{ $loop->index + 1 }}</td>
+												<td>
+													<div class="main-img-user">
+														<img alt="avatar" class="rounded-circle" src='{{ URL::asset("public/Library-profile/$item->image")  }}' loading="lazy" >
+													</div>
+												</td>
+												<td>{{$item->name}}</td>
+												<td>
+													<button data-toggle="modal" data-target="#delete{{$item->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> {{ __('Delete') }}</button>
+													{{-- <a href="{{ route('ProjectsController.edit', $item->id) }}" class="btn btn-warning btn-sm">
+															<i class="fa fa-edit"></i> {{ __('Edit') }}
+													</a> --}}
+												</td>
+											</tr>
                                                 @include('new.DailyDeath.modals.delete')
-                                                @include('new.DailyDeath.modals.edit')
-                                                @include('new.DailyDeath.modals.contact')
                                             @endforeach
 										</tbody>
 									</table>

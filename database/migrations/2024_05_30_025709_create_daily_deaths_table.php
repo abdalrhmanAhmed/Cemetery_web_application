@@ -8,13 +8,9 @@ class CreateDailyDeathsTable extends Migration {
 	public function up()
 	{
 		Schema::create('daily_deaths', function(Blueprint $table) {
-			$table->increments('id');
-			$table->string('dead_name');
-			$table->string('nationalaty');
-			$table->smallInteger('age');
-			$table->string('pra_day');
-			$table->string('pray_date');
-			$table->string('pray_note');
+			$table->id();
+			$table->string('name');
+			$table->string('image');
 			$table->softDeletes();
 			$table->timestamps();
 		});

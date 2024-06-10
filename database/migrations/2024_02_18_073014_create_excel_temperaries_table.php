@@ -49,6 +49,9 @@ return new class extends Migration
             $table->string('nameen');
             $table->string('sectors_ar');
             $table->string('sectors_en');
+            $table->string('x');
+            $table->string('y');
+            $table->string('xy');
             $table->timestamps();
         });
     }

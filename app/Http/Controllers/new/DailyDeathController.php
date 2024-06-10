@@ -45,22 +45,20 @@ class DailyDeathController extends Controller
     {
         try 
         {
-            $this->validate($request, [
-                'name' => 'required',
-                'nationality' => 'required',
-                'age' => 'required',
-                'day' => 'required',
-                'date' => 'required',
-                'notes' => 'required',
-            ]);
-            $libares = new DailyDeath();
-            $libares->dead_name = $request->name;
-            $libares->nationalaty = $request->nationality;
-            $libares->age = $request->age;
-            $libares->pra_day = $request->day;
-            $libares->pray_date = $request->date;
-            $libares->pray_note = $request->notes;
-            $libares->save();
+        $this->validate($request, [
+            'ar' => 'required',
+            'en' => 'required',
+            'image' => 'required',
+        ]);
+        $libares = new DailyDeath();
+        $libares->name = ['ar' => $request->ar, 'en' => $request->en];
+        if ($request->has('image')) {
+            $image_name = upload('Library-profile/', 'png', $request->file('image'));
+        } else {
+            $image_name = 'def.png';
+        }
+        $libares->image = $image_name;//helper function to save image
+        $libares->save();
 
             return redirect()->route('DailyDeathController.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
@@ -105,14 +103,19 @@ class DailyDeathController extends Controller
     {
         try 
         {
-            $libares =  DailyDeath::findOrFail($id);
-            $libares->dead_name = $request->name;
-            $libares->nationalaty = $request->nationality;
-            $libares->age = $request->age;
-            $libares->pra_day = $request->day ?? $libares->day;
-            $libares->pray_date = $request->date;
-            $libares->pray_note = $request->notes;
-            $libares->save();
+        $this->validate($request, [
+            'ar' => 'required',
+            'en' => 'required',
+        ]);
+        $libares =  Library::findOrFail($id);
+        $libares->name = ['ar' => $request->ar, 'en' => $request->en];
+        if ($request->has('image')) {
+            $image_name = upload('Library-profile/', 'png', $request->file('image'));
+        } else {
+            $image_name = $libares->image;
+        }
+        $libares->image = $image_name;
+        $libares->save();
 
             return redirect()->route('DailyDeathController.index')->with(['success' => __('Data has been saved successfully!')]);
         } 
@@ -142,7 +145,7 @@ class DailyDeathController extends Controller
         } 
         catch (\Exception $e) 
         {
-            return $e;redirect()->route('DailyDeathController.index')->with(['error' => __('There Is A Problem With The Server')]);
+            return redirect()->route('DailyDeathController.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 }

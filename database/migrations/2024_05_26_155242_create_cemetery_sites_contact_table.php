@@ -12,8 +12,7 @@ class CreateCemeterySitesContactTable extends Migration {
 			$table->id();
 			$table->bigInteger('cemetery_sites_id');
 			$table->string('type');
-			$table->string('images');
-			$table->string('info');
+			$table->string('value');
 			$table->softDeletes();
 			$table->timestamps();
 		});

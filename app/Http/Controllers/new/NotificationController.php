@@ -121,7 +121,7 @@ class NotificationController extends Controller
         } 
         catch (\Exception $e) 
         {
-            return $e;redirect()->route('Notification.index')->with(['error' => __('There Is A Problem With The Server')]);
+            return redirect()->route('Notification.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
     }
 

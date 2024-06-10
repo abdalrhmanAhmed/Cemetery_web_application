@@ -134,7 +134,7 @@ class CemeterySiteController extends Controller
                 $image_name = $cemetery_sites->image;
             }
             $cemetery_sites->image = $image_name;//helper function to save image
-            $cemetery_sites->longitude = $request->text;
+            $cemetery_sites->text = $request->text;
             $cemetery_sites->dead_total = 0;//helper function to save image
             $cemetery_sites->latitude = $request->latitude;
             $cemetery_sites->longitude = $request->longitude;

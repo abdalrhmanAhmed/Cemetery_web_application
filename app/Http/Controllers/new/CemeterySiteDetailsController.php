@@ -48,6 +48,7 @@ class CemeterySiteDetailsController extends Controller
             }
             $libares->cemetery_sites_id = $id;
             $libares->created_by = Auth::id();
+            $libares->updated_by = Auth::id();
             $libares->type = $request->type;
             $libares->save();
 
@@ -68,17 +69,18 @@ class CemeterySiteDetailsController extends Controller
             ]);
             $libares = new CemeterySitesDetails();
             $libares->type = 0;
-            $libares->value = $request->text;
+            $libares->value = $request->value;
             $libares->cemetery_sites_id = $id;
             $libares->status = 1;
             $libares->created_by = Auth::id();
+            $libares->updated_by = Auth::id();
             $libares->save();
 
             return redirect()->back()->with(['success' => __('Data has been saved successfully!')]);
         } 
         catch (\Exception $e) 
         {
-            return $e;redirect()->route('cemetery-site.index',$id)->with(['error' => __('There Is A Problem With The Server')]);
+            return redirect()->route('cemetery-site.index',$id)->with(['error' => __('There Is A Problem With The Server')]);
         }    
     }
 

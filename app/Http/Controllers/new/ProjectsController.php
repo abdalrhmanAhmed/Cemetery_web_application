@@ -144,7 +144,7 @@ public function destroy(Request $request)
     } 
     catch (\Exception $e) 
     {
-        return $e;redirect()->route('ProjectsController.index')->with(['error' => __('There Is A Problem With The Server')]);
+        return redirect()->route('ProjectsController.index')->with(['error' => __('There Is A Problem With The Server')]);
     }
 }
 }
