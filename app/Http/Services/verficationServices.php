@@ -13,4 +13,5 @@ class verficationServices
         User_verfication::whereNotNull('user_id')->where(['user_id' => $data['user_id']])->delete();
         return User_verfication::create($data);
     }
+
 }

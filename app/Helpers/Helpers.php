@@ -78,3 +78,53 @@ function CondolencesMethod()
     );
     return $data;
 }
+
+
+
+function sendOTP($phoneNumber)
+{
+    // Logic to send OTP to the provided phone number
+    try {
+        // Example: Simulate sending OTP (replace with actual OTP sending logic)
+        $otp = rand(1000, 9999); // Generate a random OTP
+        // In a real scenario, you would use an external API or SMS gateway to send the OTP
+        // For example purposes, just return a success response with the OTP
+        return [
+            'success' => true,
+            'otp' => $otp, // Return OTP for testing/demo purposes
+        ];
+    } catch (\Exception $e) {
+        // Handle any exceptions or errors
+        return [
+            'success' => false,
+            'message' => $e->getMessage(),
+        ];
+    }
+}
+
+
+function verifyOTP($phoneNumber, $otp)
+{
+    // Logic to verify OTP
+    try {
+        // Example: Simulate OTP verification (replace with actual logic)
+        // In a real scenario, you would compare $otp with the stored OTP for $phoneNumber
+        // For example purposes, just return a success response if OTP matches
+        if ($otp == '1234') { // Replace with actual verification logic
+            return [
+                'success' => true,
+            ];
+        } else {
+            return [
+                'success' => false,
+                'message' => 'Invalid OTP',
+            ];
+        }
+    } catch (\Exception $e) {
+        // Handle any exceptions or errors
+        return [
+            'success' => false,
+            'message' => $e->getMessage(),
+        ];
+    }
+}
