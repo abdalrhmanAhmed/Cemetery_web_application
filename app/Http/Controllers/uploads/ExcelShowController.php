@@ -20,16 +20,14 @@ class ExcelShowController extends Controller
     public function index()
     {
         $burials = BurialExcel::all();
-        $cemetries = Cemetery::all();
-        return view('ExcelUpload.excelShow', compact('burials', 'cemetries'));
+        return view('ExcelUpload.excelShow', compact('burials'));
     }
 
     public function filtter(Request $request)
     {
         if($request->cemetery_id)
         {
-            $cemetry = Cemetery::where('id', $request->cemetery_id)->first();
-            $burials = BurialExcel::where('Cemetery_N', 'like', '%'.$cemetry->name.'%')->get();
+            $burials = BurialExcel::where('cemetery_name', 'like', '%'.$request->cemetery_id.'%')->get();
         }else{
             $burials = BurialExcel::all();
         }

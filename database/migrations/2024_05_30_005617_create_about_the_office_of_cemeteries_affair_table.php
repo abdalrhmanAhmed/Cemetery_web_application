@@ -11,7 +11,7 @@ class CreateAboutTheOfficeOfCemeteriesAffairTable extends Migration {
 		Schema::create('about_the_office_of_cemeteries_affair', function(Blueprint $table) {
 			$table->id();
 			$table->string('name');
-			$table->string('image');
+			$table->text('image');
 			$table->softDeletes();
 			$table->timestamps();
 		});

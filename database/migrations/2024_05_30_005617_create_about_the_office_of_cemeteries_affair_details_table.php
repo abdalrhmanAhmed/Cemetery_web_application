@@ -12,7 +12,7 @@ class CreateAboutTheOfficeOfCemeteriesAffairDetailsTable extends Migration {
 			$table->id();
 			$table->bigInteger('news_id');
 			$table->string('type');
-			$table->string('value');
+			$table->text('value');
 			$table->boolean('status');
 			$table->bigInteger('created_by');
 			$table->bigInteger('updated_by');

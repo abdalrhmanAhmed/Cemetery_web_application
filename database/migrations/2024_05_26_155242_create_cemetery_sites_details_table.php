@@ -11,8 +11,8 @@ class CreateCemeterySitesDetailsTable extends Migration {
 		Schema::create('cemetery_sites_details', function(Blueprint $table) {
 			$table->id();
 			$table->bigInteger('cemetery_sites_id');
-			$table->string('value');
 			$table->string('type');
+			$table->text('value');
 			$table->boolean('status')->default('1');
 			$table->bigInteger('created_by')->default('0');
 			$table->bigInteger('updated_by');

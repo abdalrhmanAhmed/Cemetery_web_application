@@ -85,14 +85,44 @@ function sendOTP($phoneNumber)
 {
     // Logic to send OTP to the provided phone number
     try {
-        // Example: Simulate sending OTP (replace with actual OTP sending logic)
-        $otp = rand(1000, 9999); // Generate a random OTP
-        // In a real scenario, you would use an external API or SMS gateway to send the OTP
-        // For example purposes, just return a success response with the OTP
-        return [
-            'success' => true,
-            'otp' => $otp, // Return OTP for testing/demo purposes
-        ];
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://auth.instaalerts.zone/otpauthapi/otpgenservlet?ipaddress=125.23.230.50&mobile=971$phoneNumber",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+            'access_key: TwvI9eSr6TiusGNGuDNFfg=='
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        if(trim($response) == 'OTP Generated Successfully')
+        {
+            return [
+                'success' => true,
+                'message' => 'send Successful',
+            ];
+        }
+        else
+        {
+            return [
+                'success' => false,
+                'message' => 'not send',
+            ];
+        }
+
+        
+
     } catch (\Exception $e) {
         // Handle any exceptions or errors
         return [
@@ -107,17 +137,64 @@ function verifyOTP($phoneNumber, $otp)
 {
     // Logic to verify OTP
     try {
-        // Example: Simulate OTP verification (replace with actual logic)
-        // In a real scenario, you would compare $otp with the stored OTP for $phoneNumber
-        // For example purposes, just return a success response if OTP matches
-        if ($otp == '1234') { // Replace with actual verification logic
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://auth.instaalerts.zone:443/otpauthapi/plainotpvalidationservlet?ipaddress=125.23.230.50&otp=$otp&mobile=971$phoneNumber",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'access_key: TwvI9eSr6TiusGNGuDNFfg=='
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        if (trim($response) == 'Verified successfully')
+        { 
             return [
                 'success' => true,
+                'try' => 0,
+                'message' => 'compare done',
             ];
-        } else {
+        } elseif(trim($response) == 'Wrong PIN . No of Retries remaining # 2' || trim($response) == 'Wrong PIN . No of Retries remaining # 1' || trim($response) == 'Wrong PIN . No of Retries remaining # 0'){
             return [
                 'success' => false,
+                'try' => 1,
                 'message' => 'Invalid OTP',
+            ];
+        }
+        elseif(trim($response) == 'Max no of tries for this pin been reached. Please generate other')
+        {
+             return [
+                'success' => false,
+                'try' => 0,
+                'message' => 'Max try',
+            ];
+        }
+        elseif(trim($response) == 'ERROR')
+        {
+             return [
+                'success' => false,
+                'try' => 0,
+                'message' => 'error',
+            ];
+        }
+        else
+        {
+            return [
+                'success' => false,
+                'try' => 0,
+                'message' => 'try agen',
             ];
         }
     } catch (\Exception $e) {

@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use pp\Http\Controllers\new\NotificationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,7 @@ Route::prefix('cemetery_sites')->group(function () {
 // start Setting routes
 Route::prefix('setting')->group(function () {
     Route::get('get-lsetting/{key}', [App\Http\Controllers\api\new\SettingController::class, 'get_setting']);
+    Route::get('get-notifications', [App\Http\Controllers\api\new\SettingController::class, 'get_notifications']);
 });
 
 
@@ -78,3 +81,17 @@ Route::prefix('AboutTheOfficeOfCemeteriesAffair')->group(function () {
 Route::prefix('getDailyDeath')->group(function () {
     Route::post('get-getDailyDeath', [App\Http\Controllers\api\new\LibararyFinalController::class, 'getDailyDeath']);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::post('send-notification', [NotificationController::class, 'sendNotification']);

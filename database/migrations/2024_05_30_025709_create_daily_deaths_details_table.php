@@ -11,7 +11,7 @@ class CreateDailyDeathsDetailsTable extends Migration {
 			$table->id();
 			$table->bigInteger('project_id');
 			$table->string('type');
-			$table->string('value');
+			$table->text('value');
 			$table->bigInteger('created_by');
 			$table->bigInteger('updated_by');
 			$table->softDeletes();

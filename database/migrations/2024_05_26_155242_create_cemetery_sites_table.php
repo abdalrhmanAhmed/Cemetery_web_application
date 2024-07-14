@@ -11,8 +11,8 @@ class CreateCemeterySitesTable extends Migration {
 		Schema::create('cemetery_sites', function(Blueprint $table) {
 			$table->id();
 			$table->string('name', 255);
-			$table->string('image', 255);
-			$table->string('text', 255);
+			$table->text('image', 255);
+			$table->text('text', 255);
 			$table->integer('dead_total')->default('0');
 			$table->string('latitude')->default('0');
 			$table->string('longitude')->default('0');

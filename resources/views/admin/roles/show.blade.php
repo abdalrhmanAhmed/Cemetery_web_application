@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('css')
-<!--Internal  Font Awesome -->
-<link href="{{URL::asset('assets/plugins/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
-<!--Internal  treeview -->
-<link href="{{URL::asset('assets/plugins/treeview/treeview-rtl.css')}}" rel="stylesheet" type="text/css" />
+    <!--Internal  Font Awesome -->
+    <link href="{{ URL::asset('assets/plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <!--Internal  treeview -->
+    <link href="{{ URL::asset('assets/plugins/treeview/treeview-rtl.css') }}" rel="stylesheet" type="text/css" />
 
 
 
 @section('title')
-عرض الصلاحيات 
+    عرض الصلاحيات
 @stop
 
 
@@ -33,7 +33,7 @@
             <div class="card-body">
                 <div class="main-content-label mg-b-5">
                     <div class="pull-right">
-                        <a class="btn btn-primary btn-sm" href="{{ route('roles.index') }}">رجوع</a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('admin.roles.index') }}">رجوع</a>
                     </div>
                 </div>
                 <div class="row">
@@ -42,10 +42,10 @@
                         <ul id="treeview1">
                             <li><a href="#">{{ $role->name }}</a>
                                 <ul>
-                                    @if(!empty($rolePermissions))
-                                    @foreach($rolePermissions as $v)
-                                    <li>{{ $v->name }}</li>
-                                    @endforeach
+                                    @if (!empty($rolePermissions))
+                                        @foreach ($rolePermissions as $v)
+                                            <li>{{ $v->name }}</li>
+                                        @endforeach
                                     @endif
                                 </ul>
                             </li>
@@ -66,6 +66,6 @@
 @section('js')
 @toastr_js
 @toastr_render
-<script src="{{URL::asset('assets/plugins/treeview/treeview.js')}}"></script>
+<script src="{{ URL::asset('assets/plugins/treeview/treeview.js') }}"></script>
 
 @endsection

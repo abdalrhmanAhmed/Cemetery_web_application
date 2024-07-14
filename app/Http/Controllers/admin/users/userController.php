@@ -19,7 +19,7 @@ class userController extends Controller
     
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
+        $data = User::whereNot('email','like','%'.'client.com')->orderBy('id','DESC')->paginate(5);
         return view('admin.users.show_users',compact('data'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
     }//end of index

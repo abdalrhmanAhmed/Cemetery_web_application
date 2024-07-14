@@ -11,7 +11,7 @@ class CreateLibraresTable extends Migration {
 		Schema::create('librares', function(Blueprint $table) {
 			$table->id();
 			$table->string('name', 255);
-			$table->string('image', 255);
+			$table->text('image', 255);
 			$table->softDeletes();
 			$table->timestamps();
 		});

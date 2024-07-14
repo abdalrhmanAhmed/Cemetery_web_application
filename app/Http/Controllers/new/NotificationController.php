@@ -5,9 +5,17 @@ namespace App\Http\Controllers\new;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Notification;
+use App\Http\Services\FcmService;
+
 
 class NotificationController extends Controller
 {
+        protected $fcmService;
+
+    public function __construct(FcmService $fcmService)
+    {
+        $this->fcmService = $fcmService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -102,7 +110,7 @@ class NotificationController extends Controller
             $this->validate($request, [
                 'ar' => 'required',
                 'en' => 'required',
-                // 'description' => 'required',
+                'description' => 'required',
                 'file' => 'required',
             ]);
             $notification = Notification::findOrFail($id);
@@ -147,5 +155,17 @@ class NotificationController extends Controller
         {
             return redirect()->route('Notification.index')->with(['error' => __('There Is A Problem With The Server')]);
         }
+    }
+
+
+    public function sendNotification(Request $request)
+    {
+        $token = $request->input('token');
+        $title = $request->input('title');
+        $body = $request->input('body');
+
+        $response = $this->fcmService->sendNotification($token, $title, $body);
+
+        return response()->json(['response' => $response]);
     }
 }

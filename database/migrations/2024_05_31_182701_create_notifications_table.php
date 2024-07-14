@@ -11,7 +11,7 @@ class CreateNotificationsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->string('image');
-			$table->string('description');
+			$table->text('description');
 			$table->boolean('status')->default('1');
 			$table->boolean('is_loaded')->default('0');
 			$table->timestamps();

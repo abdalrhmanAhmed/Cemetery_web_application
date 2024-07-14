@@ -62,42 +62,46 @@ class LoginController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function sendOTP(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'phone' => 'required',
-        ]);
+public function sendOTP(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'phone' => 'required',
+    ]);
 
-        if ($validator->fails()) {
-            return $this->apiResponse("error", $validator->errors(), 400);
-        }
-
-        // Call sendOTP method from verficationServices
-        try {
-            $response = sendOTP($request->phone);
-            
-            // Handle API response and return appropriate response
-            if ($response['success']) {
-                $user = User::where('phone', $request->phone)->get();
-                if ($user->count() > 0) {
-                    return $this->apiResponse("success", "OTP sent successfully", 200);
-                }else {
-                    $user = new User();
-                    $user->phone = $request->phone;
-                    $user->password = '$2y$10$z9/54/1BX0rKyhLnRFXDP.DmNQJy2MSsm.s5CkO3ueMRow5mHMkR6';
-                    $user->name = ['en'=>'UnKnown','ar'=>'غير معروف'];
-                    $user->email = $request->phone . '@Clinet.com';
-                    $user->status = 0;
-                    $user->save();
-                    return $this->apiResponse("success", "OTP sent successfully", 200);
-                }
-            } else {
-                return $this->apiResponse("error", "Failed to send OTP", 500);
-            }
-        } catch (\Exception $e) {
-            return $this->apiResponse("error", $e->getMessage(), 500);
-        }
+    if ($validator->fails()) {
+        return $this->apiResponse("error", $validator->errors(), 400);
     }
+
+    // Extract the last 9 digits of the phone number
+    $filteredPhone = $this->filterPhoneNumber($request->phone);
+
+    // Call sendOTP method from verficationServices
+    try {
+        $response = sendOTP($filteredPhone);
+        
+        // Handle API response and return appropriate response
+        if ($response['success']) {
+            $user = User::where('phone', $filteredPhone)->get();
+            if ($user->count() > 0) {
+                return $this->apiResponse("success", "OTP sent successfully", 200);
+            } else {
+                $user = new User();
+                $user->phone = $filteredPhone;
+                $user->password = '$2y$10$z9/54/1BX0rKyhLnRFXDP.DmNQJy2MSsm.s5CkO3ueMRow5mHMkR6';
+                $user->name = ['en' => 'UnKnown', 'ar' => 'غير معروف'];
+                $user->email = $filteredPhone . '@Clinet.com';
+                $user->status = 0;
+                $user->save();
+                return $this->apiResponse("success", "OTP sent successfully", 200);
+            }
+        } else {
+            return $this->apiResponse("error", "Failed to send OTP", 500);
+        }
+    } catch (\Exception $e) {
+        return $this->apiResponse("error", $e->getMessage(), 500);
+    }
+}
+
 
     // Function to verify OTP
     public function verifyOTP(Request $request)
@@ -111,15 +115,25 @@ class LoginController extends Controller
             return $this->apiResponse("error", $validator->errors(), 400);
         }
 
+        $filteredPhone = $this->filterPhoneNumber($request->phone);
+
+
         // Assume you have a method in verficationServices to verify OTP
         try {
-            $verificationResult = verifyOTP($request->phone, $request->otp);
+            $verificationResult = verifyOTP($filteredPhone, $request->otp);
             
             // Handle API response and return appropriate response
-            if ($verificationResult['success']) {
+            if ($verificationResult['success']) 
+            {
                 return $this->apiResponse("success", "OTP verified successfully", 200);
-            } else {
-                return $this->apiResponse("error", "Invalid OTP or OTP expired", 400);
+            } 
+            elseif($verificationResult['success'] == false && $verificationResult['try'] == 1)
+            {
+                return $this->apiResponse("error", 1, 200);
+            }
+            elseif($verificationResult['success'] == false && $verificationResult['try'] == 0)
+            {
+                return $this->apiResponse("error", 0, 200);
             }
         } catch (\Exception $e) {
             return $this->apiResponse("error", $e->getMessage(), 500);
@@ -179,4 +193,19 @@ class LoginController extends Controller
             'data' => $data,
         ], $status);
     }
+
+
+
+    private function filterPhoneNumber($phone)
+{
+    // Remove all non-digit characters
+    $digitsOnly = preg_replace('/\D/', '', $phone);
+    
+    // Get the last 9 digits if the length is more than 9
+    if (strlen($digitsOnly) > 9) {
+        return substr($digitsOnly, -9);
+    }
+    
+    return $digitsOnly;
+}
 }

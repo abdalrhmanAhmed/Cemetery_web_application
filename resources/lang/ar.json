@@ -343,5 +343,15 @@
     "Insert the mail username most of services use email as username":"أدخل اسم مستخدم البريد. تستخدم معظم الخدمات البريد الإلكتروني كاسم مستخدم",
     "Insert the mail password":"أدخل كلمة المرور للبريد",
     "Insert the sender email address":"أدخل عنوان البريد الإلكتروني للمرسل",
-    "Insert the sender Name":"أدخل المرسل أدخل اسم المرسل عنوان البريد الإلكتروني"
+    "Insert the sender Name":"أدخل المرسل أدخل اسم المرسل عنوان البريد الإلكتروني",
+    "Home Page" : "الصفحة الرئيسية",
+    "Count Of Files":"عدد الملفات",
+    "Count Of Graves":"عدد القبور",
+    "Eemployees":"الموظفين",
+    "Employees Count":"عدد الموظفين",
+    "Clients Total":"عدد العملاء",
+    "Clients":"العملاء",
+    "File already exists":"الملف موجود بالفعل",
+    "Files":"الملفات",
+    "Reports":"تقارير"
 }

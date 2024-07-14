@@ -10,7 +10,7 @@ class CreateDailyDeathsTable extends Migration {
 		Schema::create('daily_deaths', function(Blueprint $table) {
 			$table->id();
 			$table->string('name');
-			$table->string('image');
+			$table->text('image');
 			$table->softDeletes();
 			$table->timestamps();
 		});

@@ -112,9 +112,14 @@ class CemeterySiteController extends Controller
             $cemetery_site_details = CemeterySitesContact::whereIn('cemetery_sites_id', $data)->select('id', 'type', 'value')->get();
             $data = [];
             foreach ($cemetery_site_details as $cemetery_site) {
+                    foreach(contactMethod() as $contactMethod){
+                        if($contactMethod['key'] == $cemetery_site->type){
+                        $type =  $contactMethod['value'];
+                        }
+                    }
                 $data[] = array(
                     'id'        => $cemetery_site->id,
-                    'type'      => $cemetery_site->type ?? "",
+                    'type' => $type,
                     'value'     => $cemetery_site->value ?? ""
                 );
             }
@@ -211,33 +216,6 @@ class CemeterySiteController extends Controller
     }
 
 }
-
-
-//  LatLng parseDms(String dmsString) {
-//     final dmsPattern = RegExp(
-//         r'(\d+)° (\d+)\u0027 (\d+\.\d+)" ([NSEW]) (\d+)° (\d+)\u0027 (\d+\.\d+)" ([NSEW])');
-//     final match = dmsPattern.firstMatch(dmsString);
-
-//     if (match == null) {
-//       throw FormatException('Invalid DMS string');
-//     }
-
-//     final lat = dmsToDd(
-//       int.parse(match.group(1)!),
-//       int.parse(match.group(2)!),
-//       double.parse(match.group(3)!),
-//       match.group(4)!,
-//     );
-
-//     final long = dmsToDd(
-//       int.parse(match.group(5)!),
-//       int.parse(match.group(6)!),
-//       double.parse(match.group(7)!),
-//       match.group(8)!,
-//     );
-
-//     return LatLng(lat, long);
-//   }
 
 
 

@@ -52,6 +52,9 @@ return new class extends Migration
             $table->string('x');
             $table->string('y');
             $table->string('xy');
+            $table->string('file_name');
+            $table->string('cemetery_app_id');
+
             $table->timestamps();
         });
     }
