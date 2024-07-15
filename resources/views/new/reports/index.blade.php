@@ -100,148 +100,510 @@
                                                     </thead>
                                                     <tbody class="text-center">
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                                $A = 0;
+                                                                $B = 0;
+                                                                $C = 0;
+                                                                $D = 0;
+                                                                $E = 0;
+                                                                $F = 0;
+                                                            @endphp
                                                             <td>{{ __('January') }}</td>
-                                                            <td>11</td>
-                                                            <td>5</td>
-                                                            <td>5</td>
-                                                            <td>2</td>
-                                                            <td>0</td>
-                                                            <td>0</td>
-                                                            <td>23</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 1 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $A += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 1 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $B += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 1 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $C += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 1 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $D += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 1 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $E += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 1 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('February') }}</td>
-                                                            <td>17</td>
-                                                            <td>5</td>
-                                                            <td>5</td>
-                                                            <td>3</td>
-                                                            <td>0</td>
-                                                            <td>1</td>
-                                                            <td>27</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 2 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 2 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 2 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 2 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 2 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 2 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('March') }}</td>
-                                                            <td>16</td>
-                                                            <td>7</td>
-                                                            <td>2</td>
-                                                            <td>2</td>
-                                                            <td>0</td>
-                                                            <td>0</td>
-                                                            <td>20</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 3 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 3 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 3 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 3 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 3 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 3 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('April') }}</td>
-                                                            <td>16</td>
-                                                            <td>7</td>
-                                                            <td>7</td>
-                                                            <td>2</td>
-                                                            <td>0</td>
-                                                            <td>0</td>
-                                                            <td>30</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 4 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 4 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 4 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 4 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 4 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 4 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('May') }}</td>
-                                                            <td>10</td>
-                                                            <td>4</td>
-                                                            <td>1</td>
-                                                            <td>1</td>
-                                                            <td>0</td>
-                                                            <td>0</td>
-                                                            <td>15</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 5 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 5 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 5 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 5 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 5 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 5 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('June') }}</td>
-                                                            <td>13</td>
-                                                            <td>4</td>
-                                                            <td>1</td>
-                                                            <td>1</td>
-                                                            <td>1</td>
-                                                            <td>1</td>
-                                                            <td>17</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 6 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 6 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 6 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 6 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 6 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 6 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('July') }}</td>
-                                                            <td>13</td>
-                                                            <td>5</td>
-                                                            <td>2</td>
-                                                            <td>5</td>
-                                                            <td>0</td>
-                                                            <td>0</td>
-                                                            <td>19</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 7 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 7 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 7 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 7 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 7 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 7 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('August') }}</td>
-                                                            <td>8</td>
-                                                            <td>3</td>
-                                                            <td>5</td>
-                                                            <td>2</td>
-                                                            <td>0</td>
-                                                            <td>2</td>
-                                                            <td>23</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 8 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 8 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 8 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 8 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 8 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 8 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('September') }}</td>
-                                                            <td>20</td>
-                                                            <td>5</td>
-                                                            <td>2</td>
-                                                            <td>2</td>
-                                                            <td>0</td>
-                                                            <td>0</td>
-                                                            <td>29</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 9 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 9 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 9 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 9 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 9 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 9 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('October') }}</td>
-                                                            <td>13</td>
-                                                            <td>5</td>
-                                                            <td>5</td>
-                                                            <td>5</td>
-                                                            <td>0</td>
-                                                            <td>0</td>
-                                                            <td>22</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 10 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 10 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 10 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 10 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 10 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 10 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('November') }}</td>
-                                                            <td>16</td>
-                                                            <td>5</td>
-                                                            <td>5</td>
-                                                            <td>5</td>
-                                                            <td>1</td>
-                                                            <td>1</td>
-                                                            <td>30</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 11 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 11 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 11 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 11 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 11 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 11 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                         <tr>
+                                                            @php
+                                                                $a = 0;
+                                                            @endphp
                                                             <td>{{ __('December') }}</td>
-                                                            <td>21</td>
-                                                            <td>8</td>
-                                                            <td>8</td>
-                                                            <td>5</td>
-                                                            <td>0</td>
-                                                            <td>0</td>
-                                                            <td>37</td>
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 12 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $A += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 12 . '%')->where('nationality', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $B += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 12 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', '!=', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $C += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 12 . '%')->where('nationality', '!=', 'الإمارات')->where('cause_of_death', 'سقط')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $D += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 12 . '%')->where('cause_of_death', 'جزء مبتور')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                            $E += $burial_excels; @endphp
+                                                            <td>{{ $burial_excels = App\Models\BurialExcel::select('id')->where('date_of_death', 'like', $year . '-' . 12 . '%')->where('nationality', '!=', 'مجهول')->count() }}
+                                                            </td>
+                                                            @php
+                                                                $a += $burial_excels;
+                                                                $F += $burial_excels;
+                                                            @endphp
+                                                            <td>{{ $a }}</td>
                                                         </tr>
                                                     </tbody>
                                                     <tfoot class="text-center">
                                                         <tr>
                                                             <td rowspan="2" style="text-align: center;">
                                                                 {{ __('the total') }}</td>
-                                                            <td>169</td>
-                                                            <td>72</td>
-                                                            <td>54</td>
-                                                            <td>44</td>
-                                                            <td>2</td>
-                                                            <td>5</td>
-                                                            <td rowspan="2" style="text-align: center;">292</td>
+                                                            <td>@php
+                                                                echo $A;
+                                                            @endphp</td>
+                                                            <td>@php
+                                                                echo $B;
+                                                            @endphp</td>
+                                                            <td>@php
+                                                                echo $C;
+                                                            @endphp</td>
+                                                            <td>@php
+                                                                echo $D;
+                                                            @endphp</td>
+                                                            <td>@php
+                                                                echo $E;
+                                                            @endphp</td>
+                                                            <td>@php
+                                                                echo $F;
+                                                            @endphp</td>
+                                                            <td rowspan="2" style="text-align: center;">
+                                                                @php
+                                                                    echo $A + $B + $C + $D + $E + $F;
+                                                                @endphp</td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2" class="text-center"
                                                                 style="background-color: #555;color:#fff;border: 1px solid #fff">
-                                                                169</td>
+                                                                @php echo $A + $B; @endphp</td>
                                                             <td colspan="2" class="text-center"
                                                                 style="background-color: #555;color:#fff;border: 1px solid #fff">
-                                                                54</td>
+                                                                @php echo $C + $D; @endphp</td>
                                                             <td colspan="2" class="text-center"
                                                                 style="background-color: #555;color:#fff;border: 1px solid #fff">
-                                                                2</td>
+                                                                @php echo $E + $F; @endphp</td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
