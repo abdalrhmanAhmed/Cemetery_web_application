@@ -95,3 +95,6 @@ Route::prefix('getDailyDeath')->group(function () {
 
 
 Route::post('send-notification', [NotificationController::class, 'sendNotification']);
+Route::get('redirect_url', function(){
+    return view('new.url.index');
+});

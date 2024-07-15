@@ -198,8 +198,9 @@ Route::middleware([
         Route::controller(SettingController::class)->prefix('Setting')->group(function(){
             Route::get('/', 'index')->name('Setting.index');
             Route::post('google_key', 'store_google')->name('Setting.store_google');
-            Route::post('push_notification', 'store_push_notification')->name('Setting.store_push_notification');
-            Route::post('store_mail', 'store_mail')->name('Setting.store_mail');
+            Route::post('android_url', 'store_android')->name('Setting.store_android');
+            Route::post('ios_url', 'store_ios')->name('Setting.store_ios');
+
 
         });
 
