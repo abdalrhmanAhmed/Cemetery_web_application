@@ -132,7 +132,7 @@
 
 
             {{-- start Report --}}
-            {{-- <li class="side-item side-item-category">{{ __('Reports') }}</li>
+            <li class="side-item side-item-category">{{ __('Reports') }}</li>
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}"><svg
                         xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
@@ -143,9 +143,9 @@
                     </svg><span class="side-menu__label">{{ __('Reports') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('report.index') }}">{{ __('Reports') }}</a></li>
+                    <li><a class="slide-item" href="{{ route('Report.index') }}">{{ __('Reports') }}</a></li>
                 </ul>
-            </li> --}}
+            </li>
             {{-- end Report --}}
 
 

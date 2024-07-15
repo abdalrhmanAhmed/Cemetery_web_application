@@ -10,7 +10,7 @@ use App\Http\Controllers\uploads\ExcelUploadController;
 
 // new routs
 use App\Http\Controllers\new\LibaryController;
-use App\Http\Controllers\new\ReportController   ;
+use App\Http\Controllers\new\ReportController;
 use App\Http\Controllers\new\CemeterySiteController;
 use App\Http\Controllers\new\LibaryDetailsController;
 use App\Http\Controllers\new\CemeterySiteDetailsController;
@@ -208,6 +208,7 @@ Route::middleware([
 
         Route::controller(ReportController::class)->prefix('Report')->group(function(){
             Route::get('/', 'index')->name('Report.index');
+            Route::get('filtter', 'filtter')->name('Report.filtter');
         });
        
     }

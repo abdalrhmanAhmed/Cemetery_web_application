@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
+use Carbon\Carbon;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+
 
 class ExcelUploadController extends Controller
 {
@@ -54,6 +57,9 @@ class ExcelUploadController extends Controller
 
             $array = Excel::toArray(new BurialsImport, $filePath);
             foreach ($array[0] as $value) {
+            // Parse date fields if they exist
+            $date_of_death = isset($value['date_of_death']) ? $this->transformDate($value['date_of_death']) : null;
+            $burial_date = isset($value['burial_date']) ? $this->transformDate($value['burial_date']) : null;
                 ExcelTemperary::updateOrCreate([
                     "cemetery_id"                   => $value['cemetery_id'] ?? 0,
                     "grave_sequence"                => $value['grave_sequence'] ?? '',
@@ -68,8 +74,8 @@ class ExcelUploadController extends Controller
                     "case_number"                   => $value['case_number']  ?? '',
                     "case_type"                     => $value['case_type']  ?? '',
                     "nationality"                   => $value['nationality']  ?? '',
-                    "date_of_death"                 => $value['date_of_death']  ?? '',
-                    "burial_date"                   => $value['burial_date']  ?? '',
+                    "date_of_death"                 => $date_of_death  ?? '',
+                    "burial_date"                   => $burial_date ?? '',
                     "shahed_number"                 => $value['shahed_number']  ?? '',
                     "hospital"                      => $value['hospital']  ?? '',
                     "cemetery_name"                 => $value['cemetery_name']  ?? '',
@@ -99,7 +105,7 @@ class ExcelUploadController extends Controller
 
             return redirect()->back()->with(['success' => __('Data has been saved successfully!')]);
         } catch (\Exception $e) {
-            return redirect()->back()->with(['error' => __('Something went wrong with the data')]);
+            return $e;//redirect()->back()->with(['error' => __('Something went wrong with the data')]);
         }
     }
 
@@ -193,4 +199,19 @@ class ExcelUploadController extends Controller
             // Download the file
             return response()->download($path);
         }
+    private function transformDate($value)
+    {
+        // Check if value is numeric (Excel date serial number)
+        if (is_numeric($value)) {
+            // Convert Excel date serial number to a Carbon date
+            return Carbon::instance(Date::excelToDateTimeObject($value));
+        }
+
+        // Attempt to parse as a regular date string
+        try {
+            return Carbon::parse($value);
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
 }
