@@ -162,6 +162,10 @@
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
+                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
+                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
+                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
+                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
                 </ul>
             </li>
             {{-- end Settings --}}
