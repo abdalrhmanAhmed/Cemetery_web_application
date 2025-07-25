@@ -17,13 +17,13 @@
 					</div>
 					<div class="d-flex my-xl-auto right-content">
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-info btn-icon ml-2"><i class="mdi mdi-filter-variant"></i></button>
+							<button type="button" class="btn btn-info btn-icon ms-2"><i class="mdi mdi-filter-variant"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-danger btn-icon ml-2"><i class="mdi mdi-star"></i></button>
+							<button type="button" class="btn btn-danger btn-icon ms-2"><i class="mdi mdi-star"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
+							<button type="button" class="btn btn-warning  btn-icon ms-2"><i class="mdi mdi-refresh"></i></button>
 						</div>
 						<div class="mb-3 mb-xl-0">
 							<div class="btn-group dropdown">
@@ -84,13 +84,13 @@
 											</div>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code" data-toggle="tab" href="#html-code" role="tab" aria-controls="html-code" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code" data-toggle="tab" href="#htms-code" role="tab" aria-controls="htms-code" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 										<!-- Prism Code -->
-										<figure class="highlight clip-widget" id="tabs"><pre><code class="language-markup"><script type="html-dashlead/script">
+										<figure class="highlight clip-widget" id="tabs"><pre><code class="language-markup"><script type="htms-dashlead/script">
 										<div class=" tab-menu-heading">
 											<div class="tabs-menu1">
 												<!-- Tabs -->
@@ -165,9 +165,9 @@
 											</div>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code2" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code2" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab" href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code2" data-toggle="tab" href="#htms-code2" role="tab" aria-controls="htms-code2" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 <!---Prism Pre code-->
@@ -252,9 +252,9 @@
 											</div>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code3" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code3" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code3" data-toggle="tab" href="#html-code3" role="tab" aria-controls="html-code3" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code3" data-toggle="tab" href="#htms-code3" role="tab" aria-controls="htms-code3" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 <!---Prism Pre code-->
@@ -316,7 +316,7 @@
 													<div class="tab-menu-heading">
 														<div class="tabs-menu ">
 															<!-- Tabs -->
-															<ul class="nav panel-tabs ml-3">
+															<ul class="nav panel-tabs ms-3">
 																<li class=""><a href="#tab21" class="active" data-toggle="tab"><i class="fa fa-laptop"></i> Tab Style 01</a></li>
 																<li><a href="#tab22" data-toggle="tab"><i class="fa fa-cube"></i> Tab Style 02</a></li>
 																<li><a href="#tab23" data-toggle="tab"><i class="fa fa-cogs"></i> Tab Style 03</a></li>
@@ -354,9 +354,9 @@
 											</div>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code4" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code4" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code4" data-toggle="tab" href="#html-code4" role="tab" aria-controls="html-code4" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code4" data-toggle="tab" href="#htms-code4" role="tab" aria-controls="htms-code4" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 
@@ -447,17 +447,17 @@
 										</div>
 									</div>
 									<!---Prism Pre code-->
-									<ul class="nav nav-tabs html-source" id="html-source-code5" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code5" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="js-tab" data-toggle="tab" href="#default-tab" role="tab" aria-controls="default-tab" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
-											<a class="nav-link mr-1 html-code" id="js-tab1" data-toggle="tab" href="#default-tab1" role="tab" aria-controls="default-tab1" aria-selected="true"><i class="fab fa-node-js text-info mr-2"></i>JS</a>
-											<a class="nav-link mr-1 html-code" id="js-tab2" data-toggle="tab" href="#default-tab2" role="tab" aria-controls="default-tab2" aria-selected="true"><i class="fab fa-node-js text-info mr-2"></i>JS</a>
+											<a class="nav-link active ms-1 htms-code" id="js-tab" data-toggle="tab" href="#default-tab" role="tab" aria-controls="default-tab" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
+											<a class="nav-link mr-1 htms-code" id="js-tab1" data-toggle="tab" href="#default-tab1" role="tab" aria-controls="default-tab1" aria-selected="true"><i class="fab fa-node-js text-info mr-2"></i>JS</a>
+											<a class="nav-link mr-1 htms-code" id="js-tab2" data-toggle="tab" href="#default-tab2" role="tab" aria-controls="default-tab2" aria-selected="true"><i class="fab fa-node-js text-info mr-2"></i>JS</a>
 										</li>
 									</ul>
 
 									<!--- tabs -->
 									<div class="tab-content">
-										 <div class="tab-pane active" id="default-tab" role="tabpanel" aria-labelledby="html-tab">
+										 <div class="tab-pane active" id="default-tab" role="tabpanel" aria-labelledby="htms-tab">
 <!---Prism Pre code-->
 <figure class="highlight mb-0" id="element5"><pre><code class="language-markup mb-0"><script type="prismsmix/javascript"><div class="panel panel-primary">
 	<div class="tab_wrapper right_tab">

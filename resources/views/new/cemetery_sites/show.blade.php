@@ -20,22 +20,22 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('Cemetery Sites') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ $cemetery_sites->name ?? '' }}</span>
+                    class="text-muted mt-1 tx-13 me-2 mb-0">/ {{ $cemetery_sites->name ?? '' }}</span>
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
             <div class="pr-1 mb-3 mb-xl-0">
-                <button type="button" data-toggle="modal" data-target="#text" class="btn btn-primary btn-icon ml-2"><i
-                        class="mdi mdi-file"></i></button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#text"
+                    class="btn btn-primary btn-icon ms-2"><i class="mdi mdi-file"></i></button>
                 @include('new.cemetery_sites.modals.text')
             </div>
             <div class="pr-1 mb-3 mb-xl-0">
-                <button type="button" data-toggle="modal" data-target="#upload" class="btn btn-warning btn-icon ml-2"><i
-                        class="mdi mdi-upload"></i></button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#upload"
+                    class="btn btn-warning btn-icon ms-2"><i class="mdi mdi-upload"></i></button>
                 @include('new.cemetery_sites.modals.upload')
             </div>
             <div class="pr-1 mb-3 mb-xl-0">
-                <a type="button" href="{{ route('cemetery-site.index') }}" class="btn btn-info btn-icon ml-2"
+                <a type="button" href="{{ route('cemetery-site.index') }}" class="btn btn-info btn-icon ms-2"
                     style="color: #fff"><i class="mdi mdi-arrow-left"></i></a>
             </div>
         </div>

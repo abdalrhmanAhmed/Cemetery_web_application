@@ -120,11 +120,10 @@ Route::middleware([
         // start dailydeath
         Route::controller(DailyDeathController::class)->prefix('DailyDeathController')->group(function(){
             Route::get('/', 'index')->name('DailyDeathController.index');
-            Route::post('store', 'store')->name('DailyDeathController.store');
+            //Route::post('store', 'store')->name('DailyDeathController.store');
             Route::post('update/{id}', 'update')->name('DailyDeathController.update');
             Route::post('delete', 'destroy')->name('DailyDeathController.delete');
             Route::post('store/{id}', 'store')->name('DailyDeathController.store');
-            Route::get('delete', 'destroy')->name('DailyDeathController.delete');
         });
         Route::controller(DailyDeathDetailsController::class)->prefix('DailyDeathDetailsController')->group(function(){
             Route::post('store/{id}', 'store')->name('DailyDeathDetailsController.store');

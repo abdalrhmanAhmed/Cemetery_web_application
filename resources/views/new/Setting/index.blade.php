@@ -29,7 +29,7 @@
                     <h4>{{ __('Google Maps Settinges') }}</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('Setting.store_google') }}" method="post" class="form-group">
+                    <form action="{{ route('Setting.store_google') }}" method="post" class=mb-3>
                         @csrf
                         <label for="">{{ __('Google Maps Key') }}</label>
                         <input type="text" class="form-control" name="google_key"
@@ -61,7 +61,7 @@
                     <h4>{{ __('Google Play Url') }}</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('Setting.store_android') }}" method="post" class="form-group">
+                    <form action="{{ route('Setting.store_android') }}" method="post" class=mb-3>
                         @csrf
                         <label for="">{{ __('Android Url') }}</label>
                         <input type="text" class="form-control" name="android_url" placeholder="{{ __('Android Url') }}"
@@ -88,7 +88,7 @@
                     <h4>{{ __('App Store Url') }}</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('Setting.store_ios') }}" method="post" class="form-group">
+                    <form action="{{ route('Setting.store_ios') }}" method="post" class=mb-3>
                         @csrf
                         <label for="">{{ __('Ios Url') }}</label>
                         <input type="text" class="form-control" name="ios_url" placeholder="{{ __('Ios Url') }}"

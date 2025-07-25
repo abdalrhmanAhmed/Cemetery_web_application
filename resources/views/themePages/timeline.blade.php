@@ -15,13 +15,13 @@
 					</div>
 					<div class="d-flex my-xl-auto right-content">
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-info btn-icon ml-2"><i class="mdi mdi-filter-variant"></i></button>
+							<button type="button" class="btn btn-info btn-icon ms-2"><i class="mdi mdi-filter-variant"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-danger btn-icon ml-2"><i class="mdi mdi-star"></i></button>
+							<button type="button" class="btn btn-danger btn-icon ms-2"><i class="mdi mdi-star"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
+							<button type="button" class="btn btn-warning  btn-icon ms-2"><i class="mdi mdi-refresh"></i></button>
 						</div>
 						<div class="mb-3 mb-xl-0">
 							<div class="btn-group dropdown">
@@ -61,7 +61,7 @@
 												<p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
 											</div>
 											<div class="timeline-footer d-flex align-items-center flex-wrap">
-												<i class="fe fe-heart  text-muted ml-1"></i>
+												<i class="fe fe-heart  text-muted ms-1"></i>
 												<span>19</span>
 												<span class="mr-auto"><i class="fe fe-calendar text-muted mr-1"></i>19 Oct 2019</span>
 											</div>
@@ -77,7 +77,7 @@
 												<p>You have a meeting at Laborator Office Today.</p>
 											</div>
 											<div class="timeline-footer d-flex align-items-center flex-wrap">
-												<i class="fe fe-heart  text-muted ml-1"></i>
+												<i class="fe fe-heart  text-muted ms-1"></i>
 												<span>25</span>
 												<span class="mr-auto"><i class="fe fe-calendar text-muted mr-1"></i>10th Oct 2019</span>
 											</div>
@@ -93,7 +93,7 @@
 												<p>Alpha 5 has arrived just over a month after Alpha 4 with some major feature improvements and a boat load of bug fixes.</p>
 											</div>
 											<div class="timeline-footer d-flex align-items-center flex-wrap">
-												<i class="fe fe-heart  text-muted ml-1"></i>
+												<i class="fe fe-heart  text-muted ms-1"></i>
 												<span>19</span>
 												<span class="mr-auto"><i class="fe fe-calendar text-muted mr-1"></i>5th Oct 2019</span>
 											</div>
@@ -110,7 +110,7 @@
 												<img src="{{URL::asset('assets/img/media/4.jpg')}}" class="mb-3" alt="img">
 											</div>
 											<div class="timeline-footer d-flex align-items-center flex-wrap">
-												<i class="fe fe-heart  text-muted ml-1"></i>
+												<i class="fe fe-heart  text-muted ms-1"></i>
 												<span>19</span>
 												<span class="mr-auto"><i class="fe fe-calendar text-muted mr-1"></i>27th Sep 2017</span>
 											</div>
@@ -127,7 +127,7 @@
 												<a class="btn ripple btn-primary text-white mb-3">Read more</a>
 											</div>
 											<div class="timeline-footer d-flex align-items-center flex-wrap">
-												<i class="fe fe-heart  text-muted ml-1"></i>
+												<i class="fe fe-heart  text-muted ms-1"></i>
 												<span>25</span>
 												<span class="mr-auto"><i class="fe fe-calendar text-muted mr-1"></i>25th Sep 2017</span>
 											</div>
@@ -146,7 +146,7 @@
 												</div>
 											</div>
 											<div class="timeline-footer d-flex align-items-center flex-wrap">
-												<i class="fe fe-heart  text-muted ml-1"></i>
+												<i class="fe fe-heart  text-muted ms-1"></i>
 												<span>32</span>
 												<span class="mr-auto"><i class="fe fe-calendar text-muted mr-1"></i>19th Sep 2017</span>
 											</div>
@@ -162,7 +162,7 @@
 												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cupiditate, delectus deserunt doloribus earum eveniet explicabo fuga iste magni maxime</p>
 											</div>
 											<div class="timeline-footer d-flex align-items-center flex-wrap">
-												<i class="fe fe-heart text-muted ml-1"></i>
+												<i class="fe fe-heart text-muted ms-1"></i>
 												<span>26</span>
 												<span class="mr-auto"><i class="fe fe-calendar text-muted mr-1"></i>15th Sep 2017</span>
 											</div>

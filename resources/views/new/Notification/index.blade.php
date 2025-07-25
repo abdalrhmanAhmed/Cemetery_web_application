@@ -43,7 +43,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        {{-- <button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> {{ __("Add New") }}</button> --}}
+                        {{-- <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#add"><i class="fa fa-plus"></i> {{ __("Add New") }}</button> --}}
                         {{-- @include('new.News.modals.add') --}}
                     </div>
                 </div>
@@ -101,7 +101,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        {{-- <button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> {{ __("Add New") }}</button> --}}
+                        {{-- <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#add"><i class="fa fa-plus"></i> {{ __("Add New") }}</button> --}}
                         {{-- @include('new.News.modals.add') --}}
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                                             </span>
                                         </td> --}}
                                         <td>
-                                            <button data-toggle="modal" data-target="#delete{{ $item->id }}"
+                                            <button data-bs-toggle="modal" data-bs-target="#delete{{ $item->id }}"
                                                 class="btn btn-danger btn-sm mb-1"> <i class="fa fa-trash"></i>
                                                 {{ __('Delete') }}</button>
                                             <a href="{{ route('Notification.edit', $item->id) }}"
@@ -166,25 +166,25 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
-        <!-- Internal Data tables -->
-        <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/pdfmake.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/vfs_fonts.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
-        <!--Internal  Datatable js -->
-        <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
+    <!-- Internal Data tables -->
+    <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/pdfmake.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/vfs_fonts.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
+    <!--Internal  Datatable js -->
+    <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
     <!--Internal  Datepicker js -->
     <script src="{{ URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
     <!-- Internal Select2 js-->

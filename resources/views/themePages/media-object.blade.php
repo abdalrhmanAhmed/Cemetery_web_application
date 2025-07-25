@@ -15,13 +15,13 @@
 					</div>
 					<div class="d-flex my-xl-auto right-content">
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-info btn-icon ml-2"><i class="mdi mdi-filter-variant"></i></button>
+							<button type="button" class="btn btn-info btn-icon ms-2"><i class="mdi mdi-filter-variant"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-danger btn-icon ml-2"><i class="mdi mdi-star"></i></button>
+							<button type="button" class="btn btn-danger btn-icon ms-2"><i class="mdi mdi-star"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
+							<button type="button" class="btn btn-warning  btn-icon ms-2"><i class="mdi mdi-refresh"></i></button>
 						</div>
 						<div class="mb-3 mb-xl-0">
 							<div class="btn-group dropdown">
@@ -60,13 +60,13 @@
 											</div>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code" data-toggle="tab" href="#html-code" role="tab" aria-controls="html-code" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code" data-toggle="tab" href="#htms-code" role="tab" aria-controls="htms-code" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="media-object01"><pre><code class="language-markup"><script type="html-dashlead/script"><div class="media d-block d-sm-flex">
+<figure class="highlight clip-widget" id="media-object01"><pre><code class="language-markup"><script type="htms-dashlead/script"><div class="media d-block d-sm-flex">
 	<img alt="" class="main-img-user avatar-lg mg-sm-l-20 mg-b-20 mg-sm-b-0" src="{{URL::asset('assets/img/faces/4.jpg')}}">
 	<div class="media-body">
 		<h5 class="mg-b-5 tx-inverse tx-15">Media heading</h5>
@@ -103,13 +103,13 @@
 											</div>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code2" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code2" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab" href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code2" data-toggle="tab" href="#htms-code2" role="tab" aria-controls="htms-code2" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="media-object02"><pre><code class="language-markup"><script type="html-dashlead/script"><div class="media d-block d-sm-flex">
+<figure class="highlight clip-widget" id="media-object02"><pre><code class="language-markup"><script type="htms-dashlead/script"><div class="media d-block d-sm-flex">
 	<img alt="" class="main-img-user avatar-lg mg-sm-l-20 mg-b-20 mg-sm-b-0" src="{{URL::asset('assets/img/faces/9.jpg')}}">
 	<div class="media-body">
 		<h5 class="mg-b-5 tx-inverse tx-15">Media heading</h5>
@@ -146,13 +146,13 @@
 											</div>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code3" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code3" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code3" data-toggle="tab" href="#html-code3" role="tab" aria-controls="html-code3" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code3" data-toggle="tab" href="#htms-code3" role="tab" aria-controls="htms-code3" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="media-object03"><pre><code class="language-markup"><script type="html-dashlead/script"><div class="media d-block d-sm-flex">
+<figure class="highlight clip-widget" id="media-object03"><pre><code class="language-markup"><script type="htms-dashlead/script"><div class="media d-block d-sm-flex">
 	<img alt="" class="main-img-user avatar-lg mg-sm-l-20 mg-b-20 mg-sm-b-0 align-self-center" src="{{URL::asset('assets/img/faces/14.jpg')}}">
 	<div class="media-body">
 		<h5 class="mg-b-5 tx-inverse tx-15">Media heading</h5>
@@ -182,13 +182,13 @@
 											<img alt="" class="main-img-user avatar-lg mg-sm-r-20 mg-t-20 mg-sm-t-0" src="{{URL::asset('assets/img/faces/5.jpg')}}">
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code4" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code4" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code4" data-toggle="tab" href="#html-code4" role="tab" aria-controls="html-code4" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code4" data-toggle="tab" href="#htms-code4" role="tab" aria-controls="htms-code4" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="media-object04"><pre><code class="language-markup"><script type="html-dashlead/script"><div class="media d-block d-sm-flex">
+<figure class="highlight clip-widget" id="media-object04"><pre><code class="language-markup"><script type="htms-dashlead/script"><div class="media d-block d-sm-flex">
 	<div class="media-body">
 		<h5 class="mg-b-5 tx-inverse tx-15">Media heading</h5>
 		Lorem Ipsum generators on the Internet as necessary aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit
@@ -237,13 +237,13 @@
 											</ul>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code5" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code5" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code5" data-toggle="tab" href="#html-code5" role="tab" aria-controls="html-code5" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code5" data-toggle="tab" href="#htms-code5" role="tab" aria-controls="htms-code5" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="media-object05"><pre><code class="language-markup"><script type="html-dashlead/script"><ul class="list-unstyled mb-0">
+<figure class="highlight clip-widget" id="media-object05"><pre><code class="language-markup"><script type="htms-dashlead/script"><ul class="list-unstyled mb-0">
 	<li class="media d-block d-sm-flex">
 		<img alt="" class="main-img-user avatar-lg mg-sm-l-20 mg-b-20 mg-sm-b-0" src="{{URL::asset('assets/img/faces/2.jpg')}}">
 		<div class="media-body">

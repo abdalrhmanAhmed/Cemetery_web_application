@@ -24,7 +24,7 @@
 
 @if (count($errors) > 0)
     <div class="alert alert-danger">
-        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+        <button aria-label="Close" class="close" data-bs-dismiss="alert" type="button">
             <span aria-hidden="true">&times;</span>
         </button>
         <strong>خطا</strong>
@@ -44,7 +44,7 @@
         <div class="card mg-b-20">
             <div class="card-body">
                 <div class="main-content-label mg-b-5">
-                    <div class="form-group">
+                    <div class=mb-3>
                         <p>اسم الصلاحية :</p>
                         {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
                     </div>

@@ -20,12 +20,12 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('Notification') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('Edit') }}</span>
+                    class="text-muted mt-1 tx-13 me-2 mb-0">/ {{ __('Edit') }}</span>
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
             <div class="pr-1 mb-3 mb-xl-0">
-                <a type="button" href="{{ route('Notification.index') }}" class="btn btn-info btn-icon ml-2"
+                <a type="button" href="{{ route('Notification.index') }}" class="btn btn-info btn-icon ms-2"
                     style="color: #fff"><i class="mdi mdi-arrow-left"></i></a>
             </div>
         </div>

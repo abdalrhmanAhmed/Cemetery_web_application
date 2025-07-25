@@ -35,7 +35,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('Cemetery Sites') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('index') }}</span>
+                    class="text-muted mt-1 tx-13 me-2 mb-0">/ {{ __('index') }}</span>
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
@@ -48,9 +48,9 @@
     <div class="row row-sm">
         <div class="col-xl-12">
             <div class="card">
-                <div class="card-header pb-0">
+                <div class="card-header pb-2">
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-info" data-toggle="modal" data-target="#add">
+                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#add">
                             <i class="fa fa-plus"></i>
                             {{ __('Add New') }}
                         </button>
@@ -94,17 +94,17 @@
                                         <td class="text-center">
                                             <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true"
-                                                    class="btn ripple btn-info btn-sm" data-toggle="dropdown"
-                                                    type="button">{{ __('Oprations') }}<i
-                                                        class="fas fa-caret-down ml-1"></i></button>
-                                                <div class="dropdown-menu tx-13" x-placement="bottom-start"
+                                                    class="btn ripple btn-info btn-sm dropdown-toggle"
+                                                    data-bs-toggle="dropdown" type="button">{{ __('Oprations') }}<i
+                                                        class="fas fa-caret-down ms-1"></i></button>
+                                                <div class="dropdown-menu tx-13 text-end" x-placement="bottom-end"
                                                     style="position: absolute; transform: translate3d(32px, 27px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                    <a style="color: red" data-toggle="modal"
-                                                        data-target="#delete{{ $cemetery_site->id }}"
+                                                    <button style="color: red" data-bs-toggle="modal"
+                                                        data-bs-target="#delete{{ $cemetery_site->id }}"
                                                         class="dropdown-item">
                                                         <i class="fa fa-trash"></i>
                                                         {{ __('Delete') }}
-                                                    </a>
+                                                    </button>
                                                     <a style="color:rgb(214, 214, 6)"
                                                         href="{{ route('cemetery-site.edit', $cemetery_site->id) }}"
                                                         class="dropdown-item">
@@ -123,14 +123,15 @@
                                                         <i class="fa fa-plus"></i>
                                                         {{ __('Burials Oprations') }}
                                                     </a>
-                                                    <a style="color:#15e226" data-toggle="modal"
-                                                        data-target="#contact{{ $cemetery_site->id }}"
+                                                    <a style="color:#15e226" data-bs-toggle="modal"
+                                                        data-bs-target="#contact{{ $cemetery_site->id }}"
                                                         class="dropdown-item">
                                                         <i class="fa fa-phone"></i>
                                                         {{ __('Contacts') }}
                                                     </a>
-                                                    <a style="color:#15B9E2" data-toggle="modal"
-                                                        data-target="#files{{ $cemetery_site->id }}" class="dropdown-item">
+                                                    <a style="color:#15B9E2" data-bs-toggle="modal"
+                                                        data-bs-target="#files{{ $cemetery_site->id }}"
+                                                        class="dropdown-item">
                                                         <i class="fa fa-file"></i>
                                                         {{ __('Files') }}
                                                     </a>
@@ -157,6 +158,7 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
+    <script src="{{ URL::asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Internal Data tables -->
     <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>

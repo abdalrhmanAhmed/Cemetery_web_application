@@ -37,7 +37,7 @@
     @endsection <div class="my-auto">
         <div class="d-flex">
             <h4 class="content-title mb-0 my-auto">{{ __('Libary') }}</h4><span
-                class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('index') }}</span>
+                class="text-muted mt-1 tx-13 me-2 mb-0">/ {{ __('index') }}</span>
         </div>
     </div>
     <div class="d-flex my-xl-auto right-content">
@@ -52,9 +52,9 @@
     <!--div-->
     <div class="col-xl-12">
         <div class="card">
-            <div class="card-header pb-0">
+            <div class="card-header pb-2">
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-info" data-toggle="modal" data-target="#add">
+                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#add">
                         <i class="fa fa-plus"></i>
                         {{ __('Add New') }}
                     </button>
@@ -89,7 +89,7 @@
                                     </td>
 
                                     <td>
-                                        <button data-toggle="modal" data-target="#delete{{ $libary->id }}"
+                                        <button data-bs-toggle="modal" data-bs-target="#delete{{ $libary->id }}"
                                             class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>
                                             {{ __('Delete') }}</button>
                                         <a href="{{ route('edit.libary', $libary->id) }}"

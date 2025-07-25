@@ -43,13 +43,13 @@
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs main-nav-line">
                                             <li class="nav-item"><a href="#tab1" class="nav-link active"
-                                                    data-toggle="tab">{{ __('Monthly death statistics for the year:') }}</a>
+                                                    data-bs-toggle="tab">{{ __('Monthly death statistics for the year:') }}</a>
                                             </li>
                                             <li class="nav-item"><a href="#tab2" class="nav-link"
-                                                    data-toggle="tab">{{ __('Statistics comparing deaths for two years:') }}</a>
+                                                    data-bs-toggle="tab">{{ __('Statistics comparing deaths for two years:') }}</a>
                                             </li>
                                             <li class="nav-item"><a href="#tab3" class="nav-link"
-                                                    data-toggle="tab">{{ __('Death statistics by nationalities:') }}</a>
+                                                    data-bs-toggle="tab">{{ __('Death statistics by nationalities:') }}</a>
                                             </li>
                                         </ul>
                                     </div>

@@ -15,13 +15,13 @@
 					</div>
 					<div class="d-flex my-xl-auto right-content">
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-info btn-icon ml-2"><i class="mdi mdi-filter-variant"></i></button>
+							<button type="button" class="btn btn-info btn-icon ms-2"><i class="mdi mdi-filter-variant"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-danger btn-icon ml-2"><i class="mdi mdi-star"></i></button>
+							<button type="button" class="btn btn-danger btn-icon ms-2"><i class="mdi mdi-star"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
+							<button type="button" class="btn btn-warning  btn-icon ms-2"><i class="mdi mdi-refresh"></i></button>
 						</div>
 						<div class="mb-3 mb-xl-0">
 							<div class="btn-group dropdown">
@@ -61,13 +61,13 @@
 											</nav>
 										</div>
 									</div>
-									<ul class="nav nav-tabs html-source" id="html-source-code" role="tablist">
+									<ul class="nav nav-tabs htms-source" id="htms-source-code" role="tablist">
 										<li class="nav-item">
-											<a class="nav-link active ml-1 html-code" id="html-code" data-toggle="tab" href="#html-code" role="tab" aria-controls="html-code" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+											<a class="nav-link active ms-1 htms-code" id="htms-code" data-toggle="tab" href="#htms-code" role="tab" aria-controls="htms-code" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 										</li>
 									</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="nav1"><pre><code class="language-markup"><script type="html-dashlead/script"><nav class="nav main-nav flex-column flex-md-row">
+<figure class="highlight clip-widget" id="nav1"><pre><code class="language-markup"><script type="htms-dashlead/script"><nav class="nav main-nav flex-column flex-md-row">
 	<a class="nav-link active" href="#">Home</a>
 	<a class="nav-link" href="#">About</a>
 	<a class="nav-link" href="#">Pages</a>
@@ -96,13 +96,13 @@
 												</nav>
 											</div>
 										</div>
-										<ul class="nav nav-tabs html-source" id="html-source-code2" role="tablist">
+										<ul class="nav nav-tabs htms-source" id="htms-source-code2" role="tablist">
 											<li class="nav-item">
-												<a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab" href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+												<a class="nav-link active ms-1 htms-code" id="htms-code2" data-toggle="tab" href="#htms-code2" role="tab" aria-controls="htms-code2" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 											</li>
 										</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="nav2"><pre><code class="language-markup"><script type="html-dashlead/script"><nav class="nav main-nav-column">
+<figure class="highlight clip-widget" id="nav2"><pre><code class="language-markup"><script type="htms-dashlead/script"><nav class="nav main-nav-column">
 	<a class="nav-link active" href="#">Home</a>
 	<a class="nav-link" href="#">About</a>
 	<a class="nav-link" href="#">Pages</a>
@@ -131,13 +131,13 @@
 												</nav>
 											</div>
 										</div>
-										<ul class="nav nav-tabs html-source" id="html-source-code3" role="tablist">
+										<ul class="nav nav-tabs htms-source" id="htms-source-code3" role="tablist">
 											<li class="nav-item">
-												<a class="nav-link active ml-1 html-code" id="html-code3" data-toggle="tab" href="#html-code3" role="tab" aria-controls="html-code3" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+												<a class="nav-link active ms-1 htms-code" id="htms-code3" data-toggle="tab" href="#htms-code3" role="tab" aria-controls="htms-code3" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 											</li>
 										</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="nav3"><pre><code class="language-markup"><script type="html-dashlead/script"><nav class="nav nav-pills flex-column flex-md-row">
+<figure class="highlight clip-widget" id="nav3"><pre><code class="language-markup"><script type="htms-dashlead/script"><nav class="nav nav-pills flex-column flex-md-row">
 	<a class="nav-link active" href="#">Home</a>
 	<a class="nav-link" href="#">About</a>
 	<a class="nav-link" href="#">Pages</a>
@@ -166,13 +166,13 @@
 												</nav>
 											</div>
 										</div>
-										<ul class="nav nav-tabs html-source" id="html-source-code4" role="tablist">
+										<ul class="nav nav-tabs htms-source" id="htms-source-code4" role="tablist">
 											<li class="nav-item">
-												<a class="nav-link active ml-1 html-code" id="html-code4" data-toggle="tab" href="#html-code4" role="tab" aria-controls="html-code4" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+												<a class="nav-link active ms-1 htms-code" id="htms-code4" data-toggle="tab" href="#htms-code4" role="tab" aria-controls="htms-code4" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 											</li>
 										</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="nav4"><pre><code class="language-markup"><script type="html-dashlead/script"><nav class="nav nav-pills flex-column">
+<figure class="highlight clip-widget" id="nav4"><pre><code class="language-markup"><script type="htms-dashlead/script"><nav class="nav nav-pills flex-column">
 	<a class="nav-link active" href="#">Home</a>
 	<a class="nav-link" href="#">About</a>
 	<a class="nav-link" href="#">Pages</a>
@@ -209,13 +209,13 @@
 												</nav>
 											</div>
 										</div>
-										<ul class="nav nav-tabs html-source" id="html-source-code5" role="tablist">
+										<ul class="nav nav-tabs htms-source" id="htms-source-code5" role="tablist">
 											<li class="nav-item">
-												<a class="nav-link active ml-1 html-code" id="html-code5" data-toggle="tab" href="#html-code5" role="tab" aria-controls="html-code5" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+												<a class="nav-link active ms-1 htms-code" id="htms-code5" data-toggle="tab" href="#htms-code5" role="tab" aria-controls="htms-code5" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 											</li>
 										</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="nav5"><pre><code class="language-markup"><script type="html-dashlead/script"><div class="p-3 bg-light mb-3">
+<figure class="highlight clip-widget" id="nav5"><pre><code class="language-markup"><script type="htms-dashlead/script"><div class="p-3 bg-light mb-3">
 	<nav class="nav main-nav flex-column flex-md-row justify-content-center">
 		<a class="nav-link active" href="#">Home</a>
 		<a class="nav-link" href="#">About</a>
@@ -262,13 +262,13 @@
 												</nav>
 											</div>
 										</div>
-										<ul class="nav nav-tabs html-source" id="html-source-code6" role="tablist">
+										<ul class="nav nav-tabs htms-source" id="htms-source-code6" role="tablist">
 											<li class="nav-item">
-												<a class="nav-link active ml-1 html-code" id="html-code6" data-toggle="tab" href="#html-code6" role="tab" aria-controls="html-code6" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+												<a class="nav-link active ms-1 htms-code" id="htms-code6" data-toggle="tab" href="#htms-code6" role="tab" aria-controls="htms-code6" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 											</li>
 										</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="nav6"><pre><code class="language-markup"><script type="html-dashlead/script"><div class="p-3 bg-primary mb-3">
+<figure class="highlight clip-widget" id="nav6"><pre><code class="language-markup"><script type="htms-dashlead/script"><div class="p-3 bg-primary mb-3">
 	<nav class="nav main-nav main-nav-colored-bg main-nav-dark flex-column flex-md-row">
 		<a class="nav-link active" href="#">Home</a>
 		<a class="nav-link" href="#">About</a>
@@ -307,13 +307,13 @@
 												</nav>
 											</div>
 										</div>
-										<ul class="nav nav-tabs html-source" id="html-source-code7" role="tablist">
+										<ul class="nav nav-tabs htms-source" id="htms-source-code7" role="tablist">
 											<li class="nav-item">
-												<a class="nav-link active ml-1 html-code" id="html-code7" data-toggle="tab" href="#html-code7" role="tab" aria-controls="html-code7" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+												<a class="nav-link active ms-1 htms-code" id="htms-code7" data-toggle="tab" href="#htms-code7" role="tab" aria-controls="htms-code7" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 											</li>
 										</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="nav7"><pre><code class="language-markup"><script type="html-dashlead/script"><nav class="nav main-nav-line flex-column flex-md-row">
+<figure class="highlight clip-widget" id="nav7"><pre><code class="language-markup"><script type="htms-dashlead/script"><nav class="nav main-nav-line flex-column flex-md-row">
 	<a class="nav-link active" data-toggle="tab" href="#">Home</a>
 	<a class="nav-link" data-toggle="tab" href="#">About</a>
 	<a class="nav-link" data-toggle="tab" href="#">Pages</a>
@@ -354,13 +354,13 @@
 												</div>
 											</div>
 										</div>
-										<ul class="nav nav-tabs html-source" id="html-source-code8" role="tablist">
+										<ul class="nav nav-tabs htms-source" id="htms-source-code8" role="tablist">
 											<li class="nav-item">
-												<a class="nav-link active ml-1 html-code" id="html-code8" data-toggle="tab" href="#html-code8" role="tab" aria-controls="html-code8" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+												<a class="nav-link active ms-1 htms-code" id="htms-code8" data-toggle="tab" href="#htms-code8" role="tab" aria-controls="htms-code8" aria-selected="true"><i class="fab fa-html5 text-orange ms-2"></i>HTML</a>
 											</li>
 										</ul>
 <!-- Prism Precode -->
-<figure class="highlight clip-widget" id="nav8"><pre><code class="language-markup"><script type="html-dashlead/script"><div class="tab-content">
+<figure class="highlight clip-widget" id="nav8"><pre><code class="language-markup"><script type="htms-dashlead/script"><div class="tab-content">
 	<div class="tab-pane active show" id="tabCont1">
 		Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
 	</div>

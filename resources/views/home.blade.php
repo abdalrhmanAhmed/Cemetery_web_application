@@ -32,12 +32,12 @@
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
-                            <div class="float-left my-auto mr-auto">
+                            <div class="float-end my-auto me-auto">
                                 <h4 class="tx-15 font-weight-bold mb-1 text-white">{{ __('Clients Total') }}
                                     {{ App\Models\User::where('email', 'like', '%' . 'Clinet.com')->get()->count() ?? 0 }}
                                 </h4>
                             </div>
-                            <span class="float-right my-auto mr-auto">
+                            <span class="float-start my-auto me-auto">
                             </span>
                         </div>
                     </div>
@@ -53,12 +53,12 @@
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
-                            <div class="float-left my-auto mr-auto">
+                            <div class="float-end my-auto me-auto">
                                 <h4 class="tx-15 font-weight-bold mb-1 text-white">{{ __('Employees Count') }}
                                     {{ App\Models\User::whereNot('email', 'like', '%' . 'Client.com')->get()->count() ?? 0 }}
                                 </h4>
                             </div>
-                            <span class="float-right my-auto mr-auto">
+                            <span class="float-start my-auto me-auto">
 
                             </span>
                         </div>
@@ -76,11 +76,11 @@
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
-                            <div class="float-left my-auto mr-auto">
+                            <div class="float-end my-auto me-auto">
                                 <h4 class="tx-15 font-weight-bold mb-1 text-white">{{ __('Cemetery Count') }}
                                     {{ App\Models\BurialExcel::distinct('cemetery_name')->count('cemetery_name') ?? 0 }}
                             </div>
-                            <span class="float-right my-auto mr-auto">
+                            <span class="float-start my-auto me-auto">
                             </span>
                         </div>
                     </div>
@@ -96,11 +96,11 @@
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
-                            <div class="float-left my-auto mr-auto">
+                            <div class="float-end my-auto me-auto">
                                 <h4 class="tx-15 font-weight-bold mb-1 text-white">{{ __('Graves Count') }}
                                     {{ App\Models\BurialExcel::get()->count() ?? 0 }}</h4>
                             </div>
-                            <span class="float-right my-auto mr-auto">
+                            <span class="float-start my-auto me-auto">
                             </span>
                         </div>
                     </div>
@@ -167,16 +167,16 @@
                     <div class="list-group list-lg-group list-group-flush">
                         <div class="list-group-item list-group-item-action" href="#">
                             <div class="media mt-0">
-                                <img class="avatar-lg rounded-circle ml-3 my-auto"
+                                <img class="avatar-lg rounded-circle ms-3 my-auto"
                                     src="{{ URL::asset('assets/img/faces/3.jpg') }}" alt="Image description">
                                 <div class="media-body">
                                     <div class="d-flex align-items-center">
                                         <div class="mt-0">
                                             <h5 class="mb-1 tx-15">Samantha Melon</h5>
                                             <p class="mb-0 tx-13 text-muted">User ID: #1234 <span
-                                                    class="text-success ml-2">Paid</span></p>
+                                                    class="text-success ms-2">Paid</span></p>
                                         </div>
-                                        <span class="mr-auto wd-45p fs-16 mt-2">
+                                        <span class="me-auto wd-45p fs-16 mt-2">
                                             <div id="spark1" class="wd-100p"></div>
                                         </span>
                                     </div>
@@ -185,16 +185,16 @@
                         </div>
                         <div class="list-group-item list-group-item-action" href="#">
                             <div class="media mt-0">
-                                <img class="avatar-lg rounded-circle ml-3 my-auto"
+                                <img class="avatar-lg rounded-circle ms-3 my-auto"
                                     src="{{ URL::asset('assets/img/faces/11.jpg') }}" alt="Image description">
                                 <div class="media-body">
                                     <div class="d-flex align-items-center">
                                         <div class="mt-1">
                                             <h5 class="mb-1 tx-15">Jimmy Changa</h5>
                                             <p class="mb-0 tx-13 text-muted">User ID: #1234 <span
-                                                    class="text-danger ml-2">Pending</span></p>
+                                                    class="text-danger ms-2">Pending</span></p>
                                         </div>
-                                        <span class="mr-auto wd-45p fs-16 mt-2">
+                                        <span class="me-auto wd-45p fs-16 mt-2">
                                             <div id="spark2" class="wd-100p"></div>
                                         </span>
                                     </div>
@@ -203,16 +203,16 @@
                         </div>
                         <div class="list-group-item list-group-item-action" href="#">
                             <div class="media mt-0">
-                                <img class="avatar-lg rounded-circle ml-3 my-auto"
+                                <img class="avatar-lg rounded-circle ms-3 my-auto"
                                     src="{{ URL::asset('assets/img/faces/17.jpg') }}" alt="Image description">
                                 <div class="media-body">
                                     <div class="d-flex align-items-center">
                                         <div class="mt-1">
                                             <h5 class="mb-1 tx-15">Gabe Lackmen</h5>
                                             <p class="mb-0 tx-13 text-muted">User ID: #1234<span
-                                                    class="text-danger ml-2">Pending</span></p>
+                                                    class="text-danger ms-2">Pending</span></p>
                                         </div>
-                                        <span class="mr-auto wd-45p fs-16 mt-2">
+                                        <span class="me-auto wd-45p fs-16 mt-2">
                                             <div id="spark3" class="wd-100p"></div>
                                         </span>
                                     </div>
@@ -221,16 +221,16 @@
                         </div>
                         <div class="list-group-item list-group-item-action" href="#">
                             <div class="media mt-0">
-                                <img class="avatar-lg rounded-circle ml-3 my-auto"
+                                <img class="avatar-lg rounded-circle ms-3 my-auto"
                                     src="{{ URL::asset('assets/img/faces/15.jpg') }}" alt="Image description">
                                 <div class="media-body">
                                     <div class="d-flex align-items-center">
                                         <div class="mt-1">
                                             <h5 class="mb-1 tx-15">Manuel Labor</h5>
                                             <p class="mb-0 tx-13 text-muted">User ID: #1234<span
-                                                    class="text-success ml-2">Paid</span></p>
+                                                    class="text-success ms-2">Paid</span></p>
                                         </div>
-                                        <span class="mr-auto wd-45p fs-16 mt-2">
+                                        <span class="me-auto wd-45p fs-16 mt-2">
                                             <div id="spark4" class="wd-100p"></div>
                                         </span>
                                     </div>
@@ -239,16 +239,16 @@
                         </div>
                         <div class="list-group-item list-group-item-action br-br-7 br-bl-7" href="#">
                             <div class="media mt-0">
-                                <img class="avatar-lg rounded-circle ml-3 my-auto"
+                                <img class="avatar-lg rounded-circle ms-3 my-auto"
                                     src="{{ URL::asset('assets/img/faces/6.jpg') }}" alt="Image description">
                                 <div class="media-body">
                                     <div class="d-flex align-items-center">
                                         <div class="mt-1">
                                             <h5 class="mb-1 tx-15">Sharon Needles</h5>
                                             <p class="b-0 tx-13 text-muted mb-0">User ID: #1234<span
-                                                    class="text-success ml-2">Paid</span></p>
+                                                    class="text-success ms-2">Paid</span></p>
                                         </div>
-                                        <span class="mr-auto wd-45p fs-16 mt-2">
+                                        <span class="me-auto wd-45p fs-16 mt-2">
                                             <div id="spark5" class="wd-100p"></div>
                                         </span>
                                     </div>

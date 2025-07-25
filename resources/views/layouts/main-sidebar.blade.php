@@ -27,8 +27,8 @@
             {{-- start main urls --}}
             <li class="side-item side-item-category">{{ __('Main Links') }}</li>
             <li class="slide">
-                <a class="side-menu__item" href="{{ route('home') }}"><svg xmlns="http://www.w3.org/2000/svg"
-                        class="side-menu__icon" viewBox="0 0 24 24">
+                <a class="side-menu__item" style="text-decoration: none" href="{{ route('home') }}"><svg
+                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M5 5h4v6H5zm10 8h4v6h-4zM5 17h4v2H5zM15 5h4v2h-4z" opacity=".3" />
                         <path
@@ -41,13 +41,15 @@
             {{-- start users --}}
             <li class="side-item side-item-category">{{ __('Users') }}</li>
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}">
+                <a class="side-menu__item" style="text-decoration: none" data-toggle="slide"
+                    href="{{ url('/' . ($page = '#')) }}">
                     <i class="fa fa-users fa-lg text-dark"></i> &nbsp;
                     <span class="side-menu__label">{{ __('Users') }}</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('admin.users.index') }}">{{ __('Users List') }}</a></li>
+                    <li><a class="slide-item" style="text-decoration: none"
+                            href="{{ route('admin.users.index') }}">{{ __('Users List') }}</a></li>
                     {{-- <li><a class="slide-item" href="{{ route('admin.roles.index') }}">{{ __('Roles List') }}</a></li> --}}
                     {{-- <li><a class="slide-item" href="{{ route('admin.permissions.index') }}">{{ __('Permissions List') }}</a></li> --}}
                 </ul>
@@ -58,8 +60,9 @@
             {{-- start libary --}}
             <li class="side-item side-item-category">{{ __('index') }}</li>
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}"><svg
-                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+                <a class="side-menu__item" style="text-decoration: none" data-toggle="slide"
+                    href="{{ url('/' . ($page = '#')) }}"><svg xmlns="http://www.w3.org/2000/svg"
+                        class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
                         <path
@@ -67,15 +70,17 @@
                     </svg><span class="side-menu__label">{{ __('Libary Data') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('index.libary') }}">{{ __('Libary') }}</a></li>
+                    <li><a class="slide-item" style="text-decoration: none"
+                            href="{{ route('index.libary') }}">{{ __('Libary') }}</a></li>
                 </ul>
             </li>
             {{-- end libary --}}
 
             {{-- start Cemetery sites --}}
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}"><svg
-                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+                <a class="side-menu__item" style="text-decoration: none" data-toggle="slide"
+                    href="{{ url('/' . ($page = '#')) }}"><svg xmlns="http://www.w3.org/2000/svg"
+                        class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
                         <path
@@ -83,7 +88,8 @@
                     </svg><span class="side-menu__label">{{ __('Cemetery Sites Data') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('cemetery-site.index') }}">{{ __('Cemetery Sites') }}</a>
+                    <li><a class="slide-item" style="text-decoration: none"
+                            href="{{ route('cemetery-site.index') }}">{{ __('Cemetery Sites') }}</a>
                     </li>
                 </ul>
             </li>
@@ -92,8 +98,9 @@
 
             {{-- start Media library --}}
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}"><svg
-                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+                <a class="side-menu__item" style="text-decoration: none" data-toggle="slide"
+                    href="{{ url('/' . ($page = '#')) }}"><svg xmlns="http://www.w3.org/2000/svg"
+                        class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
                         <path
@@ -101,14 +108,16 @@
                     </svg><span class="side-menu__label">{{ __('Media Library Data') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item"
+                    <li><a class="slide-item" style="text-decoration: none"
                             href="{{ route('DailyDeathController.index') }}">{{ __('Daily deaths') }}</a></li>
-                    <li><a class="slide-item"
+                    <li><a class="slide-item" style="text-decoration: none"
                             href="{{ route('AboutTheOfficeOfCemeteriesAffairController.index') }}">{{ __('About the Office of Cemeteries Affairs') }}</a>
                     </li>
-                    <li><a class="slide-item" href="{{ route('ProjectsController.index') }}">{{ __('Projects') }}</a>
+                    <li><a class="slide-item" style="text-decoration: none"
+                            href="{{ route('ProjectsController.index') }}">{{ __('Projects') }}</a>
                     </li>
-                    <li><a class="slide-item" href="{{ route('NewsController.index') }}">{{ __('News') }}</a></li>
+                    <li><a class="slide-item" style="text-decoration: none"
+                            href="{{ route('NewsController.index') }}">{{ __('News') }}</a></li>
                 </ul>
             </li>
             {{-- end Media library --}}
@@ -116,8 +125,9 @@
 
             {{-- start Alerts --}}
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}"><svg
-                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+                <a class="side-menu__item" style="text-decoration: none" data-toggle="slide"
+                    href="{{ url('/' . ($page = '#')) }}"><svg xmlns="http://www.w3.org/2000/svg"
+                        class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
                         <path
@@ -125,7 +135,8 @@
                     </svg><span class="side-menu__label">{{ __('Alerts Data') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('Notification.index') }}">{{ __('Alerts') }}</a></li>
+                    <li><a class="slide-item" style="text-decoration: none"
+                            href="{{ route('Notification.index') }}">{{ __('Alerts') }}</a></li>
                 </ul>
             </li>
             {{-- end Alerts --}}
@@ -134,8 +145,9 @@
             {{-- start Report --}}
             <li class="side-item side-item-category">{{ __('Reports') }}</li>
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}"><svg
-                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+                <a class="side-menu__item" style="text-decoration: none" data-toggle="slide"
+                    href="{{ url('/' . ($page = '#')) }}"><svg xmlns="http://www.w3.org/2000/svg"
+                        class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
                         <path
@@ -143,7 +155,8 @@
                     </svg><span class="side-menu__label">{{ __('Reports') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('Report.index') }}">{{ __('Reports') }}</a></li>
+                    <li><a class="slide-item" style="text-decoration: none"
+                            href="{{ route('Report.index') }}">{{ __('Reports') }}</a></li>
                 </ul>
             </li>
             {{-- end Report --}}
@@ -152,8 +165,9 @@
             {{-- start Settings --}}
             <li class="side-item side-item-category">{{ __('Settings') }}</li>
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ url('/' . ($page = '#')) }}"><svg
-                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">
+                <a class="side-menu__item" style="text-decoration: none" data-toggle="slide"
+                    href="{{ url('/' . ($page = '#')) }}"><svg xmlns="http://www.w3.org/2000/svg"
+                        class="side-menu__icon" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
                         <path
@@ -161,18 +175,15 @@
                     </svg><span class="side-menu__label">{{ __('Settings') }}</span><i
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
-                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
-                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
-                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
-                    <li><a class="slide-item" href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
+                    <li><a style="text-decoration: none" class="slide-item"
+                            href="{{ route('Setting.index') }}">{{ __('Settings') }}</a></li>
                 </ul>
             </li>
             {{-- end Settings --}}
             <hr>
             <div class="slide">
                 <div class="side-menu__item">
-                    <a style="color: #f00" href="{{ route('logout') }}"
+                    <a style="color: #f00; text-decoration: none" href="{{ route('logout') }}"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <i class="bx bx-log-out"></i>
                         <span style="font-size:14px">{{ __('Logout') }}</span>

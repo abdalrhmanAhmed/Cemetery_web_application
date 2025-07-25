@@ -40,9 +40,9 @@
     <div class="row row-sm">
         <div class="col-xl-12">
             <div class="card">
-                <div class="card-header pb-0">
+                <div class="card-header pb-2">
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-info" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i>
+                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#add"><i class="fa fa-plus"></i>
                             {{ __('Add New') }}</button>
                         @include('new.Projects.modals.add')
                     </div>
@@ -75,7 +75,7 @@
                                         </td>
 
                                         <td>
-                                            <button data-toggle="modal" data-target="#delete{{ $item->id }}"
+                                            <button data-bs-toggle="modal" data-bs-target="#delete{{ $item->id }}"
                                                 class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>
                                                 {{ __('Delete') }}</button>
                                             <a href="{{ route('ProjectsController.edit', $item->id) }}"

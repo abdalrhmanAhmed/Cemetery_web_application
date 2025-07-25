@@ -1,9 +1,7 @@
 @extends('layouts.master2')
-
 @section('title')
     {{ __('Login') }}
 @stop
-
 
 @section('css')
     <!-- Sidemenu-respoansive-tabs css -->
@@ -12,7 +10,7 @@
 @endsection
 @section('content')
     <div class="container-fluid">
-        <div class="row no-gutter">
+        <div class="row g-0">
             <!-- The image half -->
             <!-- The content half -->
             <div class="col-md-6 col-lg-6 col-xl-5 bg-white">
@@ -29,12 +27,12 @@
                                             <h5 class="font-weight-semibold mb-4 text-primary"> {{ __('Login') }}</h5>
                                             <form method="POST" action="{{ route('login') }}">
                                                 @csrf
-                                                <div class="form-group">
+                                                <div class=mb-3>
                                                     <label>{{ __('E-mail') }}</label>
                                                     <input id="email" type="email"
                                                         class="form-control @error('email') is-invalid @enderror"
                                                         name="email" value="{{ old('email') }}" required
-                                                        autocomplete="email" autofocus>
+                                                        autocomplete="off" autofocus>
                                                     @error('email')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -42,12 +40,12 @@
                                                     @enderror
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class=mb-3>
                                                     <label>{{ __('Password') }}</label>
 
                                                     <input id="password" type="password"
                                                         class="form-control @error('password') is-invalid @enderror"
-                                                        name="password" required autocomplete="current-password">
+                                                        name="password" required autocomplete="new-password">
 
                                                     @error('password')
                                                         <span class="invalid-feedback" role="alert">
@@ -55,7 +53,7 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                <button type="submit" class="btn btn-main-primary btn-block">
+                                                <button type="submit" class="btn btn-primary btn-block">
                                                     {{ __('Login') }}
                                                 </button>
                                             </form>

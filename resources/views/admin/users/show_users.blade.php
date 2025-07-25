@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    المستخدمين  
+    المستخدمين
 @stop
 
 <!-- Internal Data table css -->
@@ -21,8 +21,8 @@
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">{{__('Users')}}</h4>
-            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('Users List') }}</span>
+            <h4 class="content-title mb-0 my-auto">{{ __('Users') }}</h4>
+            <span class="text-muted mt-1 tx-13 me-2 mb-0">/ {{ __('Users List') }}</span>
         </div>
     </div>
 </div>
@@ -37,10 +37,10 @@
 <div class="row row-sm">
     <div class="col-xl-12">
         <div class="card">
-            <div class="card-header pb-0">
+            <div class="card-header padding-bottom">
                 <div class="col-sm-1 col-md-2">
                     @can('user-create')
-                        <a class="btn btn-primary" href="{{ route('admin.users.create') }}">{{__('Add New User')}}</a>
+                        <a class="btn btn-primary" href="{{ route('admin.users.create') }}">{{ __('Add New User') }}</a>
                     @endcan
                 </div>
             </div>
@@ -50,11 +50,11 @@
                         <thead>
                             <tr>
                                 <th class="wd-10p border-bottom-0">#</th>
-                                <th class="wd-15p border-bottom-0">{{__('User Name')}}</th>
-                                <th class="wd-20p border-bottom-0">{{__('E-mail')}}</th>
-                                <th class="wd-15p border-bottom-0">{{__('Status')}}</th>
-                                <th class="wd-15p border-bottom-0">{{__('Role')}}</th>
-                                <th class="wd-10p border-bottom-0">{{__('Actions')}}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('User Name') }}</th>
+                                <th class="wd-20p border-bottom-0">{{ __('E-mail') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('Status') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('Role') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ __('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,13 +66,13 @@
                                     <td>
                                         @if ($user->status == 1)
                                             <span class="label text-success d-flex">
-                                                <div class="dot-label bg-success ml-1"></div>&nbsp;
-                                                {{__('Active')}}
+                                                <div class="dot-label bg-success ms-1"></div>&nbsp;
+                                                {{ __('Active') }}
                                             </span>
                                         @else
                                             <span class="label text-danger d-flex">
-                                                <div class="dot-label bg-danger ml-1"></div>
-                                                {{__('Unactive')}}
+                                                <div class="dot-label bg-danger ms-1"></div>
+                                                {{ __('Unactive') }}
                                             </span>
                                         @endif
                                     </td>
@@ -87,8 +87,8 @@
 
                                     <td>
                                         @can('user-edit')
-                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-info"
-                                                title="تعديل"><i class="las la-pen"></i></a>
+                                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                                                class="btn btn-sm btn-info" title="تعديل"><i class="las la-pen"></i></a>
                                         @endcan
 
                                         @can('user-delete')
@@ -114,7 +114,7 @@
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
                     <h6 class="modal-title">حذف المستخدم</h6><button aria-label="Close" class="close"
-                        data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                        data-bs-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <form action="{{ route('admin.users.destroy', 'test') }}" method="post">
                     {{ method_field('delete') }}
@@ -125,7 +125,7 @@
                         <input class="form-control" name="username" id="username" type="text" readonly>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء</button>
                         <button type="submit" class="btn btn-danger">تاكيد</button>
                     </div>
             </div>
@@ -171,7 +171,6 @@
         modal.find('.modal-body #user_id').val(user_id);
         modal.find('.modal-body #username').val(username);
     })
-
 </script>
 
 

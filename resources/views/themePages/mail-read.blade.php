@@ -11,13 +11,13 @@
 					</div>
 					<div class="d-flex my-xl-auto right-content">
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-info btn-icon ml-2"><i class="mdi mdi-filter-variant"></i></button>
+							<button type="button" class="btn btn-info btn-icon ms-2"><i class="mdi mdi-filter-variant"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-danger btn-icon ml-2"><i class="mdi mdi-star"></i></button>
+							<button type="button" class="btn btn-danger btn-icon ms-2"><i class="mdi mdi-star"></i></button>
 						</div>
 						<div class="pr-1 mb-3 mb-xl-0">
-							<button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
+							<button type="button" class="btn btn-warning  btn-icon ms-2"><i class="mdi mdi-refresh"></i></button>
 						</div>
 						<div class="mb-3 mb-xl-0">
 							<div class="btn-group dropdown">
@@ -77,7 +77,7 @@
 							<div class="card-body">
 								<div class="email-media">
 									<div class="mt-0 d-sm-flex">
-										<img class="ml-2 rounded-circle avatar-xl" src="{{URL::asset('assets/img/faces/6.jpg')}}" alt="avatar">
+										<img class="ms-2 rounded-circle avatar-xl" src="{{URL::asset('assets/img/faces/6.jpg')}}" alt="avatar">
 										<div class="media-body">
 											<div class="float-left d-none d-md-flex fs-15">
 												<span class="mr-3">Sep 13 , 2019 12:45 pm</span>

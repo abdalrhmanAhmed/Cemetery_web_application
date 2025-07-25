@@ -26,12 +26,12 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('Cemetery Sites') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('Edit') }}</span>
+                    class="text-muted mt-1 tx-13 me-2 mb-0">/ {{ __('Edit') }}</span>
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
             <div class="pr-1 mb-3 mb-xl-0">
-                <a type="button" href="{{ route('cemetery-site.index') }}" class="btn btn-info btn-icon ml-2"
+                <a type="button" href="{{ route('cemetery-site.index') }}" class="btn btn-info btn-icon ms-2"
                     style="color: #fff"><i class="mdi mdi-arrow-left"></i></a>
             </div>
         </div>
@@ -48,66 +48,70 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-4">
-                            <div class="col-md">
+                            <div class="col-md-6">
                                 <label for="">{{ __('Name In Ar') }}</label>
                                 <input type="text" class="form-control" name="ar"
                                     value="{{ $cemetery_sites->getTranslation('name', 'ar') }}" required />
                             </div>
-                            <div class="col-md">
+                            <div class="col-md-6">
                                 <label for="">{{ __('Name In En') }}</label>
                                 <input type="text" class="form-control" name="en"
                                     value="{{ $cemetery_sites->getTranslation('name', 'en') }}" required />
                             </div>
                         </div>
-                        <div class="col-md">
-                            <label for="">{{ __('Text') }}</label>
-                            <textarea name="text" id="" cols="30" rows="10" class="form-control ckeditor">{{ $cemetery_sites->text }}</textarea>
-                        </div>
-                </div>
-                <div class="row">
-                    <div class="col-md">
-                        <label for="">{{ __('Image') }} : </label>
-                        <input type="file" name="image" class="dropify" data-height="200" accept=".png" />
-                    </div>
-                    <div class="col-md text-center">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <img src='{{ URL::asset("public/cemetery_sites-profile/$cemetery_sites->image") }}'
-                                    loading="lazy" alt="{{ $cemetery_sites->name }}" width="170" height="170">
+                        <div class="row mb-3">
+
+                            <div class="col-md-12">
+                                <label for="">{{ __('Text') }}</label>
+                                <textarea name="text" class="form-control ckeditor">{{ $cemetery_sites->text }}</textarea>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-md">
-                        <div class="map-container" style="margin: 2px;">
-                            <div class="row map-input-fields">
-                                <div class="col-md">
-                                    <div class="form-group row">
-                                        <div class="col-md map-input-with-no-padding">
-                                            <label for=""> {{ __('Latitude') }}</label>
-                                            <input class="form-control" readonly name="latitude" type="text"
-                                                value="{{ $cemetery_sites->latitude }}"><br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md">
-                                    <div class="form-group row">
-                                        <div class="col-md map-input-with-no-padding">
-                                            <label for="">{{ __('Longitude') }}</label>
-                                            <input class="form-control" readonly name="longitude" type="text"
-                                                value="{{ $cemetery_sites->longitude }}"><br>
-                                        </div>
+
+                        <div class="row">
+                            <div class="col-md">
+                                <label for="">{{ __('Image') }} : </label>
+                                <input type="file" name="image" class="dropify" data-height="200" accept=".png" />
+                            </div>
+                            <div class="col-md text-center">
+                                <div class="card" style="margin-top: 38px">
+                                    <div class="card-body text-center">
+                                        <img src='{{ URL::asset("public/cemetery_sites-profile/$cemetery_sites->image") }}'
+                                            loading="lazy" alt="{{ $cemetery_sites->name }}" width="170" height="170">
                                     </div>
                                 </div>
                             </div>
-                            <div id="map"></div>
                         </div>
-                    </div>
+                        <div class="row mb-4">
+                            <div class="col-md">
+                                <div class="map-container" style="margin: 2px;">
+                                    <div class="row map-input-fields">
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <div class="col-md map-input-with-no-padding">
+                                                    <label for=""> {{ __('Latitude') }}</label>
+                                                    <input class="form-control" readonly name="latitude" type="text"
+                                                        value="{{ $cemetery_sites->latitude }}"><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-group row">
+                                                <div class="col-md map-input-with-no-padding">
+                                                    <label for="">{{ __('Longitude') }}</label>
+                                                    <input class="form-control" readonly name="longitude" type="text"
+                                                        value="{{ $cemetery_sites->longitude }}"><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="map"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-success">{{ __('Edit') }}</button>
+                    </form>
                 </div>
-                <br>
-                <button type="submit" class="btn btn-success">{{ __('Edit') }}</button>
-                </form>
             </div>
         </div>
     </div>

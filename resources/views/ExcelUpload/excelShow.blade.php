@@ -128,7 +128,7 @@
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-sm modal-effect"
                                                     data-id="{{ $item->id }}" data-name="{{ $item->Name }}"
-                                                    data-toggle="modal" data-target="#delete"
+                                                    data-bs-toggle="modal" data-bs-target="#delete"
                                                     title="{{ __('Delete') }}"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
